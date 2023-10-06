@@ -7,4 +7,5 @@ function settingsMenuToggle(){
 }
 whiteBtn.onclick = function(){
     whiteBtn.classList.toggle("white-btn-on");
+    document.body.classList.toggle("white-theme");
 }

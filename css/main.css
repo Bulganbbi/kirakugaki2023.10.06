@@ -5,9 +5,24 @@
     box-sizing: border-box;
 
 }
+
+:root{
+    --body-color:url(../images/background.jpg);
+    --nav-color: url(../images/background.jpg);
+    --background-color:rgba(138, 64, 194, 0.853);
+}
+
+.white-theme{
+    --body-color:url(../images/whitepic.jpg);
+    --nav-color: url(../images/whitepic.jpg);
+    --background-color: url(../images/whitepic.jpg);
+
+}
 body{
-    background: url(../images/background.jpg);
-    backdrop-filter: blur(10px);
+    background: var(--body-color);
+
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
     
 }
 .wrapper{
@@ -23,7 +38,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: url('../images/background.jpg');
+    background: var(--nav-color);
     padding: 5px 5%;
     position: sticky;
     top: 0;
@@ -187,7 +202,7 @@ nav{
     bottom: 0;
     left: 0;
     width: 100%;
-    background:#73247acc ;
+    background: var(--background-color) ;
     font-size: 10px;
     color: white;
     padding: 2px 0;
@@ -369,7 +384,7 @@ nav{
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #cb69f3;
+    background: #c060e5b6;
     width: 45px;
     border-radius: 15px;
     padding: 2px 3px;
@@ -384,8 +399,8 @@ nav{
     border-radius: 50%;
     display: inline-block;
 }
-#white-btn .white-btn-on{
+#white-btn.white-btn-on{
     padding-left: 23px;
-    background: #ccc;
+    background: #84f1ffcd;
 
 }
