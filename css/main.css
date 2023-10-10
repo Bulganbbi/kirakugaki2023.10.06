@@ -3,18 +3,14 @@
     padding: 0;
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
-
+    flex: top;
 }
 
 
-.white-theme{
-    --body-color:url(../images/whitepic.jpg);
-    --nav-color: url(../images/whitepic.jpg);
-    --background-color: url(../images/whitepic.jpg);
 
-}
 body{
     background:url(../images/background.jpg);
+    padding-top: 50px;
 
     /* backdrop-filter: blur(5px);
     transition: 0.3s; */
@@ -31,6 +27,7 @@ body{
 nav{
     display: flex;
     align-items: center;
+    height: 65px;
     justify-content: space-between;
     background: url(../images/background.jpg);
     padding: 1px 1%;
@@ -45,14 +42,15 @@ nav{
 }
 .container-fluid a{
     text-decoration: none;
-    color: white;
-    font-size: 32px;
+    color: black;
+    font-size: 26px;
 }
-.logo {
-    width: 40px;
-    margin-right: 45px;
+.nav-item  a{
+    color: #626262;
+    
 }
-.nav-left, .nav-right{
+
+.nav-left, .d-flex{
     display: flex; 
     align-items: center;
 }
@@ -61,11 +59,6 @@ nav{
     display: inline-block;
 }
 
-.nav-item img{
-    width: 32px;
-    height: 32px;
-    margin: 0 125px;
-}
 .nav-user-icon img{
     margin-left: 10px;
     width: 40px;
@@ -74,7 +67,7 @@ nav{
     cursor: pointer;
 
 }
-.nav-right{
+.d-flex{
     background: #efefef;
     width: 350px;
     border-radius: 20px;
@@ -82,10 +75,10 @@ nav{
     align-items: center;
     padding: 0 15px;
 }
-.nav-right img{
+.d-flex img{
     width: 25px;
 }
-.nav-right input{
+.d-flex input{
     width: 100%;
     background: transparent;
     padding: 10px;
@@ -93,25 +86,10 @@ nav{
     border: 0;
 }
 
-.nav-right button{
+.d-flex button{
     border: none;
 
 }
-.online{
-    position: relative;
-}
-.online::after{
-    content: '';
-    width: 7px;
-    height: 7px;
-    border: 1px solid rgba(255, 255, 255, 0.725); 
-    border-radius: 50px;
-    background: #0fff03;
-    /* position: absolute; */
-    top: 0;
-    right: 0;
-}
-
 .container{
     display: flex;
     justify-content: space-between;
@@ -375,9 +353,9 @@ nav{
     align-items: center;
     margin: 15px 0;
 }
-.settings-links .settings-icons{
-    width: 38px;
-    height: 38px;
+.dropdown-item .settings-icons{
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
     border-radius: 50%;
 }
