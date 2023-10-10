@@ -40,17 +40,15 @@ nav{
 .container-fluid{
     display: flex;
 }
-.container-fluid a{
-    text-decoration: none;
-    color: black;
-    font-size: 26px;
-}
-.nav-item  a{
-    color: #626262;
-    font-size: 16px;
     
+#navbarCollapse a{
+    font-size: 26px;
+    color: #626262c4;
 }
 
+#navbarCollapse .dropdown-menu a{
+    font-size: 16px;
+}
 .nav-left, .d-flex{
     display: flex; 
     align-items: center;
@@ -162,7 +160,7 @@ nav{
 }
 .event{
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 20px;
 }
 .left-event{
@@ -243,7 +241,7 @@ nav{
     display: flex;
     align-items: center;
     color: #626262;
-    margin-right: 30px;
+    margin-right: 0px;
     font-size: 13px;
 
 }
