@@ -8,8 +8,9 @@
 
 
 body{
-    background: url(../images/background.jpg);
+    background: url(../images/background.jpg) no-repeat;
     padding-top: 60px;
+    background-size: cover;
     
     
 
@@ -41,12 +42,11 @@ nav{
 .container-fluid{
     display: flex;
 
-    
 }
-.dropdown-menu{
-
-
+.container, .container-md, .container-sm {
+    max-width: 2000px;
 }
+
     
 #navbarCollapse a{
     font-size: 20px;
@@ -104,13 +104,13 @@ nav{
 
 .left-sidebar{
     padding-right: 0%;
-    flex-basis: 25%;
+    flex-basis: 20%;
     position: sticky;
     top: 70px;
     align-self: flex-start;
 }
 .main-content{
-    flex-basis: 73%;
+    flex-basis: 77%;
 }
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
