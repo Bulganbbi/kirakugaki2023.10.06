@@ -3,24 +3,28 @@
     padding: 0;
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
-    flex: top;
 }
 
 
 
 body{
-    padding-top: 50px;
+    background: url(../images/background.jpg) no-repeat;
+    padding-top: 60px;
+    background-size: cover;
+    
+    
 
     /* backdrop-filter: blur(5px);
     transition: 0.3s; */
 }
 .wrapper{
+
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: antiquewhite;
-
+    
 }
 
 nav{
@@ -28,28 +32,30 @@ nav{
     align-items: center;
     height: 65px;
     justify-content: space-between;
-    background: url(../images/background.jpg);
+    background-color: rgb(255, 210, 113);
     padding: 1px 1%;
     position: sticky;
     top: 0;
     z-index: 100;
-    top: fixed;
  
 }
 .container-fluid{
     display: flex;
+
 }
-.container-fluid a{
-    text-decoration: none;
-    color: black;
-    font-size: 26px;
-}
-.nav-item  a{
-    color: #626262;
-    font-size: 16px;
-    
+.container, .container-md, .container-sm {
+    max-width: 2000px;
 }
 
+    
+#navbarCollapse a{
+    font-size: 20px;
+    color: #626262aa;
+}
+
+#navbarCollapse .dropdown-menu a{
+    font-size: 16px;
+}
 .nav-left, .d-flex{
     display: flex; 
     align-items: center;
@@ -93,24 +99,25 @@ nav{
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 15px 5%;
+    padding: 10px 5%;
 }
 
 .left-sidebar{
-    flex-basis: 25%;
+    padding-right: 0%;
+    flex-basis: 20%;
     position: sticky;
     top: 70px;
     align-self: flex-start;
 }
 .main-content{
-    flex-basis: 73%;
+    flex-basis: 77%;
 }
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 0.828);
     width: fit-content;
 }
 
@@ -159,10 +166,13 @@ nav{
     color: #73247acc;
     font-size: 12px;
 }
-.event{
+.event {
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 20px;
+}
+.event h3{
+    font-size: 12px;
 }
 .left-event{
     border-radius: 10px;
@@ -186,13 +196,13 @@ nav{
 }
 
 .left-event span{
-    /* position: absolute; */
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--background-color) ;
+    background:url(../images/background.jpg);
     font-size: 10px;
-    color: white;
+    color: rgb(12, 11, 11);
     padding: 2px 0;
 }
 .write-post-container{
@@ -242,7 +252,7 @@ nav{
     display: flex;
     align-items: center;
     color: #626262;
-    margin-right: 30px;
+    margin-right: 0px;
     font-size: 13px;
 
 }
