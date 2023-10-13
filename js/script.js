@@ -9,3 +9,11 @@
 //     whiteBtn.classList.toggle("white-btn-on");
 //     document.body.classList.toggle("white-theme");
 // }
+
+const questions = document.querySelectorAll('.question');
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementElementSibling;
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });

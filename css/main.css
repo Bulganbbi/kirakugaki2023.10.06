@@ -378,27 +378,29 @@ nav{
     color: #626262;
 }
 
-#white-btn{
-    /* position: absolute; */
-    top: 20px;
-    right: 20px;
-    background: #c060e5b6;
-    width: 45px;
-    border-radius: 15px;
-    padding: 2px 3px;
-    cursor: pointer;
-    display: flex;
-    transition: padding-left 0.5s;
+.help-content{
+    flex-basis: 77%;
 }
-#white-btn span{
-    width: 18px;
-    height: 18px;
-    background: #fff ;
-    border-radius: 50%;
-    display: inline-block;
+
+.help-post-container{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+
 }
-#white-btn.white-btn-on{
-    padding-left: 23px;
-    background: #84f1ffcd;
+.help-post-container h3{
+    font-size: 30px;
+    text-align: center;
+}
+.help-post-container h2 {
+    font-size: 28px;
+}
+
+
+.help-post-container a{
+    text-decoration: none;
+    color:#73247a;
 
 }
