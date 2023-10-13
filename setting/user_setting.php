@@ -23,13 +23,13 @@
                 <div class="Various">
                     <ul>
                         <li>
-                            <a href="../setting/user_setting.html">ユーザー設定</a>
+                            <a href="../setting/user_setting.php">ユーザー設定</a>
                         </li>
                         <li>
-                            <a href="../setting/notice_setting.html">通知設定</a>
+                            <a href="../setting/notice_setting.php">通知設定</a>
                         </li>
                         <li>
-                            <a href="../setting/message_setting.html">メッセージ設定</a>
+                            <a href="../setting/message_setting.php">メッセージ設定</a>
                         </li>
                     </ul>
                 </div> 

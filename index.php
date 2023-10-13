@@ -11,12 +11,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://kit.fontawesome.com/f6d918b6d6.js" crossorigin="anonymous"></script></head>
+</head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,18 +29,22 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                          ヘルプ
+                          ユーザ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li>
-                            <a class="dropdown-item" href="user.html"><img src="images/userpic.png" class="settings-icons">ユーザ</a>
+                            <a class="dropdown-item" href="user.php"><img src="images/userpic.png" class="settings-icons">ユーザ</a>
                         </li>
                           <li>
                             <a class="dropdown-item" href="#"><img src="images/usersetting.png" class="settings-icons">個人情報</a>
                         </li>
                           <li><hr class="dropdown-divider"></li>
+                          <li>
+                            <a class="dropdown-item" href="help.php">
+                                <img src="images/help.png" class="settings-icons">ヘルプ</a>
+                        </li>
                         <li>
-                            <a class="dropdown-item" href="login.html"><img src="images/logout.png" class="settings-icons">ログアウト</a>
+                            <a class="dropdown-item" href="login.php"><img src="images/logout.png" class="settings-icons">ログアウト</a>
                         </li>
                         </ul>
                       </li>
@@ -95,44 +99,88 @@
 
 
         <!--main content-->
-        <div class="help-content">
-            <div class="help-post-container">
-                <div>
-                    <h3>ヘルプ</h3>
-                </div>
-                <section> 
-                    <h2>よくある質問</h2>
-                    <p>以下はよくある質問のリストです：</p>
-                    <div class="question-list">
-                        <p>          
-                            質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
-                        <p>          
-                            質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
-                        <p>          
-                            質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
+        <div class="main-content">
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img src="images/profile..jpg">
+                    <div>
+                        <p>株式会社烈丸</p>
                     </div>
-                    
-                </section>
-            
-            <div class="contract">
+                </div>
+
+                <div class="post-input-container">
+                    <textarea rows="3" placeholder="今日何を描いたの? 株式会社烈丸"></textarea>
+                    <div class="add-post-links">
+                        <a href="#"><img src="images/logo.png" alt="">落書き</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="left-post-contents">
+                    <div class="user-profile">
+                        <img src="images/cat-01.jpg">
+                        <div>
+                            <p>猫</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="post-text">初めてのきらくがきです。<a href="#">#新タイプ</a> </p>
+                <img src="images/cat-02.jpg" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><img src="images/saw.png">1234</div>
+                        <div><img src="images/fire.png">999</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="left-post-contents">
+                    <div class="user-profile">
+                        <img src="images/dog-01.jpg">
+                        <div>
+                            <p>犬のお回り</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="post-text">初めてのきらくがきです。<a href="#">#新タイプ</a> </p>
+                <img src="images/dog-02.jpg" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><img src="images/saw.png">1234</div>
+                        <div><img src="images/fire.png">999</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="left-post-contents">
+                    <div class="user-profile">
+                        <img src="images/profile..jpg">
+                        <div>
+                            <p>株式会社烈丸</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="post-text">初めてのきらくがきです。<a href="#">#新タイプ</a> </p>
+                <img src="images/backgroundpic.jpg" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><img src="images/saw.png">1234</div>
+                        <div><img src="images/fire.png">999</div>
+                    </div>
+                </div>
 
             </div>
-                <hr>
-                <section>
-                    <h2>お問い合わせ</h2>
-                    <p>ご質問やお困りのことがあれば、<a href="email.html">お問い合わせページ</a>でご連絡いただけます。</p>
-                </section>                
-            </div>
         </div>
-        
-                
+
     </div>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
     
 </body>
-
 </html>

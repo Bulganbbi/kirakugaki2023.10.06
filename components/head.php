@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            <a class="navbar-brand" href="../index.php"><img src="../images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
                                 <img src="../images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../login.html"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
+                            <a class="dropdown-item" href="../login.php"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
                         </li>
                         </ul>
                       </li>

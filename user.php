@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li>
-                            <a class="dropdown-item" href="user.html"><img src="images/settings.png" class="settings-icons">設定</a>
+                            <a class="dropdown-item" href="user.php"><img src="images/settings.png" class="settings-icons">設定</a>
                         </li>
                           <li>
                             <a class="dropdown-item" href="#"><img src="images/usersetting.png" class="settings-icons">個人情報</a>
@@ -44,7 +44,7 @@
                                 <img src="images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="login.html"><img src="images/logout.png" class="settings-icons">ログアウト</a>
+                            <a class="dropdown-item" href="login.php"><img src="images/logout.png" class="settings-icons">ログアウト</a>
                         </li>
                         </ul>
                       </li>
