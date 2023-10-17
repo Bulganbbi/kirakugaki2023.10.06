@@ -15,73 +15,9 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="nav-left">
-            <img src="images/logo.png" class="logo">
-            <ul>
-                <li><img src="images/home.png"></li>
-                <li><img src="images/setting.png"></li>
-                <li><img src="images/notification.png"></li>
-            </ul>
-        </div>
-
-        <div class="nav-right">
-
-            <div class="search-box">
-                <img src="images/search.png">
-                <input type="text" placeholder="検索">
-            </div>
-
-            <div class="nav-user-icon online" onclick="settingsMenuToggle()">
-                <img src="images/profile..jpg">
-
-            </div>
-
-        </div>
-        <!--settings menu-->
-        <div class="settings-menu">
-            <div id="white-btn">
-                <span></span>
-            </div>
-            <div class="settings-menu-inner">
-                <div class="user-profile">
-                    <img src="images/profile..jpg">
-                    <div>
-                        <p>株式会社烈丸</p>
-                        <a href="#">プロフィールへ</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="user-profile">
-                    <img src="images/usersetting.png">
-                    <div>
-                        <p>個人情報</p>
-                        <a href="#">情報変更</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/contract.png" class="settings-icons">
-                        <a href="login.html">利用契約</a>
-                    </div>
-                </div>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/help.png" class="settings-icons">
-                        <a href="#">ヘルプ</a>
-                    </div>
-                </div>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/logout.png" class="settings-icons">
-                        <a href="login.html">ログアウト</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container-fluid">
-            <a class="nav-left" href="index.html"><img src="images/logo.png">きらくがき</a>
+            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -89,83 +25,38 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <img src="images/notification.png">
-                        <a class="nav-link active" aria-current="page" href="#"></a>
+                        <a class="nav-link active" aria-current="page" href="#">Notification</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                          プロフィール
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li>
+                            <a class="dropdown-item" href="user.php"><img src="images/settings.png" class="settings-icons">設定</a>
+                        </li>
+                          <li>
+                            <a class="dropdown-item" href="#"><img src="images/usersetting.png" class="settings-icons">個人情報</a>
+                        </li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li>
+                            <a class="dropdown-item" href="#">
+                                <img src="images/help.png" class="settings-icons">ヘルプ</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="login.php"><img src="images/logout.png" class="settings-icons">ログアウト</a>
+                        </li>
+                        </ul>
+                      </li>
                 </ul>
-                <form class="nav-right">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="検索。。。" aria-label="Search">
+                    <button><img src="images/search.png" alt=""></button>
                 </form>
             </div>
         </div>
     </nav>
-    <nav id="main-nav">
-        <div class="nav-left">
-            <img src="images/logo.png" class="logo">
-            <ul>
-                <li><img src="images/home.png"></li>
-                <li><img src="images/setting.png"></li>
-                <li><img src="images/notification.png"></li>
-            </ul>
-        </div>
 
-        <div class="nav-right">
-
-            <div class="search-box">
-                <img src="images/search.png">
-                <input type="text" placeholder="検索">
-            </div>
-
-            <div class="nav-user-icon online" onclick="settingsMenuToggle()">
-                <img src="images/profile..jpg">
-
-            </div>
-
-        </div>
-        <!--settings menu-->
-        <div class="settings-menu">
-            <div id="white-btn">
-                <span></span>
-            </div>
-            <div class="settings-menu-inner">
-                <div class="user-profile">
-                    <img src="images/profile..jpg">
-                    <div>
-                        <p>株式会社烈丸</p>
-                        <a href="#">プロフィールへ</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="user-profile">
-                    <img src="images/usersetting.png">
-                    <div>
-                        <p>個人情報</p>
-                        <a href="#">情報変更</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/contract.png" class="settings-icons">
-                        <a href="login.html">利用契約</a>
-                    </div>
-                </div>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/help.png" class="settings-icons">
-                        <a href="#">ヘルプ</a>
-                    </div>
-                </div>
-                <div class="settings-links">
-                    <div class="user-profile">
-                        <img src="images/logout.png" class="settings-icons">
-                        <a href="login.html">ログアウト</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
     <div class="container">
         <!--left sidebar-->
         <div class="left-sidebar">
@@ -291,6 +182,8 @@
 
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
+    
 </body>
 
 </html>

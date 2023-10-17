@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ヘルプ</title>
+    <title>らくがき投稿</title>
     <link rel="shortcut icon" href="images/title.PNG" type="image/x-icon">
 
 </head>
 <body>
-    <h1>きらくがきの使い方</h1>
-    <p>きらくがきの説明</p>
+    <?php include("../components/nav.php"); ?>
 </body>
 </html>
