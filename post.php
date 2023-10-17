@@ -8,6 +8,6 @@
 
 </head>
 <body>
-    
+    <?php include("../components/nav.php"); ?>
 </body>
 </html>

@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <?php include("../components/head.php"); ?>
+    <?php include("../components/nav.php"); ?>
 
     <div class="setting">
         <div class="title">
