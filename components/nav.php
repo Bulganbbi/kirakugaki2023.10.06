@@ -26,7 +26,7 @@
                                 <img src="./images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="./setting.php"><img src="./images/setting.png" class="settings-icons">設定</a>
+                            <a class="dropdown-item" href="./user_setting.php"><img src="./images/setting.png" class="settings-icons">設定</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="./login.php"><img src="./images/logout.png" class="settings-icons">ログアウト</a>
