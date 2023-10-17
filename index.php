@@ -131,7 +131,10 @@
                 <div class="post-row">
                     <div class="activity-icons">
                         <div><img src="images/saw.png">1234</div>
-                        <div><img src="images/fire.png">999</div>
+                        <button id="likeButton">
+                            <img src="images/fire.png">
+                        </button>  
+                        <span id = "likeCount">0</span>
                     </div>
                 </div>
             </div>
@@ -179,7 +182,7 @@
         </div>
 
     </div>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
     
 </body>

@@ -23,7 +23,6 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: antiquewhite;
     
 }
 
@@ -32,8 +31,6 @@ nav{
     align-items: center;
     height: 65px;
     justify-content: space-between;
-    background-color: rgb(255, 210, 113);
-    padding: 1px 1%;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -41,8 +38,12 @@ nav{
 }
 .container-fluid{
     display: flex;
+    background-color: rgba(255, 255, 255, 0.728);
+    margin-top: 0;
+    margin-bottom: 10px;
 
 }
+
 .container, .container-md, .container-sm {
     max-width: 2000px;
 }
@@ -65,14 +66,6 @@ nav{
     display: inline-block;
 }
 
-.nav-user-icon img{
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-
-}
 .d-flex{
     background: #efefef;
     width: 350px;
@@ -96,10 +89,15 @@ nav{
     border: none;
 
 }
+
+
 .container{
     display: flex;
     justify-content: space-between;
     padding: 10px 5%;
+}
+.navbar-collapse{
+    
 }
 
 .left-sidebar{
@@ -326,56 +324,13 @@ nav{
     margin-right: 30px;
 }
 
-.settings-menu{
-    /* position: absolute; */
-    width: 80%;
-    max-width:350px;
-    height: 350px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
-    overflow: hidden;
-    top: 108%;
-    right: 5%;
-    max-height:0;
-    transition: max-height 0.3s;
-}
-.settings-menu-height{
-    max-height: 450px;
-}
-.user-profile a{
-    font-size: 12px;
-    color:#73247acc;
-    text-decoration: none;
-}
-.settings-menu-inner{
-    padding: 20px;
 
-}
-.settings-menu hr{
-    border: none;
-    height: 1px;
-    background:#9a9a9a ;
-    margin: 15px 0;
-}
-.settings-links{
-    display: flex;
-    align-items: center;
-    margin: 15px 0;
-}
+
 .dropdown-item .settings-icons{
     width: 20px;
     height: 20px;
     margin-right: 10px;
     border-radius: 50%;
-}
-.settings-links a{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    color: #626262;
 }
 
 .help-content{

@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
             
@@ -34,7 +34,7 @@
                         </li>
                           <li><hr class="dropdown-divider"></li>
                           <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="help.php">
                                 <img src="images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>
