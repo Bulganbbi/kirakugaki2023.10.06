@@ -96,9 +96,6 @@ nav{
     justify-content: space-between;
     padding: 10px 5%;
 }
-.navbar-collapse{
-    
-}
 
 .left-sidebar{
     padding-right: 0%;
@@ -323,7 +320,22 @@ nav{
     align-items: center;
     margin-right: 30px;
 }
+ #likeButton{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+ }
+ .like-button{
+    background-image: url(../images/clickedfire.png);
+    width: 17px;
+    height: 17px;
+ }
+ .not-liked{
+    background-image: url(../images/fire.png);
+    width: 17px;
+    height: 17px;
 
+ }
 
 
 .dropdown-item .settings-icons{

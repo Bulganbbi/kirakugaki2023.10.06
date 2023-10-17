@@ -131,9 +131,7 @@
                 <div class="post-row">
                     <div class="activity-icons">
                         <div><img src="images/saw.png">1234</div>
-                        <button id="likeButton">
-                            <img src="images/fire.png">
-                        </button>  
+                        <button id="likeButton" class="like-button not-liked"></button>  
                         <span id = "likeCount">0</span>
                     </div>
                 </div>
@@ -184,6 +182,4 @@
     </div>
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
-    
-</body>
 </html>
