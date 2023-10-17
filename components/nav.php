@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.php"><img src="./images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            <a class="navbar-brand" href="./index.php"><img src="./images/title.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="90" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
                       </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="検索" aria-label="Search">
+                    <input class="form" type="search" placeholder="検索" aria-label="Search">
                     <button><img src="./images/検索アイコン.png" height="20" width="20"></button>
                 </form>
             </div>

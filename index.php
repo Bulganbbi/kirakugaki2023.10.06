@@ -16,8 +16,6 @@
 <body>
 <?php $Paths = "./images/"; include("./components/nav.php"); ?>
     <?php include("./components/aside.php"); ?>
-
-
         <!--main content-->
         <div class="main-content">
             <div class="write-post-container">
