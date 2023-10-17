@@ -34,7 +34,7 @@ nav{
 }
 .container-fluid{
     display: flex;
-    background-color: rgba(255, 255, 255, 0.855);
+    background-color: rgba(255, 255, 255, 0.728);
     margin-top: 0;
 }
 
@@ -45,7 +45,7 @@ nav{
     
 #navbarCollapse a{
     font-size: 20px;
-    color: #626262aa;
+    color: #000000;
 }
 
 #navbarCollapse .dropdown-menu a{
