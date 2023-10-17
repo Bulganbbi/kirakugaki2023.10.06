@@ -23,7 +23,6 @@
 
             <div class="imp-links">
                 <a href="#"><img src="images/new.png" alt="">新作品</a>
-                <a href="#"><img src="images/famous.png" alt="">大人気</a>
                 <a href="#"><img src="images/follow.png" alt="">フォロー中</a>
                 <a href="#"><img src="images/save.png" alt="">保存</a>
                 <a href="#">See More</a>
