@@ -70,19 +70,19 @@
             <div class="question">
                 <a>質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>アカウントを作成する手順についての回答をここに記述します。</p>
+                    <p>sdfghjklcvbgnhmxcdvfbg</p>
                 </div>
             </div>
             <div class="question">
                 <a>質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>パスワードをリセットする方法についての回答をここに記述します。</p>
+                    <p>dfghjgfdfghnjmhgfdghjhgf</p>
                 </div>
             </div>
             <div class="question">
                 <a>質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>お問い合わせ先に関する情報についての回答をここに記述します。</p>
+                    <p>dfbghnjmgfcdscdfghjkjhgfdfghjmk,l</p>
                 </div>
             </div>
         </div>
