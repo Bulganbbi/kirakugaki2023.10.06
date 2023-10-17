@@ -8,8 +8,6 @@
 
 </head>
 <body>
-    <span class="favoritedmark fade">★</span>
-    <button class="btn btn-primary addtofavorite">お気に入りに登録</button>
-    <button class="btn btn-primary removefavorite hidden">お気に入りから外す</button>
+    
 </body>
 </html>
