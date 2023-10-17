@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html"><img src="../images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
+            <a class="navbar-brand" href="../index.php"><img src="../images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                                 <img src="../images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../login.html"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
+                            <a class="dropdown-item" href="../login.php"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
                         </li>
                         </ul>
                       </li>
@@ -62,36 +62,19 @@
                 <div class="Various">
                     <ul>
                         <li>
-                            <a href="../setting/user_setting.html">ユーザー設定</a>
+                            <a href="../setting/user_setting.php">ユーザー設定</a>
                         </li>
                         <li>
-                            <a href="../setting/notice_setting.html">通知設定</a>
+                            <a href="../setting/notice_setting.php">通知設定</a>
                         </li>
                         <li>
-                            <a href="../setting/message_setting.html">メッセージ設定</a>
+                            <a href="../setting/message_setting.php">メッセージ設定</a>
                         </li>
                     </ul>
                 </div> 
         </div>
     </div>
-        <!-- ユーザー設定項目 -->
-        <div class="settingcontent">
-            <ul>
-                <li>
-                    <a href="">ユーザーネーム変更</a>   <!-- プロフィールに飛ばす -->
-                </li>
-                <li>
-                    <a href="">プロフィール画像変更</a>  <!-- プロフィールに飛ばす -->
-                </li>
-                <li>
-                    <p>閲覧制限(R18)</p>
-                    <input type="radio" name="q1" value="はい">表示する
-                    <input type="radio" name="q1" value="いいえ">表示しない
-
-                </li>
-            </ul> 
-        </div>
     <script src="../js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
 </body>    
     

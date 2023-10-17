@@ -12,7 +12,7 @@
     <div class="nav-left">
         <img  src="images/title.PNG" alt="home" width="100" height="50">
         <ul>
-            <li><a href="post.html">らくがき投稿</a></li>
+            <li><a href="post.php">らくがき投稿</a></li>
             <li><img  src="images/alarm_24.png"></li>
         </ul>
     </div>
@@ -48,25 +48,25 @@
             <div class="settings-links">
                 <div class="user-profile">
                     <img src="images/contract.png" class="settings-icons">                    
-                    <a href="tos.html">利用契約</a>  
+                    <a href="tos.php">利用契約</a>  
                 </div>
             </div>
             <div class="settings-links">
                 <div class="user-profile">
                     <img src="images/help.png" class="settings-icons">                    
-                    <a href="help.html">ヘルプ</a>  
+                    <a href="help.php">ヘルプ</a>  
                 </div>
             </div>
             <div class="settings-links">
                 <div class="user-profile">
                     <img src="images/setting_icon.png" class="settings-icons">                    
-                    <a href="setting.html">設定</a>  
+                    <a href="setting.php">設定</a>  
                 </div>
             </div>
             <div class="settings-links">
                 <div class="user-profile">
                     <img src="images/logout.png" class="settings-icons">                    
-                    <a href="login.html">ログアウト</a>  
+                    <a href="login.php">ログアウト</a>  
                 </div>
             </div>
         </div>

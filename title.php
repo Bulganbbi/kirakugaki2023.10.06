@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="title-word">
-        <form action="signin.html" method="post">
+        <form action="signin.php" method="post">
         <h1>きらくがきへようこそ</h1>
         <button type="submit" class="btn">始める</button>
     </form>
