@@ -20,19 +20,7 @@
         <!--main content-->
         <div class="main-content">
             <div class="write-post-container">
-                <div class="user-profile">
-                    <img src="images/profile..jpg">
-                    <div>
-                        <p>株式会社烈丸</p>
-                    </div>
-                </div>
-
-                <div class="post-input-container">
-                    <textarea rows="3" placeholder="今日何を描いたの? 株式会社烈丸"></textarea>
-                    <div class="add-post-links">
-                        <a href="#"><img src="images/logo.png" alt="">落書き</a>
-                    </div>
-                </div>
+                <a href="/post.php">らくがき投稿</a>
             </div>
 
             <div class="post-container">

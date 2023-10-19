@@ -3,7 +3,7 @@
         <div class="left-sidebar">
             <div class="event-bar">
                 <div class="eventbar-title">
-                    <h4>エベント</h4>
+                    <h4>イベント</h4>
                     <a href="#">See All</a>
                 </div>
                 <div class="event">
