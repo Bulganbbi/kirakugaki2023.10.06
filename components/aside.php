@@ -12,19 +12,15 @@
                         <span>12月</span>
                     </div>
                     <div class="right-event">
-                        <h4>今月タイプ</h4>
-                        <p>白黒</p>
-                        <a href="#">More Info</a>
-
                     </div>
 
                 </div>
             </div>
 
             <div class="imp-links">
-                <a href="#"><img src="images/new.png" alt="">新作品</a>
+                <a href="#"><img src="images/new.png" alt="">新着</a>
                 <a href="#"><img src="images/follow.png" alt="">フォロー中</a>
-                <a href="#"><img src="images/save.png" alt="">保存</a>
+                <a href="#"><img src="images/save.png" alt="">お気に入り</a>
                 <a href="#">See More</a>
 
             </div>

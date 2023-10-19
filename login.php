@@ -14,7 +14,7 @@
         <form action="index.php" method="post">
             <h1>ログイン</h1>
             <div class="input-box">
-                <input type="email" placeholder="ユーザ名" required>
+                <input type="email" placeholder="メールアドレス" required>
             </div>
             <div class="input-box">
                 <input type="password" placeholder="パスワード" required>
@@ -30,6 +30,14 @@
             </div>
             
         </form>
+        <?php
+        // PHP
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+        }
+        ?>
+
     </div>
     
 </body>

@@ -14,44 +14,7 @@
     <script src="https://kit.fontawesome.com/f6d918b6d6.js" crossorigin="anonymous"></script></head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="56" height="56"></a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Notification</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                          ヘルプ
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li>
-                            <a class="dropdown-item" href="user.php"><img src="images/userpic.png" class="settings-icons">ユーザ</a>
-                        </li>
-                          <li>
-                            <a class="dropdown-item" href="#"><img src="images/usersetting.png" class="settings-icons">個人情報</a>
-                        </li>
-                          <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item" href="login.php"><img src="images/logout.png" class="settings-icons">ログアウト</a>
-                        </li>
-                        </ul>
-                      </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="検索。。。" aria-label="Search">
-                    <button><img src="images/search.png" alt=""></button>
-                </form>
-            </div>
-        </div>
-    </nav>
+<?php include("./components/nav.php"); ?>
 
     <div class="container">
         <!--left sidebar-->
@@ -100,23 +63,45 @@
                 <div>
                     <h3>ヘルプ</h3>
                 </div>
-                <section> 
-                    <h2>よくある質問</h2>
-                    <p>以下はよくある質問のリストです：</p>
-                    <div class="question-list">
-                        <p>          
-                            質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
-                        <p>          
-                            質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
-                        <p>          
-                            質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                        <p>
-                    </div>
-                    
-                </section>
-            
+                <section>
+        <h2>よくある質問</h2>
+        <p>以下はよくある質問のリストです：</p>
+        <div class="dropdown">
+            <div class="question">
+                <a>質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>sdfghjklcvbgnhmxcdvfbg</p>
+                </div>
+            </div>
+            <div class="question">
+                <a>質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>dfghjgfdfghnjmhgfdghjhgf</p>
+                </div>
+            </div>
+            <div class="question">
+                <a>質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>dfbghnjmgfcdscdfghjkjhgfdfghjmk,l</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.querySelector('.answer');
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>            
             <div class="contract">
 
             </div>
