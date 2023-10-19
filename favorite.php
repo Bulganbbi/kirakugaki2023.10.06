@@ -8,6 +8,7 @@
 
 </head>
 <body>
-    
+<?php include("./components/nav.php"); ?>
+    <?php include("./components/aside.php"); ?>
 </body>
 </html>
