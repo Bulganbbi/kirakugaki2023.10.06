@@ -24,7 +24,7 @@
                     <a href="">プロフィール画像変更</a>  <!-- プロフィールに飛ばす -->
                 </li>
                 <li>
-                    <p>閲覧制限(R18)</p>
+                    <p>閲覧制限(R18&R18G)</p>
                     <input type="radio" name="q1" value="はい">表示する
                     <input type="radio" name="q1" value="いいえ">表示しない
 
