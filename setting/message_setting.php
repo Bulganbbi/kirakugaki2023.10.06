@@ -20,6 +20,11 @@
             <input type="radio" name="q1" value="いいえ">許可しない
         </li>
     </ul>
+    <!-- 適用ボタン -->
+    <div class="submit">
+        <input type="submit" name="submit" class="btn_type01" value="適用"> 
+    </div>
+
     <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>    
