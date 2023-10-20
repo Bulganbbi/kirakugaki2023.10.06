@@ -13,7 +13,7 @@
     <div class="title-word">
         <form action="signin.php" method="post">
         <h1>きらくがきへようこそ</h1>
-        <button type="submit" class="btn">始める</button>
+        <button type="submit" class="btn">登録して始める</button>
     </form>
     </div>
 </body>
