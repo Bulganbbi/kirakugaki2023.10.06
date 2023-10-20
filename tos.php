@@ -4,74 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>利用規約</title>
-    <link rel="shortcut icon" href="images/title.PNG" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 <!-- header -->
-<nav>
-    <div class="nav-left">
-        <img  src="images/title.PNG" alt="home" width="100" height="50">
-        <ul>
-            <li><a href="post.php">らくがき投稿</a></li>
-            <li><img  src="images/alarm_24.png"></li>
-        </ul>
-    </div>
-    <div class="nav-right">
-        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
-            <img src="images/profile..jpg">
+<?php include("./components/nav.php"); ?>
 
-        </div>
-
-    </div>
-    <!--settings menu-->
-    <div class="settings-menu">
-        <div id = "white-btn">
-            <span></span>
-        </div>
-        <div class="settings-menu-inner">
-            <div class="user-profile">
-                <img src="images/profile..jpg">
-                <div>
-                    <p>株式会社烈丸</p>
-                    <a href="#">プロフィール</a>
-                </div>
-            </div>
-            <hr>
-            <div class="user-profile">
-                <img src="images/usersetting.png">
-                <div>
-                    <p>個人情報</p>
-                    <a href="#">情報変更</a>
-                </div>
-            </div>
-            <hr>
-            <div class="settings-links">
-                <div class="user-profile">
-                    <img src="images/contract.png" class="settings-icons">                    
-                    <a href="tos.php">利用契約</a>  
-                </div>
-            </div>
-            <div class="settings-links">
-                <div class="user-profile">
-                    <img src="images/help.png" class="settings-icons">                    
-                    <a href="help.php">ヘルプ</a>  
-                </div>
-            </div>
-            <div class="settings-links">
-                <div class="user-profile">
-                    <img src="images/setting_icon.png" class="settings-icons">                    
-                    <a href="setting.php">設定</a>  
-                </div>
-            </div>
-            <div class="settings-links">
-                <div class="user-profile">
-                    <img src="images/logout.png" class="settings-icons">                    
-                    <a href="login.php">ログアウト</a>  
-                </div>
-            </div>
-        </div>
-    </div>
-</nav> 
-<script src="js/script.js"></script>   
+    <script src="js/script.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
