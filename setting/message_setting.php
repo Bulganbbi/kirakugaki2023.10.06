@@ -13,6 +13,13 @@
 <body>
 <?php include("../components/setting_nav.php"); ?>
     <?php include("../components/setting.php"); ?>
+    <ul>
+        <li>
+            <p>他ユーザーによるコメント</p>
+            <input type="radio" name="q1" value="はい">許可する
+            <input type="radio" name="q1" value="いいえ">許可しない
+        </li>
+    </ul>
     <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>    
