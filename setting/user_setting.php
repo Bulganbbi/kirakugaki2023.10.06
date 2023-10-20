@@ -15,6 +15,7 @@
     <?php include("../components/setting.php"); ?>
         <!-- ユーザー設定項目 -->
         <div class="settingcontent">
+        <img src="../images/profile..jpg" width="100" height="100">
             <ul>
                 <li>
                     <a href="">ユーザーネーム変更</a>   <!-- プロフィールに飛ばす -->

@@ -5,7 +5,6 @@
             <div class="sub-title">
                 <h2>ユーザー設定</h2>
             </div>
-            <img src="../images/profile..jpg" width="100" height="100">
                 <div class="Various">
                     <ul>
                         <li>
