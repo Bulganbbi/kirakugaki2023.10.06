@@ -37,19 +37,25 @@
             <div class="question">
                 <a>質問2: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>メールアドレス、お名前、パスワードを入力してアカウントを作成します。</p>
+                    <p>sdfghjklcvbgnhmxcdvfbg</p>
                 </div>
             </div>
             <div class="question">
                 <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>ユーザーがパスワードを忘れてしまった場合、パスワードをリセットできます。 パスワードリセットは、ログイン状態でなくても実行できます。</p>
+                    <p>dfghjgfdfghnjmhgfdghjhgf</p>
                 </div>
             </div>
             <div class="question">
                 <a>質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>dfbghnjmgfcdscdfghjkjhgfdfghjmk,l</p>
+                    <p>ヘルプからお問い合わせの「お問い合わせページ」をクリックしていただけたらお問い合わせが可能です。</p>
+                </div>
+            </div>
+            <div class="question">
+                <a>質問4: ？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>ヘルプからお問い合わせの「お問い合わせページ」をクリックしていただけたらお問い合わせが可能です。</p>
                 </div>
             </div>
         </div>

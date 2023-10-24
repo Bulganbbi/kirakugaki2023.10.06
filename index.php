@@ -15,12 +15,12 @@
 </head>
 
 <body>
-<?php $Paths = "./images/"; include("./components/nav.php"); ?>
+<?php include("./components/nav.php"); ?>
     <?php include("./components/aside.php"); ?>
         <!--main content-->
         <div class="main-content">
             <div class="write-post-container">
-                <a href="/post.php">らくがき投稿</a>
+                <a href="./post.php">らくがき投稿</a>
             </div>
 
             <div class="post-container">
@@ -89,6 +89,7 @@
         </div>
 
     </div>
+</body>
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
 </html>
