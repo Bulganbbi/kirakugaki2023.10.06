@@ -17,26 +17,33 @@
 <?php include("./components/nav.php"); ?>
     <?php include("./components/aside.php"); ?>
 
-        <!--main content-->
+        <!--help content-->
         <div class="help-content">
             <div class="help-post-container">
                 <div>
                     <h3>ヘルプ</h3>
                 </div>
-                <section>
+    <section>
         <h2>よくある質問</h2>
         <p>以下はよくある質問のリストです：</p>
-        <div class="dropdown">
+        <div class="dropdown" id="ansque">
             <div class="question">
-                <a>質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問1: アカウントのメールアドレスとは何ですか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>sdfghjklcvbgnhmxcdvfbg</p>
+                    <p>メールアドレスとはインターネットなどのネットワーク上で、電子メールの送受信を行うために使用する文字列のことを指します。 いわゆる住所のようなものです。 メールアドレスは、「ユーザー名（アカウント名）＠ドメイン名」で構成されます。</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <a>質問2: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>メールアドレス、お名前、パスワードを入力してアカウントを作成します。</p>
                 </div>
             </div>
             <div class="question">
-                <a>質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>dfghjgfdfghnjmhgfdghjhgf</p>
+                    <p>ユーザーがパスワードを忘れてしまった場合、パスワードをリセットできます。 パスワードリセットは、ログイン状態でなくても実行できます。</p>
                 </div>
             </div>
             <div class="question">

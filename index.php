@@ -59,7 +59,8 @@
                 <div class="post-row">
                     <div class="activity-icons">
                         <div><img src="images/saw.png">1234</div>
-                        <div><img src="images/fire.png">999</div>
+                        <button id="likeButton" class="like-button not-liked"></button>  
+                        <span id = "likeCount">0</span>
                     </div>
                 </div>
             </div>
@@ -79,7 +80,8 @@
                 <div class="post-row">
                     <div class="activity-icons">
                         <div><img src="images/saw.png">1234</div>
-                        <div><img src="images/fire.png">999</div>
+                        <button id="likeButton" class="like-button not-liked"></button>  
+                        <span id = "likeCount">0</span>
                     </div>
                 </div>
 
