@@ -28,7 +28,7 @@
                 <p><img src="images/type2.png" alt="">png</p>
             </div>
             <div class="help_link">
-                <a href="../tos.php">利用規約</a>
+                <a href="./tos.php">利用規約</a>
                 <a href="">使い方</a>
             </div>
         </div>
