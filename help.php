@@ -48,7 +48,7 @@
             <div class="question">
                 <a>質問4: ？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>ヘルプからお問い合わせの「お問い合わせページ」をクリックしていただけたらお問い合わせが可能です。</p>
+                    <p></p>
                 </div>
             </div>
         </div>
