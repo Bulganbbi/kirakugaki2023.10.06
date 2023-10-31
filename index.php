@@ -20,7 +20,7 @@
         <!--main content-->
         <div class="main-content">
             <div class="write-post-container">
-                <a href="./POST/post.php">らくがき投稿</a>
+                <a href="./POST/index.php">らくがき投稿</a>
             </div>
 
             <div class="post-container">

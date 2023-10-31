@@ -11,7 +11,7 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
 if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     // 特定のファイル形式の許可
-    $allowTypes = array('jpg','png','jpeg');
+    $allowTypes = array('jpg','png','jpeg',"PNG");
     if(in_array($fileType, $allowTypes)){
         // サーバーにファイルをアップロード
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
