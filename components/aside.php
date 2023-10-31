@@ -20,15 +20,15 @@
 
             <div class="imp-links">
                 <a href="/new.php"><img src="images/new.png" alt="">新着</a>
-                <a href="/follow.php"><img src="images/follow.png" alt="">フォロー中</a>
                 <a href="/favorite.php"><img src="images/save.png" alt="">お気に入り</a>
-                <a href="#">See More</a>
-
             </div>
             <div class="shortcut-links">
                 <p>作品の形式</p>
                 <p><img src="images/type1.png" alt="">jpg</p>
                 <p><img src="images/type2.png" alt="">png</p>
-
+            </div>
+            <div class="help_link">
+                <a href="./tos.php">利用規約</a>
+                <a href="">使い方</a>
             </div>
         </div>

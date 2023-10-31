@@ -8,41 +8,52 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-<?php include("./components/nav.php"); ?>
-    <header>
-        <h1>あなたの名前</h1>
-        <p>職業/役職</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#about">自己紹介</a></li>
-            <li><a href="#skills">スキル</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-    </nav>
-
-    <section id="about">
-        <h2>自己紹介</h2>
-        <p>ここに自己紹介を記入します。</p>
-    </section>
-
-    <section id="skills">
-        <h2>スキル</h2>
-        <ul>
-            <li>スキル1</li>
-            <li>スキル2</li>
-            <li>スキル3</li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>お問い合わせ</h2>
-        <p>お問い合わせ情報をここに記入します。</p>
-    </section>
-    
+    <?php include("./components/nav.php"); ?>
+    <div class="header_wrapper">
+        <header></header>
+        <div class="cols_container">
+            <div class="left_col">
+                <div class="img_container">
+                    <img src="./images/profile..jpg" alt="ユーザ名">
+                    <span></span>
+                </div>
+                <h2>あなたの名前</h2>
+                <p>xxxxx@email.com</p>
+                <hr>
+                <div class="content">
+                    <p>イラストの評価を気にせずきらくに投稿できる！
+                    評価を気にしないことによって精神的に辛くなることはなくなり
+                    モチベーションが上がって絵を楽しく描いてもらえる！</p>
+                    <ul>
+                        <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
+                        <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_col">
+                <nav>
+                    <ul>
+                        <li><a href="#">photos</a></li>
+                        <li><a href="#">galleries</a></li>
+                        <li><a href="#">about</a></li>
+                    </ul>
+                </nav>
+                <div class="photos">
+                    <img src="./photos/pho1.jpg" alt="Photo">
+                    <img src="./photos/pho2.jpg" alt="Photo">
+                    <img src="./photos/pho3.jpg" alt="Photo">
+                    <img src="./photos/pho4.jpg" alt="Photo">
+                    <img src="./photos/pho5.jpg" alt="Photo">
+                    <img src="./photos/pho6.jpg" alt="Photo">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2023 あなたの名前</p>
