@@ -3,25 +3,23 @@
     padding: 0;
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
-    flex: top;
 }
 
 
 
 body{
-    background:url(../images/background.jpg);
-    padding-top: 50px;
-
-    /* backdrop-filter: blur(5px);
-    transition: 0.3s; */
+    padding-top: 60px;
+    background-size: cover;
+    background-color: #efefef
+    
 }
 .wrapper{
+
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: antiquewhite;
-
+    
 }
 
 nav{
@@ -29,28 +27,30 @@ nav{
     align-items: center;
     height: 65px;
     justify-content: space-between;
-    background: url(../images/background.jpg);
-    padding: 1px 1%;
     position: sticky;
     top: 0;
     z-index: 100;
-    top: fixed;
  
 }
 .container-fluid{
     display: flex;
-}
-.container-fluid a{
-    text-decoration: none;
-    color: black;
-    font-size: 26px;
-}
-.nav-item  a{
-    color: #626262;
-    font-size: 16px;
-    
+    background-color: rgba(255, 255, 255, 0.728);
+    margin-top: 0;
 }
 
+.container, .container-md, .container-sm {
+    max-width: 2000px;
+}
+
+    
+#navbarCollapse a{
+    font-size: 20px;
+    color: #000000;
+}
+
+#navbarCollapse .dropdown-menu a{
+    font-size: 16px;
+}
 .nav-left, .d-flex{
     display: flex; 
     align-items: center;
@@ -59,15 +59,11 @@ nav{
     list-style: none;
     display: inline-block;
 }
-
-.nav-user-icon img{
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-
+span, .navbar-toggler-icon{
+    background-color: #9292925b;
+    border-radius: 10%;
 }
+
 .d-flex{
     background: #efefef;
     width: 350px;
@@ -91,27 +87,30 @@ nav{
     border: none;
 
 }
+
+
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 15px 5%;
+    padding: 10px 5%;
 }
 
 .left-sidebar{
-    flex-basis: 25%;
+    padding-right: 0%;
+    flex-basis: 20%;
     position: sticky;
     top: 70px;
     align-self: flex-start;
 }
 .main-content{
-    flex-basis: 73%;
+    flex-basis: 77%;
 }
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 0.828);
     width: fit-content;
 }
 
@@ -120,9 +119,9 @@ nav{
     margin-right: 15px;
 
 }
-.imp-links a:last-child{
+/* .imp-links a:last-child{
     color:#73247acc;
-}
+} */
 .imp-links{
     border-bottom: 1px solid #ccc;
 
@@ -160,10 +159,13 @@ nav{
     color: #73247acc;
     font-size: 12px;
 }
-.event{
+.event {
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 20px;
+}
+.event h3{
+    font-size: 12px;
 }
 .left-event{
     border-radius: 10px;
@@ -187,13 +189,13 @@ nav{
 }
 
 .left-event span{
-    /* position: absolute; */
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--background-color) ;
+    background:url(../images/background.jpg);
     font-size: 10px;
-    color: white;
+    color: rgb(12, 11, 11);
     padding: 2px 0;
 }
 .write-post-container{
@@ -243,7 +245,7 @@ nav{
     display: flex;
     align-items: center;
     color: #626262;
-    margin-right: 30px;
+    margin-right: 0px;
     font-size: 13px;
 
 }
@@ -316,80 +318,86 @@ nav{
     align-items: center;
     margin-right: 30px;
 }
-
-.settings-menu{
-    /* position: absolute; */
-    width: 80%;
-    max-width:350px;
-    height: 350px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
-    overflow: hidden;
-    top: 108%;
-    right: 5%;
-    max-height:0;
-    transition: max-height 0.3s;
-}
-.settings-menu-height{
-    max-height: 450px;
-}
-.user-profile a{
-    font-size: 12px;
-    color:#73247acc;
-    text-decoration: none;
-}
-.settings-menu-inner{
-    padding: 20px;
-
-}
-.settings-menu hr{
+ #likeButton{
     border: none;
-    height: 1px;
-    background:#9a9a9a ;
-    margin: 15px 0;
-}
-.settings-links{
-    display: flex;
-    align-items: center;
-    margin: 15px 0;
-}
+    background-color: transparent;
+    cursor: pointer;
+ }
+ .like-button{
+    background-image: url(../images/clickedfire.png);
+    width: 17px;
+    height: 17px;
+ }
+ .span, #likeCount{
+    background-color: transparent;
+ }
+ .not-liked{
+    background-image: url(../images/fire.png);
+    width: 17px;
+    height: 17px;
+
+ }
+
+
 .dropdown-item .settings-icons{
     width: 20px;
     height: 20px;
     margin-right: 10px;
     border-radius: 50%;
 }
-.settings-links a{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
+
+.help-content{
+    flex-basis: 77%;
+}
+
+.help-post-container{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
     color: #626262;
+
+}
+.help-post-container h3{
+    font-size: 30px;
+    text-align: center;
+}
+.help-post-container h2 {
+    font-size: 28px;
+}
+.help-post-container a{
+    text-decoration: none;
+    color:#73247a;
+
+}
+.header_wrapper{
+    width: 100%;
+
+}
+.header_wrapper .cols_container .left_col{
+    padding: 25px 20px;
+    text-align: center;
+    max-width: 350px;
+    position: relative;
+    margin: 0 auto;
+}
+.header_wrapper .cols_container .left_col .img_container{
+    top: -50%;
+    left:50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
-#white-btn{
-    /* position: absolute; */
-    top: 20px;
-    right: 20px;
-    background: #c060e5b6;
-    width: 45px;
-    border-radius: 15px;
-    padding: 2px 3px;
-    cursor: pointer;
-    display: flex;
-    transition: padding-left 0.5s;
-}
-#white-btn span{
-    width: 18px;
-    height: 18px;
-    background: #fff ;
+.header_wrapper .cols_container .left_col .img_container img{
+    width: 120px;
+    height: 120px;
+    object-fit: 50%;
     border-radius: 50%;
-    display: inline-block;
+    display: block;
+    box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.2);
 }
-#white-btn.white-btn-on{
-    padding-left: 23px;
-    background: #84f1ffcd;
 
+.header_wrapper .cols_container .left_col h2{
+    margin-top: 60px;
+    
 }

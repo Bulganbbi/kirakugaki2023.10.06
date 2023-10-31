@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="index.html" method="post">
+        <form action="index.php" method="post">
             <h1>サインイン</h1>
             <div class="input-box">
                 <input type="text" placeholder="ユーザ名" required>
@@ -28,10 +28,18 @@
             <button type="submit" class="btn">サインイン</button>
 
             <div class="register-link">
-                <p>アカウントを持っている <a href="login.html">こちら</a></p>
+                <p>アカウントを持っている <a href="login.php">こちら</a></p>
             </div>
             
         </form>
+        <?php
+        // PHP
+        if (isset($_POST['submit'])) {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+        }
+        ?>
     </div>
     
 </body>
