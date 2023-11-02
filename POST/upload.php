@@ -26,7 +26,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
             $statusMsg = "申し訳ありませんが、ファイルのアップロードに失敗しました";
         }
     }else{
-        $statusMsg = '申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNG、GIF、PDFのみです';
+        $statusMsg = '申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです';
     }
 }else{
     $statusMsg = 'アップロードするファイルを選択してください';
