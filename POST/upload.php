@@ -18,7 +18,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
             // データベースに画像ファイル名を挿入
             $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
             if($insert){
-                $statusMsg = " ".$fileName. " が正常にアップロードされました";
+                $statusMsg = " ".$fileName;
             }else{
                 $statusMsg = "ファイルのアップロードに失敗しました、もう一度お試しください";
             } 
