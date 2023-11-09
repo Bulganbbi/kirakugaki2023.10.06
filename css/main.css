@@ -427,7 +427,7 @@ span, .navbar-toggler-icon{
 
 }
 
-.header_wrapper .cols_container .left_col .about .li .span {
+.header_wrapper .cols_container .left_col .about li span {
     color: black;
     font-weight: 600;
 
@@ -442,19 +442,19 @@ span, .navbar-toggler-icon{
     width: 100%;
 }
 
-.header_wrapper .cols_container .content .p{
+.header_wrapper .cols_container .content p{
     font-size: 1em;
     color: black;
     line-height: 1.8em; 
 }
-.header_wrapper .cols_container .content .ul{
+.header_wrapper .cols_container .content ul{
     gap: 30px;
     justify-content: center;
     align-items: center;
     margin-top: 25px;
 }
 
-.header_wrapper .cols_container .content .ul i{
+.header_wrapper .cols_container .content ul li{
     font-size: 1.3em;
 }
 
@@ -476,15 +476,6 @@ span, .navbar-toggler-icon{
     color: #818181;
 }
 
-.header_wrapper .cols_container .right_col nav button{
-    background:yellowgreen ;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
 
 .header_wrapper .cols_container .right_col nav ul li:nth-child(1) a{
     color: #1d1d1d;
