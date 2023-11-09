@@ -16,14 +16,14 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >ユーザー</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li>
-                            <a class="dropdown-item" href="profile.php"><img src="../images/userpic.png" class="settings-icons">ユーザ</a>
+                            <a class="dropdown-item" href="../profile.php"><img src="../images/userpic.png" class="settings-icons">ユーザ</a>
                         </li>
                           <li>
                             <a class="dropdown-item" href="#"><img src="../images/usersetting.png" class="settings-icons">個人情報</a>
                         </li>
                           <li><hr class="dropdown-divider"></li>
                           <li>
-                            <a class="dropdown-item" href="help.php">
+                            <a class="dropdown-item" href="../help.php">
                                 <img src="../images/help.png" class="settings-icons">ヘルプ</a>
                         </li>
                         <li>

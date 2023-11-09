@@ -5,7 +5,9 @@
     box-sizing: border-box;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 body{
     padding-top: 60px;
@@ -200,7 +202,6 @@ span, .navbar-toggler-icon{
 }
 .write-post-container{
     width: 100%;
-    background: #fff;
     border-radius: 6px;
     padding: 20px;
     color: #626262;
