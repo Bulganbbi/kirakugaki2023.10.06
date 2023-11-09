@@ -17,32 +17,45 @@
 <?php include("./components/nav.php"); ?>
     <?php include("./components/aside.php"); ?>
 
-        <!--main content-->
+        <!--help content-->
         <div class="help-content">
             <div class="help-post-container">
                 <div>
                     <h3>ヘルプ</h3>
                 </div>
-                <section>
+    <section>
         <h2>よくある質問</h2>
         <p>以下はよくある質問のリストです：</p>
-        <div class="dropdown">
+        <div class="dropdown" id="ansque">
             <div class="question">
-                <a>質問1: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問1: アカウントのメールアドレスとは何ですか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p>メールアドレスとはインターネットなどのネットワーク上で、電子メールの送受信を行うために使用する文字列のことを指します。 いわゆる住所のようなものです。 メールアドレスは、「ユーザー名（アカウント名）＠ドメイン名」で構成されます。</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <a>質問2: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
                     <p>sdfghjklcvbgnhmxcdvfbg</p>
                 </div>
             </div>
             <div class="question">
-                <a>質問2: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
                     <p>dfghjgfdfghnjmhgfdghjhgf</p>
                 </div>
             </div>
             <div class="question">
-                <a>質問3: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問4: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
-                    <p>dfbghnjmgfcdscdfghjkjhgfdfghjmk,l</p>
+                    <p>ヘルプからお問い合わせの「お問い合わせページ」をクリックしていただけたらお問い合わせが可能です。</p>
+                </div>
+            </div>
+            <div class="question">
+                <a>質問5: ？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <div class="answer">
+                    <p></p>
                 </div>
             </div>
         </div>
