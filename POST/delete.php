@@ -3,13 +3,11 @@ require_once 'functions.php';
 
 $pdo = connectDB();
 
-$sql = 'SELECT * FROM images WHERE image_id = :image_id LIMIT 1';
+$sql = 'DELETE FROM rakugaki_images WHERE image_id = :image_id';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':image_id', (int)$_GET['id'], PDO::PARAM_INT);
 $stmt->execute();
-$image = $stmt->fetch();
 
-header('Content-type: ' . $image['image_type']);
-echo $image['image_content'];
+header('Location:list.php');
 exit();
 ?>
