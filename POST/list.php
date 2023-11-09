@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 <body>
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8 border-right">
+        <div>
             <ul class="list-unstyled">
                 <?php for($i = 0; $i < count($images); $i++): ?>
                     <li class="media mt-5">
