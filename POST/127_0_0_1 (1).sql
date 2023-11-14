@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2023-11-14 01:22:11
+-- 生成日時: 2023-11-14 01:44:37
 -- サーバのバージョン： 10.4.19-MariaDB
 -- PHP のバージョン: 8.0.7
 
@@ -1328,6 +1328,13 @@ CREATE TABLE `pma__export_templates` (
   `template_data` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
 
+--
+-- テーブルのデータのダンプ `pma__export_templates`
+--
+
+INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
+(1, 'root', 'server', 'kirakugaki', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"db_select[]\":[\"bookings\",\"images\",\"kirakugaki\",\"laravel_sample\",\"my_image\",\"my_shop\",\"my_shop2\",\"my_tweet\",\"owl-squad\",\"phpmyadmin\",\"php_sns\",\"sample\",\"sampledb\",\"sample_web\",\"test\"],\"aliases_new\":\"\",\"output_format\":\"sendit\",\"filename_template\":\"@SERVER@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"json_structure_or_data\":\"data\",\"json_unicode\":\"something\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"テーブル @TABLE@ の構造\",\"latex_structure_continued_caption\":\"テーブル @TABLE@ の構造 (続き)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"テーブル @TABLE@ の内容\",\"latex_data_continued_caption\":\"テーブル @TABLE@ の内容 (続き)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"yaml_structure_or_data\":\"data\",\"knjenc\":\"\",\"\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"json_pretty_print\":null,\"htmlword_columns\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_drop_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_simple_view_export\":null,\"sql_view_current_user\":null,\"sql_or_replace_view\":null,\"sql_procedure_function\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null,\"xkana\":null}');
+
 -- --------------------------------------------------------
 
 --
@@ -1396,7 +1403,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"php_sns\",\"table\":\"likes\"},{\"db\":\"php_sns\",\"table\":\"tweets\"},{\"db\":\"my_tweet\",\"table\":\"users\"},{\"db\":\"my_tweet\",\"table\":\"tweets\"},{\"db\":\"kirakugaki\",\"table\":\"rakugaki_images\"},{\"db\":\"my_image\",\"table\":\"images\"},{\"db\":\"kirakugaki\",\"table\":\"images\"},{\"db\":\"images\",\"table\":\"images\"},{\"db\":\"laravel_sample\",\"table\":\"users\"},{\"db\":\"laravel_sample\",\"table\":\"failed_jobs\"}]');
+('root', '[{\"db\":\"kirakugaki\",\"table\":\"rakugaki_images\"},{\"db\":\"php_sns\",\"table\":\"likes\"},{\"db\":\"php_sns\",\"table\":\"tweets\"},{\"db\":\"my_tweet\",\"table\":\"users\"},{\"db\":\"my_tweet\",\"table\":\"tweets\"},{\"db\":\"my_image\",\"table\":\"images\"},{\"db\":\"kirakugaki\",\"table\":\"images\"},{\"db\":\"images\",\"table\":\"images\"},{\"db\":\"laravel_sample\",\"table\":\"users\"},{\"db\":\"laravel_sample\",\"table\":\"failed_jobs\"}]');
 
 -- --------------------------------------------------------
 
@@ -1533,7 +1540,8 @@ CREATE TABLE `pma__users` (
 --
 
 INSERT INTO `pma__users` (`username`, `usergroup`) VALUES
-('220109uj@yse-c.net', '');
+('220109uj@yse-c.net', ''),
+('kirakugaki', '');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -1679,7 +1687,7 @@ ALTER TABLE `pma__column_info`
 -- テーブルの AUTO_INCREMENT `pma__export_templates`
 --
 ALTER TABLE `pma__export_templates`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- テーブルの AUTO_INCREMENT `pma__history`
