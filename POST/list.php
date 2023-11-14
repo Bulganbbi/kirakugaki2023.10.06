@@ -2,6 +2,9 @@
 require_once('functions.php');
 
 $pdo = connectDB();
+$images = $images ?? []; // $images が null の場合、空の配列で初期化
+$err_msg = $err_msg ?? "";
+
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // 画像を取得
@@ -9,25 +12,37 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $images = $stmt->fetchAll();
+
 } else {
     // 画像を保存
     if (!empty($_FILES['image']['name'])) {
+
         $name = $_FILES['image']['name'];
         $type = $_FILES['image']['type'];
         $content = file_get_contents($_FILES['image']['tmp_name']);
         $size = $_FILES['image']['size'];
 
-        $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, created_at)
-                VALUES (:image_name, :image_type, :image_content, :image_size, now())';
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-        $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-        $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-        $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-        $stmt->execute();
+        // 画像のサイズ・形式チェック
+        $maxFileSize = 1048576;
+        $validFileTypes = ['image/png', 'image/jpeg'];
+        if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
+            $err_msg = '* jpg, jpeg, png 形式で 1 MB までの画像を選択してください。';
+        }
+
+        if ($err_msg == '') {
+            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, created_at)
+                    VALUES (:image_name, :image_type, :image_content, :image_size, now())';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
+            $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
+            $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
+            $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
+            $stmt->execute();
+
+            header('Location:list.php');
+            exit();
+        }
     }
-    header('Location:list.php');
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <title>Image Test</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/main.css">   
+    <link rel="stylesheet" href="../css/main.css">  
+    <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -46,14 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 <div class="container mt-5">
     <div class="row">
         <div>
+            <img src="https://blueimp.github.io/jQuery-File-Upload/" alt="">
             <ul class="list-unstyled">
-                <?php for($i = 0; $i < count($images); $i++): ?>
+                <?php for ($i = 0; $i < count($images); $i++): ?>
                     <li class="media mt-5">
                         <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
                             <img src="image.php?id=<?= $images[$i]['image_id']; ?>" width="100" height="auto" class="mr-3">
                         </a>
                         <div class="media-body">
-                            <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
+                            <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size'] / 1000, 2); ?> KB)</h5>
                             <a href="javascript:void(0);" 
                                onclick="var ok = confirm('削除しますか？'); if (ok) location.href='delete.php?id=<?= $images[$i]['image_id']; ?>'">
                               <i class="far fa-trash-alt"></i> 削除</a>
@@ -66,7 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>画像を選択</label>
-                    <input type="file" name="image" required>
+                    <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
+                    <?php if ($err_msg != ''): ?>
+                        <div class="invalid-feedback d-block"><?= $err_msg; ?></div>
+                    <?php endif; ?>
                 </div>
                 <button type="submit" class="btn btn-primary">保存</button>
             </form>
