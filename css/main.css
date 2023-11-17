@@ -5,7 +5,9 @@
     box-sizing: border-box;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 body{
     padding-top: 60px;
@@ -200,7 +202,6 @@ span, .navbar-toggler-icon{
 }
 .write-post-container{
     width: 100%;
-    background: #fff;
     border-radius: 6px;
     padding: 20px;
     color: #626262;
@@ -386,6 +387,7 @@ span, .navbar-toggler-icon{
     left:50%;
     transform: translateX(-50%);
     text-align: center;
+    padding-left: 80%;
 }
 
 .header_wrapper .cols_container .left_col .img_container img{
@@ -395,9 +397,102 @@ span, .navbar-toggler-icon{
     border-radius: 50%;
     display: block;
     box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.2);
+
 }
 
 .header_wrapper .cols_container .left_col h2{
     margin-top: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 5px;
     
 }
+
+.header_wrapper .cols_container .left_col p{
+    font-size: 0.9em;
+    color: #818181;
+    margin: 0;
+}
+
+.header_wrapper .cols_container .left_col .about{
+    justify-content: space-between;
+    position: relative;
+    margin: 35px 0;
+}
+
+.header_wrapper .cols_container .left_col .about li{
+    display: flex;
+    flex-direction: column;
+    color: #818181;
+    font-size: 0.9em;
+
+}
+
+.header_wrapper .cols_container .left_col .about li span {
+    color: black;
+    font-weight: 600;
+
+}
+
+.header_wrapper .cols_container .left_col .about::after{
+    content: "";
+    bottom: -16px;
+    display: black;
+    background:#ccc;
+    height: 1px;
+    width: 100%;
+}
+
+.header_wrapper .cols_container .content p{
+    font-size: 1em;
+    color: black;
+    line-height: 1.8em; 
+}
+.header_wrapper .cols_container .content ul{
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.header_wrapper .cols_container .content ul li{
+    font-size: 1.3em;
+}
+
+.header_wrapper .cols_container .right_col nav{
+    display: flex;
+    align-items: center;
+    padding: 30px 0 ;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.header_wrapper .cols_container .right_col nav ul{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.header_wrapper .cols_container .right_col nav ul li a{
+    text-transform: uppercase;
+    color: #818181;
+}
+
+
+.header_wrapper .cols_container .right_col nav ul li:nth-child(1) a{
+    color: #1d1d1d;
+    font-weight: 600;
+}
+
+.header_wrapper .cols_container .right_col nav button:hover{
+    opacity: 0.8;
+}
+.header_wrapper .cols_container .right_col nav .photos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+
+
+
+

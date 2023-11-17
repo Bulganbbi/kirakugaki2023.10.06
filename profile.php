@@ -27,7 +27,9 @@
                 <div class="content">
                     <p>イラストの評価を気にせずきらくに投稿できる！
                     評価を気にしないことによって精神的に辛くなることはなくなり
-                    モチベーションが上がって絵を楽しく描いてもらえる！</p>
+                    モチベーションが上がって絵を楽しく描いてもらえる！
+                    </p>
+                    <hr>
                     <ul>
                         <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
                         <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
@@ -38,7 +40,6 @@
             <div class="right_col">
                 <nav>
                     <ul>
-                        <li><a href="#">photos</a></li>
                         <li><a href="#">galleries</a></li>
                         <li><a href="#">about</a></li>
                     </ul>
@@ -58,7 +59,6 @@
     <footer>
         <p>&copy; 2023 あなたの名前</p>
     </footer>
-    <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
 </body>
 </html>
