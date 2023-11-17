@@ -1,11 +1,15 @@
 <?php
+// functions.php ファイルを読み込み
 require_once('functions.php');
 
+// データベースに接続
 $pdo = connectDB();
-$images = $images ?? []; // $images が null の場合、空の配列で初期化
-$err_msg = $err_msg ?? "";
 
+// $images が null の場合、空の配列で初期化
+$images = $images ?? [];
+$err_msg = $err_msg ?? ""; // $err_msg が null の場合、空の文字列で初期化
 
+// POST メソッドでない場合
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // 画像を取得
     $sql = 'SELECT * FROM rakugaki_images ORDER BY created_at DESC';
@@ -21,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $type = $_FILES['image']['type'];
         $content = file_get_contents($_FILES['image']['tmp_name']);
         $size = $_FILES['image']['size'];
+        $comment = $_POST['comment']; // フォームから 'comment' フィールドを取得
+
 
         // 画像のサイズ・形式チェック
         $maxFileSize = 1048576;
@@ -28,18 +34,22 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
             $err_msg = '* jpg, jpeg, png 形式で 1 MB までの画像を選択してください。';
         }
-
+        // TODO ユーザーidなどの情報とコメント追加
         if ($err_msg == '') {
-            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, created_at)
-                    VALUES (:image_name, :image_type, :image_content, :image_size, now())';
+            // 画像情報をデータベースに挿入
+            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, image_comment, created_at)
+            VALUES (:image_name, :image_type, :image_content, :image_size, :image_comment, now())';
+    
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
             $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
             $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
+            $stmt->bindValue(':image_comment',$comment, PDO::PARAM_STR);
             $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
             $stmt->execute();
 
-            header('Location:list.php');
+            // 画像リストページにリダイレクト
+            header('Location: list.php');
             exit();
         }
     }
@@ -78,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     </li>
                 <?php endfor; ?>
             </ul>
+        </div>
+        <div>
+            <input type="text" name="comment">
         </div>
         <div class="col-md-4 pt-4 pl-4">
             <form method="post" enctype="multipart/form-data">
