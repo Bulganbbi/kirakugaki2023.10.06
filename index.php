@@ -19,8 +19,8 @@
     <?php include("./components/aside.php"); ?>
         <!--main content-->
         <div class="main-content">
-            <div class="write-post-container">
-                <a href="./POST/list.php">らくがき投稿</a>
+            <div class="write-post-container d-grid gap-2">
+                <a href="./POST/list.php" class="btn btn-primary btn-lg">らくがき投稿</a>
             </div>
 
             <div class="post-container">
