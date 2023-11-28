@@ -1,3 +1,7 @@
+<?php
+require_once './POST/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +16,15 @@
 <body>
     <div class="wrapper">
         <form action="login.php" method="post">
-            <h1>ログイン</h1>
-            <div class="input-box">
-                <input type="email" placeholder="メールアドレス" required>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="パスワード" required>
-            </div>
+        <h1>ログイン</h1>
+        <div class="input-box">
+            <input type="email" name="email" placeholder="メールアドレス" required>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" placeholder="パスワード" required>
+        </div>
+    </form>
+
             <div class = "remember-forget">
                 <label><input type="checkbox">覚えておく</label>
                 <a href="#">パスワード忘れた方</a>
@@ -31,26 +37,40 @@
             
         </form>
         <?php
-        // PHP
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-            $con = new mysqli("localhost", "root", "", "kirakugaki_users");
-            if($con->connect_error){
-                die("Failed to connect: ".$con->connect_error);
-            } else{
-                $stmt = $con->prepare("select * from registration where email = ?");
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-                $stmt_result = $stmt->get_result();
-                if($stmt_result->num_rows > 0){
-                    $data = $stmt_result->fetch_assoc();
-                }
-                    else{
-                        echo "<h2>メールとパスワとド正しく入力してください！</h2>";
-                    }
-                }
-        ?>
+    // パスワードのハッシュ化
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // データベースへの接続
+    $con = new mysqli("localhost", "root", "", "users");
+
+    // 接続エラーの確認
+    if ($con->connect_error) {
+        die("Failed to connect: ".$con->connect_error);
+    } else {
+        // プリペアドステートメントの作成
+        $stmt = $con->prepare("INSERT INTO registration (email, password) VALUES (?, ?)");
+        $stmt->bind_param("ss", $email, $hashedPassword);
+
+        // プリペアドステートメントの実行
+        if ($stmt->execute()) {
+            echo "<h2>アカウントが作成されました。</h2>";
+        } else {
+            echo "<h2>アカウントの作成に失敗しました。</h2>";
+        }
+
+        // ステートメントを閉じる
+        $stmt->close();
+
+        // 接続を閉じる
+        $con->close();
+    }
+}
+?>
+
 
     </div>
     
