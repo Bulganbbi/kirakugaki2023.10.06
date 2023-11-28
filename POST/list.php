@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $type = $_FILES['image']['type'];
         $content = file_get_contents($_FILES['image']['tmp_name']);
         $size = $_FILES['image']['size'];
-        $comment = $_POST['comment']; // フォームから 'comment' フィールドを取得
+        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
+
 
 
         // 画像のサイズ・形式チェック
