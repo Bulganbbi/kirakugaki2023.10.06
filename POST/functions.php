@@ -3,7 +3,7 @@
 function connectDB() {
     $param = 'mysql:dbname=kirakugaki;host=localhost';
     try {
-        $pdo = new PDO($param, 'kirakugaki', "kirakugaki");
+        $pdo = new PDO($param, 'kirakugaki', "");
         return $pdo;
 
     } catch (PDOException $e) {
