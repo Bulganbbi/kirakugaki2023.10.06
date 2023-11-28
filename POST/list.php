@@ -26,8 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $content = file_get_contents($_FILES['image']['tmp_name']);
         $size = $_FILES['image']['size'];
         $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-
-
+        $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
 
         // 画像のサイズ・形式チェック
         $maxFileSize = 1048576;
@@ -35,17 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
             $err_msg = '* jpg, jpeg, png 形式で 1 MB までの画像を選択してください。';
         }
-        // TODO ユーザーidなどの情報とコメント追加
+
         if ($err_msg == '') {
             // 画像情報をデータベースに挿入
-            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, image_comment, created_at)
-            VALUES (:image_name, :image_type, :image_content, :image_size, :image_comment, now())';
+            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
+            VALUES (:image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
     
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
             $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
             $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-            $stmt->bindValue(':image_comment',$comment, PDO::PARAM_STR);
+            $stmt->bindValue(':image_comment', $comment, PDO::PARAM_STR);
+            $stmt->bindValue(':image_hashtag', $hashtag, PDO::PARAM_STR); // ハッシュタグのバインド
             $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
             $stmt->execute();
 
@@ -82,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                         </a>
                         <div class="media-body">
                             <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size'] / 1000, 2); ?> KB)</h5>
+                            <p><?= $images[$i]['image_comment']; ?></p> <!-- コメントの表示 -->
+                            <p><?= $images[$i]['image_hashtag']; ?></p> <!-- ハッシュタグの表示 -->
                             <a href="javascript:void(0);" 
                                onclick="var ok = confirm('削除しますか？'); if (ok) location.href='delete.php?id=<?= $images[$i]['image_id']; ?>'">
                               <i class="far fa-trash-alt"></i> 削除</a>
@@ -91,9 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             </ul>
         </div>
         <div>
-            <input type="text" name="comment">
-        </div>
-        <div class="col-md-4 pt-4 pl-4">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>画像を選択</label>
@@ -101,6 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     <?php if ($err_msg != ''): ?>
                         <div class="invalid-feedback d-block"><?= $err_msg; ?></div>
                     <?php endif; ?>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="comment" placeholder="作品のコメント">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="hashtag" placeholder="タグ付け 例:#オリキャラ">
                 </div>
                 <button type="submit" class="btn btn-primary">保存</button>
             </form>
