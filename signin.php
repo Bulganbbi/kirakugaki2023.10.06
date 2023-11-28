@@ -11,6 +11,16 @@
 </head>
 <body>
     <div class="wrapper">
+        <?php
+        if(isset($_POST["submit"])){
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            if(empty($name) OR empty($email) OR empty($password)){
+                array_push($errors, "メールとパスワとド正しく入力してください");
+            }
+        }
+        ?>
         <form action="index.php" method="post">
             <h1>サインイン</h1>
             <div class="input-box">
@@ -32,14 +42,6 @@
             </div>
             
         </form>
-        <?php
-        // PHP
-        if (isset($_POST['submit'])) {
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-        }
-        ?>
     </div>
     
 </body>

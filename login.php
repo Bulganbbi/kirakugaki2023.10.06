@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="index.php" method="post">
+        <form action="login.php" method="post">
             <h1>ログイン</h1>
             <div class="input-box">
                 <input type="email" placeholder="メールアドレス" required>
@@ -32,10 +32,24 @@
         </form>
         <?php
         // PHP
-        if (isset($_POST['submit'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
-        }
+
+            $con = new mysqli("localhost", "root", "", "kirakugaki_users");
+            if($con->connect_error){
+                die("Failed to connect: ".$con->connect_error);
+            } else{
+                $stmt = $con->prepare("select * from registration where email = ?");
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $stmt_result = $stmt->get_result();
+                if($stmt_result->num_rows > 0){
+                    $data = $stmt_result->fetch_assoc();
+                }
+                    else{
+                        echo "<h2>メールとパスワとド正しく入力してください！</h2>";
+                    }
+                }
         ?>
 
     </div>
