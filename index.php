@@ -41,9 +41,10 @@ require_once './POST/functions.php';
         <div class="post-container">
             <div class="left-post-contents">
                 <div class="user-profile">
-                    <img src="images/cat-01.jpg">
+                    <img src="images/cat-01.jpg"><!-- ユーザーのアイコン -->
                     <div>
-                        <!-- ユーザーネーム -->
+                        <p class="user-text"><!-- ユーザーネーム --><?= $image["created_at"]; ?></p>
+                            
                     </div>
                 </div>
             </div>
