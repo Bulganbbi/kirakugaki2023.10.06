@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Devcrud">
+    <title>きらくがき</title>
+	<link rel="stylesheet" href="css/signin.css">
+    <link rel="shortcut icon" href="assets/imgs/title.PNG" type="image/x-icon">
+
+</head>
+<body>
+    <div class="title-word">
+        <form action="./login.php" method="post">
+        <h1>きらくがきへようこそ</h1>
+        <button type="submit" class="btn">登録して始める</button>
+    </form>
+    </div>
+</body>
+</body>
+</html>
