@@ -1,3 +1,26 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once './POST/functions.php';
+
+$con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
+
+session_start();
+session_regenerate_id(true);
+
+if ($con->connect_error) {
+    die("Failed to connect: " . $con->connect_error);
+}
+
+// データベースから画像を取得
+$result = $con->query("SELECT * FROM rakugaki_images");
+$images = $result->fetch_all(MYSQLI_ASSOC);
+
+$con->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,20 +61,16 @@
                 </div>
             </div>
             <div class="right_col">
-                <nav>
-                    <ul>
-                        <li><a href="#">galleries</a></li>
-                        <li><a href="#">about</a></li>
-                    </ul>
-                </nav>
-                <div class="photos">
-                    <img src="./photos/pho1.jpg" alt="Photo">
-                    <img src="./photos/pho2.jpg" alt="Photo">
-                    <img src="./photos/pho3.jpg" alt="Photo">
-                    <img src="./photos/pho4.jpg" alt="Photo">
-                    <img src="./photos/pho5.jpg" alt="Photo">
-                    <img src="./photos/pho6.jpg" alt="Photo">
-                </div>
+            <nav>
+                <ul>
+                    <li><a href="#">galleries</a></li>
+                    <li><a href="#">about</a></li>
+                </ul>
+            </nav>
+            <div class="photos">
+                <?php foreach ($images as $image): ?>
+                    <img src="data:image/<?php echo $image['image_type']; ?>;base64,<?php echo base64_encode($image['image_content']); ?>" alt="<?php echo $image['image_name']; ?>">
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

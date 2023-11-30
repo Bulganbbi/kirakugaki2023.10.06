@@ -12,14 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Failed to connect: " . $con->connect_error);
     }
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
-
     // プリペアドステートメントの作成
-    $stmt = $con->prepare("SELECT id, password FROM users WHERE email = ?");
+    $stmt = $con->prepare("SELECT user_id, password FROM users WHERE email = ?");
+    if (!$stmt) {
+        die("Prepare failed: (" . $con->errno . ") " . $con->error);
+    }
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
+
+    if ($stmt->error) {
+        die("Query error: " . $stmt->error);
+    }
+
     $stmt->store_result();
 
+    // ユーザーが存在する場合
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($user_id, $hashed_password);
         $stmt->fetch();
@@ -36,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "<h2>パスワードが間違っています。</h2>";
         }
+
     } else {
         echo "<h2>メールアドレスが見つかりません。</h2>";
     }

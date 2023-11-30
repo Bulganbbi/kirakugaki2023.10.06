@@ -41,7 +41,10 @@ require_once './POST/functions.php';
         <div class="post-container">
             <div class="left-post-contents">
                 <div class="user-profile">
-                    <img src="images/cat-01.jpg"><!-- ユーザーのアイコン -->
+                    <!-- ここにuser_iconの表示を追加 -->
+                    <?php if (!empty($user_icon)): ?>
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($user_icon); ?>" alt="User Icon" width="50" height="50">
+                    <?php endif; ?>
                     <div>
                         <p class="user-text"><!-- ユーザーネーム --><?= $image["created_at"]; ?></p>
                             

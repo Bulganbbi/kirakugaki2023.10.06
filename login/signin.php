@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // エラーがない場合データベースに保存
     if (empty($errors)) {
         // すでに同じメールアドレスが存在するか確認
-        $check_email_stmt = $con->prepare("SELECT id FROM users WHERE email = ?");
+        $check_email_stmt = $con->prepare("SELECT user_id FROM users WHERE email = ?");
         $check_email_stmt->bind_param("s", $email);
         $check_email_stmt->execute();
         $check_email_result = $check_email_stmt->get_result();
@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // データベースに挿入
             $insert_stmt = $con->prepare("INSERT INTO users (name, email, password, user_icon, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)");
             $insert_stmt->bind_param("ssssss", $name, $email, $hashedPassword, $user_icon, $now, $now);
-
 
             // クエリの実行
             if ($insert_stmt->execute()) {
@@ -117,6 +116,10 @@ $con->close();
             </div>
             <div class="input-box">
                 <input type="password" name="password" placeholder="パスワード" required>
+            </div>
+            <!-- アイコン画像のアップロードフィールド -->
+            <div class="input-box">
+                <input type="file" name="icon" accept="image/*">
             </div>
             <div class="remember-forget">
                 <label><input type="checkbox">覚えておく</label>
