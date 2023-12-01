@@ -14,8 +14,8 @@
 <?php include("../components/setting_nav.php"); ?>
     <?php include("../components/setting.php"); ?>
         <!-- ユーザー設定項目 -->
-        <div class="settingcontent">
-                <div class="setting-container">
+        <div class="help-content">
+                <div class="help-post-container">
                     <img src="../images/profile..jpg" width="100" height="100">
                     <ul>
                     <li>
@@ -34,6 +34,7 @@
                     </ul> 
             <!-- 適用ボタン -->
             <div class="submit">
+                <hr>
                 <input type="submit" name="submit" class="btn_type01" value="適用"> 
             </div>
         </div>

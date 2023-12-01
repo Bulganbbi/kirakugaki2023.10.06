@@ -15,6 +15,8 @@
     <?php include("../components/setting.php"); ?>
     <div class="settingcontent">
         <!-- 通知設定 -->
+        <div class="help-content">
+            <div class="help-post-container">
             <ul>
                 <li>
                     <p>お知らせ通知</p>
@@ -34,8 +36,9 @@
             </ul> 
             <!-- 適用ボタン -->
             <div class="submit">
+            <hr>
             <input type="submit" name="submit" class="btn_type01" value="適用"> 
-    </div>   
+
     </div>
 
     <script src="../js/script.js"></script>

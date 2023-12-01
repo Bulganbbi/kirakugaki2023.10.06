@@ -13,17 +13,21 @@
 <body>
 <?php include("../components/setting_nav.php"); ?>
     <?php include("../components/setting.php"); ?>
-    <div>
-        <ul>
-            <li>
-                <p>他ユーザーによるコメント</p>
-                <input type="radio" name="q1" value="はい">許可する
-                <input type="radio" name="q1" value="いいえ">許可しない
-            </li>
-        </ul>
+    <div class="help-content">
+            <div class="help-post-container">
+                <div class="user-comment">
+                    <p>他ユーザーによるコメント</p>
+                    <li>
+                        <input type="radio" name="q1" value="はい">許可する
+                        <input type="radio" name="q1" value="いいえ">許可しない
+                    </li>
+                </div>
+            </div>
+
     </div>
     <!-- 適用ボタン -->
     <div class="submit">
+        <hr>
         <input type="submit" name="submit" class="btn_type01" value="適用"> 
     </div>
 
