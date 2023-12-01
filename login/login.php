@@ -5,14 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // データベースへの接続
     $con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
 
     if ($con->connect_error) {
         die("Failed to connect: " . $con->connect_error);
     }
 
-    // プリペアドステートメントの作成
     $stmt = $con->prepare("SELECT user_id, password FROM users WHERE email = ?");
     if (!$stmt) {
         die("Prepare failed: (" . $con->errno . ") " . $con->error);
@@ -27,18 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->store_result();
 
-    // ユーザーが存在する場合
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($user_id, $hashed_password);
         $stmt->fetch();
 
-        // パスワードの照合
         if (password_verify($password, $hashed_password)) {
-            // ログイン成功時の処理（セッションの設定など）
             session_start();
             $_SESSION['user_id'] = $user_id;
-
-            // ./index.php にリダイレクト
             header("Location: ../index.php");
             exit();
         } else {
@@ -49,10 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<h2>メールアドレスが見つかりません。</h2>";
     }
 
-    // ステートメントを閉じる
     $stmt->close();
-
-    // 接続を閉じる
     $con->close();
 }
 ?>

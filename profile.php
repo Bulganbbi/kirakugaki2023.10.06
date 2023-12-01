@@ -1,25 +1,33 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-require_once './POST/functions.php';
-
-$con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
-
-session_start();
-session_regenerate_id(true);
-
-if ($con->connect_error) {
-    die("Failed to connect: " . $con->connect_error);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
-// データベースから画像を取得
-$result = $con->query("SELECT * FROM rakugaki_images");
-$images = $result->fetch_all(MYSQLI_ASSOC);
+require_once "./POST/functions.php";
 
+// パラメータからユーザーIDを取得
+$userId = isset($_GET['user_id']) ? $_GET['user_id'] : null;
+
+// ユーザーIDが未定義の場合はログインユーザーのIDをデフォルト値
+$userId = $userId ?? $_SESSION['user_id'];
+
+// データベースに接続
+$con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
+
+// 接続を確認
+if ($con->connect_error) {
+    die("データベース接続エラー: " . $con->connect_error);
+}
+
+// ユーザー情報を取得
+$userInfo = getUserInfo($userId);
+
+// データベースから画像を取得
+$result = $con->query("SELECT * FROM rakugaki_images WHERE user_id = $userId");
+$images = $result->fetch_all(MYSQLI_ASSOC);
 $con->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,16 +49,15 @@ $con->close();
         <div class="cols_container">
             <div class="left_col">
                 <div class="img_container">
-                    <img src="./images/profile..jpg" alt="ユーザ名">
+                    <img src="./images/profile..jpg" alt="<?php echo $userInfo['name'] ?? ''; ?>">
                     <span></span>
                 </div>
-                <h2>あなたの名前</h2>
-                <p>xxxxx@email.com</p>
+                <h2><?php echo $userInfo['name'] ?? ''; ?></h2>
+                <p><?php echo $userInfo['email'] ?? ''; ?></p>
                 <hr>
                 <div class="content">
-                    <p>イラストの評価を気にせずきらくに投稿できる！
-                    評価を気にしないことによって精神的に辛くなることはなくなり
-                    モチベーションが上がって絵を楽しく描いてもらえる！
+                    <p>
+                        プロフィール
                     </p>
                     <hr>
                     <ul>
@@ -60,24 +67,18 @@ $con->close();
                     </ul>
                 </div>
             </div>
-            <div class="right_col">
-            <nav>
-                <ul>
-                    <li><a href="#">galleries</a></li>
-                    <li><a href="#">about</a></li>
-                </ul>
-            </nav>
-            <div class="photos">
-                <?php foreach ($images as $image): ?>
-                    <img src="data:image/<?php echo $image['image_type']; ?>;base64,<?php echo base64_encode($image['image_content']); ?>" alt="<?php echo $image['image_name']; ?>">
-                <?php endforeach; ?>
+                <div class="photos">
+                    <?php foreach ($images as $image): ?>
+                        <img src="data:image/<?php echo $image['image_type']; ?>;base64,<?php echo base64_encode($image['image_content']); ?>" alt="<?php echo $image['image_name']; ?>">
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2023 あなたの名前</p>
+        <p>&copy; 2023</p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>]
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
