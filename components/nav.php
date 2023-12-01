@@ -13,6 +13,12 @@ $userId = null;
 if (isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
     $userInfo = getUserInfo($userId);
+
+    // getUserInfo が false を返す場合の処理
+    if ($userInfo === false) {
+        // 何らかのエラー処理やデフォルトの値を設定するなど
+        $userInfo = ['name' => 'ゲスト']; // 例: エラー時にゲストとして表示
+    }
 }
 ?>
 
