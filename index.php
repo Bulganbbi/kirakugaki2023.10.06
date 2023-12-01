@@ -43,7 +43,7 @@ require_once './POST/functions.php';
                 <div class="user-profile">
                     <img src="images/cat-01.jpg"><!-- ユーザーのアイコン -->
                     <div>
-                        <p class="user-text"><!-- ユーザーネーム --><?= $image["created_at"]; ?></p>
+                        <p class="user-text"><?= $image["created_at"]; ?></p><!-- ユーザーネーム -->
                             
                     </div>
                 </div>
