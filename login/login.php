@@ -5,45 +5,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // データベースへの接続
     $con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
 
     if ($con->connect_error) {
         die("Failed to connect: " . $con->connect_error);
     }
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+    $stmt = $con->prepare("SELECT user_id, password FROM users WHERE email = ?");
+    if (!$stmt) {
+        die("Prepare failed: (" . $con->errno . ") " . $con->error);
+    }
 
-    // プリペアドステートメントの作成
-    $stmt = $con->prepare("SELECT id, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
+
+    if ($stmt->error) {
+        die("Query error: " . $stmt->error);
+    }
+
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($user_id, $hashed_password);
         $stmt->fetch();
 
-        // パスワードの照合
         if (password_verify($password, $hashed_password)) {
-            // ログイン成功時の処理（セッションの設定など）
             session_start();
             $_SESSION['user_id'] = $user_id;
-
-            // ./index.php にリダイレクト
             header("Location: ../index.php");
             exit();
         } else {
             echo "<h2>パスワードが間違っています。</h2>";
         }
+
     } else {
         echo "<h2>メールアドレスが見つかりません。</h2>";
     }
 
-    // ステートメントを閉じる
     $stmt->close();
-
-    // 接続を閉じる
     $con->close();
 }
 ?>
