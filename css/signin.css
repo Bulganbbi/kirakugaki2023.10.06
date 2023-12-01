@@ -67,7 +67,7 @@ body{
 }
 
 .remember-forget label input{
-    accent-color: #ffff;
+    accent-color: #ffffff;
     text-decoration: none;
 }
 .remember-forget a:hover{
@@ -121,5 +121,10 @@ body{
     color: #333;
     font-weight: 600;
    
+}
+
+h2 {
+    color: rgb(252, 252, 252); 
+    font-size: 21px;
 }
 

@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="question">
-                <a>質問5: ？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+                <a>質問5: </a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
                 <div class="answer">
                     <p></p>
                 </div>

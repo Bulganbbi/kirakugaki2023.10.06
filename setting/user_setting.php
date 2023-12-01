@@ -15,22 +15,23 @@
     <?php include("../components/setting.php"); ?>
         <!-- ユーザー設定項目 -->
         <div class="settingcontent">
-        <img src="../images/profile..jpg" width="100" height="100">
-            <ul>
-                <li>
-                    <a href="">ユーザーネーム変更</a>   <!-- プロフィールに飛ばす -->
-                </li>
-                <li>
-                    <a href="">プロフィール画像変更</a>  <!-- プロフィールに飛ばす -->
-                </li>
-                <li>
-                    <p>閲覧制限(R18&R18G)</p>
-                    <form action="action.php">
-                        <input type="radio" name="q1" value="はい">表示する
-                        <input type="radio" name="q1" value="いいえ">表示しない
-                    </form>
-                </li>
-            </ul> 
+                <div class="setting-container">
+                    <img src="../images/profile..jpg" width="100" height="100">
+                    <ul>
+                    <li>
+                        <a href="">ユーザーネーム変更</a>   <!-- プロフィールに飛ばす -->
+                    </li>
+                    <li>
+                        <a href="">プロフィール画像変更</a>  <!-- プロフィールに飛ばす -->
+                    </li>
+                    <li>
+                        <p>閲覧制限(R18&R18G)</p>
+                        <form action="action.php">
+                            <input type="radio" name="q1" value="はい">表示する
+                            <input type="radio" name="q1" value="いいえ">表示しない
+                        </form>
+                    </li>
+                    </ul> 
             <!-- 適用ボタン -->
             <div class="submit">
                 <input type="submit" name="submit" class="btn_type01" value="適用"> 

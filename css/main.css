@@ -206,6 +206,7 @@ span, .navbar-toggler-icon{
     padding: 20px;
     color: #626262;
 }
+
 .user-profile{
     display: flex;
     align-items: center;
@@ -491,6 +492,11 @@ span, .navbar-toggler-icon{
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 20px;
 }
+
+
+
+
+
 
 
 
