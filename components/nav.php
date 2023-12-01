@@ -56,9 +56,3 @@ if (isset($_SESSION['user_id'])) {
     </div>
 </nav>
 
-<!-- ログインしている場合、ユーザー名を表示 -->
-<?php if ($userInfo): ?>
-    <div class="navbar-text">
-        <?= $userInfo['name']; ?> さん
-    </div>
-<?php endif; ?>
