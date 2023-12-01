@@ -8,12 +8,13 @@ require_once __DIR__ . '/../POST/functions.php';
 
 // ログインしている場合のみユーザー情報を取得
 $userInfo = [];
+$userId = null;
+
 if (isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
     $userInfo = getUserInfo($userId);
 }
 ?>
-
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
@@ -32,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="profile.php?user_id=<?= $userId ?>"><img src="./images/userpic.png" class="settings-icons"><?= $userInfo['name'] ?></a>
+                            <a class="dropdown-item" href="./profile.php?user_id=<?= $userId ?>"><img src="./images/userpic.png" class="settings-icons"><?= $userInfo['name'] ?></a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -55,4 +56,3 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 </nav>
-
