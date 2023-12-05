@@ -371,8 +371,8 @@ span, .navbar-toggler-icon{
 .help-post-container a{
     text-decoration: none;
     color:#73247a;
-
 }
+
 .header_wrapper{
     width: 100%;
 
@@ -494,6 +494,61 @@ span, .navbar-toggler-icon{
     gap: 20px;
 }
 
+.setting-content {
+    margin: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 1em;
+  }
+  
+  /* help-post-containerクラス */
+  .setting-post-container {
+    margin-bottom: 20px;
+  }
+  
+  .setting-post-container ul li a {
+    color: #b75ef2;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .setting-post-container img{
+    width: 180px;
+    height: 180px;
+    border: 2px solid #e1e1e1;
+    border-radius: 180%;
+    margin: 5% 40% 5%;
+
+
+
+  }
+
+    .setting-post-container ul li a:hover {
+    text-decoration: none;
+    color: #dc6666;
+  }
+  
+  .label {
+    margin-right: 10px;
+  }
+
+  .submit {
+    text-align: center;
+  }
+  
+  .btn_type01 {
+    padding: 10px 20px;
+    background-color: #851acdbd;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 1em;
+  }
+  
+  .btn_type01:hover {
+    background-color: #851acd;
+  }
 
 
 
