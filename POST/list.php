@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             session_write_close();
 
             // 画像リストページにリダイレクト
-            header('Location: ./main.php'); // パスを修正
+            header('Location: ../main.php'); // パスを修正
             exit();
         }
     }
