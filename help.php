@@ -34,30 +34,40 @@
                 </div>
             </div>
 
-            <div class="question">
-                <a>質問2: どうやってアカウントを作成しますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                <div class="answer">
-                    <p>sdfghjklcvbgnhmxcdvfbg</p>
-                </div>
-            </div>
-            <div class="question">
-                <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                <div class="answer">
-                    <p>dfghjgfdfghnjmhgfdghjhgf</p>
-                </div>
-            </div>
-            <div class="question">
-                <a>質問4: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                <div class="answer">
-                    <p>ヘルプからお問い合わせの「お問い合わせページ」をクリックしていただけたらお問い合わせが可能です。</p>
-                </div>
-            </div>
-            <div class="question">
-                <a>質問5: </a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
-                <div class="answer">
-                    <p></p>
-                </div>
-            </div>
+                        <div class="question">
+    <a>質問2: アカウントの作成方法は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+    <div class="answer">
+        <?php
+            echo "<p>アカウントを作成するには、ホームページ右上の「新規アカウント作成」ボタンをクリックし、必要な情報（ユーザー名、メールアドレス、パスワードなど）を入力してください。</p>";
+        ?>
+    </div>
+</div>
+
+<div class="question">
+    <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+    <div class="answer">
+        <?php
+            echo "<p>パスワードをリセットする場合は、ログイン画面で「パスワードをお忘れですか？」リンクをクリックして、メールアドレスを入力してください。その後、指示に従って新しいパスワードを設定できます。</p>";
+        ?>
+    </div>
+</div>
+
+<div class="question">
+    <a>質問4: お問い合わせ先は？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+    <div class="answer">
+        <?php
+            echo "<p>お問い合わせは、ヘルプページから「お問い合わせページ」をクリックしてアクセスできます。そこで問題を詳細に説明し、サポートチームに連絡してください。</p>";
+        ?>
+    </div>
+</div>
+<div class="question">
+    <a>質問5: サービスの利用規約はどこで確認できますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
+    <div class="answer">
+        <?php
+            echo "<p>サービスの利用規約は、ホームページのフッターセクションにある「利用規約」リンクからアクセスできます。必ずご一読いただき、ご同意の上でサービスをご利用ください。</p>";
+        ?>
+    </div>
+</div>
         </div>
     </section>
 
