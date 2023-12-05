@@ -1,7 +1,7 @@
 <!-- navタグ（ヘッダー） -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.php"><img src="../images/title.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="90" height="56"></a>
+            <a class="navbar-brand" href="../main.php"><img src="../images/title.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="90" height="56"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

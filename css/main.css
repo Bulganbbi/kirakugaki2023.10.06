@@ -512,8 +512,11 @@ span, .navbar-toggler-icon{
     text-decoration: none;
     margin-bottom: 10px;
     display: block;
+    text-align: center;
+    content: none;
   }
-  .setting-post-container img{
+  
+    .setting-post-container img{
     width: 180px;
     height: 180px;
     border: 2px solid #e1e1e1;
@@ -551,10 +554,7 @@ span, .navbar-toggler-icon{
   }
 
 
-
-
-
-
-
-
+.notification-btn {
+    font-size: 20px; 
+}
 
