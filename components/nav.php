@@ -32,11 +32,20 @@ if (isset($_SESSION['user_id'])) {
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">通知</a>
-                </li>
+                <div class="functions">
+                <button class="btn dropdown-toggle notification-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    通知
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                </div>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" rol
+                    e="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="./profile.php?user_id=<?= $userId ?>"><img src="./images/userpic.png" class="settings-icons"><?= $userInfo['name'] ?></a>

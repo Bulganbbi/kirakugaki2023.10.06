@@ -494,6 +494,7 @@ span, .navbar-toggler-icon{
     gap: 20px;
 }
 
+=======
 .setting-content {
     margin: 40px;
     padding: 20px;
@@ -551,10 +552,9 @@ span, .navbar-toggler-icon{
   }
 
 
-
-
-
-
+.notification-btn {
+    font-size: 20px; 
+}
 
 
 
