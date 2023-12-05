@@ -11,15 +11,15 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("../images/background.jpg");
+    background-color: #ffffff;
 }
 
 .wrapper{
     width: 420px;
-    background:rgba(223, 219, 219, 0.15) ;
-    border: white 2px solid;
+    background:white ;
+    border: 2px solid rgb(0, 0, 0);
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.733);
     border-radius:10px ;
     padding: 30px 40px;
 }
@@ -38,10 +38,10 @@ body{
 .input-box input{
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0);
+    background: rgb(255, 255, 255);
     border: none;
     outline: none;
-    border: 2px solid white;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
     font-size: 16px;
     color: #000000;
@@ -50,7 +50,7 @@ body{
 }
  
 .input-box input::placeholder{
-    color: rgba(0, 0, 0, 0.648);
+    color: #000000;
 }
 .input-box i{
     /* position: absolute; */
@@ -67,7 +67,7 @@ body{
 }
 
 .remember-forget label input{
-    accent-color: #ffffff;
+    accent-color: #ffff;
     text-decoration: none;
 }
 .remember-forget a:hover{
@@ -96,7 +96,7 @@ body{
 }
 
 .register-link p a{
-    color: purple;
+    color: #facc6a;
     text-decoration: none;
     font-weight: 600;
 }
@@ -121,10 +121,5 @@ body{
     color: #333;
     font-weight: 600;
    
-}
-
-h2 {
-    color: rgb(252, 252, 252); 
-    font-size: 21px;
 }
 
