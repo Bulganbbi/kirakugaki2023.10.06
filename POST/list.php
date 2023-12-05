@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // functions.php ファイルを読み込み
 require_once('functions.php');
 
@@ -12,14 +14,15 @@ $err_msg = $err_msg ?? ""; // $err_msg が null の場合、空の文字列で�
 // POST メソッドでない場合
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // 画像を取得
-    $sql = 'SELECT * FROM rakugaki_images ORDER BY created_at DESC';
+    $sql = 'SELECT * FROM rakugaki_images WHERE user_id = :user_id ORDER BY created_at DESC';
     $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->execute();
     $images = $stmt->fetchAll();
-
 } else {
     // 画像を保存
     if (!empty($_FILES['image']['name'])) {
+        $userId = $_SESSION['user_id'];
 
         $name = $_FILES['image']['name'];
         $type = $_FILES['image']['type'];
@@ -37,10 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
         if ($err_msg == '') {
             // 画像情報をデータベースに挿入
-            $sql = 'INSERT INTO rakugaki_images(image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
-            VALUES (:image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
+            $sql = 'INSERT INTO rakugaki_images(user_id, image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
+            VALUES (:user_id, :image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
     
             $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
             $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
             $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
             $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
@@ -49,8 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
             $stmt->execute();
 
+            // リダイレクト前にセッションをクリアする
+            session_write_close();
+
             // 画像リストページにリダイレクト
-            header('Location: list.php');
+            header('Location: ./main.php'); // パスを修正
             exit();
         }
     }
