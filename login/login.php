@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $hashed_password)) {
             session_start();
             $_SESSION['user_id'] = $user_id;
-            header("Location: ../index.php");
+            header("Location: ../main.php");
             exit();
         } else {
             echo "<h2>パスワードが間違っています。</h2>";
