@@ -2,6 +2,8 @@
 require_once './POST/functions.php';
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +32,9 @@ require_once './POST/functions.php';
     $pdo = connectDB();
 
     // 画像を取得
-    $sql = 'SELECT * FROM rakugaki_images ORDER BY created_at DESC';
+    $sql = 'SELECT i.*, u.name FROM rakugaki_images i
+            INNER JOIN users u ON i.user_id = u.user_id
+            ORDER BY i.created_at DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $images = $stmt->fetchAll();
@@ -43,8 +47,12 @@ require_once './POST/functions.php';
                 <div class="user-profile">
                     <img src="images/cat-01.jpg"><!-- ユーザーのアイコン -->
                     <div>
-                        <p class="user-text"><?= $image["created_at"]; ?></p><!-- ユーザーネーム -->
-                            
+                        <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
+                        <p class="user-text"><?= date('Y年 m月d日 H:i', strtotime($image["created_at"])); ?></p><!-- 投稿時間 -->
+                        <form method="post" action="./POST/delete_image.php">
+                            <input type="hidden" name="image_id" value="<?= $image['image_id']; ?>">
+                            <button type="submit" class="btn btn-danger">削除</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -53,9 +61,9 @@ require_once './POST/functions.php';
             
             <!-- データベースから取得した画像を表示 -->
             <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
-        
         </div>
     <?php endforeach; ?>
+</div>
 </body>
     <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
