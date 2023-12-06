@@ -1,5 +1,11 @@
 <?php
-session_start();
+require_once 'functions.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+checkSessionTimeout();
 
 // functions.php ファイルを読み込み
 require_once('functions.php');
@@ -63,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -72,84 +79,93 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
-    <script src="./js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- 追加 -->
+    <script>
+    $(document).ready(function () {
+        // ファイルが選択されたときに呼び出されるイベント
+        $('input[name="image"]').change(function (event) {
+            var input = event.target;
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    // 画像を表示するための要素に読み込んだ画像を設定
+                    $('.preview-image').attr('src', e.target.result);
+                };
+
+                // ファイルを読み込む
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+    </script>
 </head>
 <body>
 <?php include("../components/post_nav.php"); ?>
 <div class="container mt-5">
     <div class="row">
-        <div>
-            <img src="https://blueimp.github.io/jQuery-File-Upload/" alt="">
-            <ul class="list-unstyled">
-                <?php for ($i = 0; $i < count($images); $i++): ?>
-                    <li class="media mt-5">
-                        <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                            <img src="image.php?id=<?= $images[$i]['image_id']; ?>" width="100" height="auto" class="mr-3">
-                        </a>
-                        <div class="media-body">
-                            <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size'] / 1000, 2); ?> KB)</h5>
-                            <p><?= $images[$i]['image_comment']; ?></p> <!-- コメントの表示 -->
-                            <p><?= $images[$i]['image_hashtag']; ?></p> <!-- ハッシュタグの表示 -->
-                            <a href="javascript:void(0);" 
-                               onclick="var ok = confirm('削除しますか？'); if (ok) location.href='delete.php?id=<?= $images[$i]['image_id']; ?>'">
-                              <i class="far fa-trash-alt"></i> 削除</a>
-                        </div>
-                    </li>
-                <?php endfor; ?>
-            </ul>
+        <div class="col-md-12 text-center">
+            <?php if (!empty($images)): ?>
+                <!-- 修正 -->
+                <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
+            <?php endif; ?>
         </div>
-        <div>
+        <div class="col-md-12">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>画像を選択</label>
                     <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
                     <?php if ($err_msg != ''): ?>
                         <div class="invalid-feedback d-block"><?= $err_msg; ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="comment" placeholder="作品のコメント">
+                    <input type="text" name="comment" class="form-control" placeholder="作品のコメント">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="hashtag" placeholder="タグ付け 例:#オリキャラ">
+                    <input type="text" name="hashtag" class="form-control mb-3" placeholder="タグ付け 例:#オリキャラ">
                 </div>
-                <button type="submit" class="btn btn-primary">保存</button>
+                <div class="text-center">
+                    <!-- 修正 -->
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
+<!-- 修正 -->
 <div class="modal carousel slide" id="lightbox" tabindex="-1" role="dialog" data-ride="carousel">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <div class="modal-body">
-        <ol class="carousel-indicators">
-            <?php for ($i = 0; $i < count($images); $i++): ?>
-                <li data-target="#lightbox" data-slide-to="<?= $i; ?>" <?php if ($i == 0) echo 'class="active"'; ?>></li>
-            <?php endfor; ?>
-        </ol>
-        <div class="carousel-inner">
-            <?php for ($i = 0; $i < count($images); $i++): ?>
-                <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
-                  <img src="image.php?id=<?= $images[$i]['image_id']; ?>" class="d-block w-100">
-                </div>
-            <?php endfor; ?>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <ol class="carousel-indicators">
+                <?php for ($i = 0; $i < count($images); $i++): ?>
+                    <li data-target="#lightbox" data-slide-to="<?= $i; ?>" <?php if ($i == 0) echo 'class="active"'; ?>></li>
+                <?php endfor; ?>
+            </ol>
+            <div class="carousel-inner">
+                <?php for ($i = 0; $i < count($images); $i++): ?>
+                    <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
+                      <!-- 修正 -->
+                      <img src="data:image/jpeg;base64,<?= base64_encode($images[$i]['image_content']); ?>" class="d-block w-100">
+                    </div>
+                <?php endfor; ?>
+            </div>
+            <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#lightbox" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
-        <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#lightbox" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-      </div>
     </div>
-  </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

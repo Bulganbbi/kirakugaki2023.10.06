@@ -94,11 +94,11 @@ span, .navbar-toggler-icon{
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 10px 5%;
+    padding: 10px 8%;
 }
 
 .left-sidebar{
-    padding-right: 0%;
+    padding-right: 5%;
     flex-basis: 20%;
     position: sticky;
     top: 70px;
@@ -106,7 +106,7 @@ span, .navbar-toggler-icon{
 }
 
 .main-content{
-    flex-basis: 77%;
+    flex-basis: 65%;
 }
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
@@ -557,4 +557,5 @@ span, .navbar-toggler-icon{
 .notification-btn {
     font-size: 20px; 
 }
+
 

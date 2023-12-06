@@ -1,5 +1,12 @@
 <?php
 require_once './POST/functions.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+checkSessionTimeout();
+
 ?>
 
 
@@ -51,7 +58,7 @@ require_once './POST/functions.php';
                         <p class="user-text"><?= date('Y年 m月d日 H:i', strtotime($image["created_at"])); ?></p><!-- 投稿時間 -->
                         <form method="post" action="./POST/delete_image.php">
                             <input type="hidden" name="image_id" value="<?= $image['image_id']; ?>">
-                            <button type="submit" class="btn btn-danger">削除</button>
+                            <!-- <button type="submit" class="btn btn-danger">削除</button> -->
                         </form>
                     </div>
                 </div>

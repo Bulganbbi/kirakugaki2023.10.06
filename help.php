@@ -1,3 +1,14 @@
+<?php
+require_once './POST/functions.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+checkSessionTimeout();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
