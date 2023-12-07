@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
 
 // パラメータからユーザーIDを取得
 $userId = isset($_GET['user_id']) ? $_GET['user_id'] : null;

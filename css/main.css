@@ -112,15 +112,6 @@ span, .navbar-toggler-icon{
     gap: 20px; /* 要素間の余白を指定 */
     justify-content: space-between; /* 要素を横方向に均等に配置 */
 }
-.main-content .write-post-container .d-grid .gap-2 .btn .btn-primary .btn-lg{
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.253);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 1em;
-}
-
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
     display: flex;
@@ -265,7 +256,6 @@ span, .navbar-toggler-icon{
     font-size: 13px;
 
 }
-
 
 .add-post-links a img{
     width: 20px;
@@ -522,10 +512,7 @@ span, .navbar-toggler-icon{
   .setting-post-container {
     margin-bottom: 20px;
   }
-  .setting-post-container ul li{
-    list-style: none;
-
-  }
+  
   .setting-post-container ul li a {
     color: #b75ef2;
     text-decoration: none;
@@ -535,33 +522,33 @@ span, .navbar-toggler-icon{
     content: none;
   }
   
-.setting-post-container img{
-    width: 40vh;
-    height: 40vh;
+    .setting-post-container img{
+    width: 180px;
+    height: 180px;
     border: 2px solid #e1e1e1;
     border-radius: 180%;
-    justify-content: center;
-    align-items: center;
-    top: 50%;
-    left: 50%;
-}
+    margin: 5% 40% 5%;
 
-.setting-post-container ul li a:hover {
+
+
+  }
+
+    .setting-post-container ul li a:hover {
     text-decoration: none;
     color: #dc6666;
   }
   
-.label {
+  .label {
     margin-right: 10px;
   }
 
-.submit {
+  .submit {
     text-align: center;
   }
   
-.btn_type01 {
+  .btn_type01 {
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.253);
+    background-color: #851acdbd;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -576,10 +563,5 @@ span, .navbar-toggler-icon{
 .notification-btn {
     font-size: 20px; 
 }
-
-
-  
-  
-  
 
 

@@ -7,7 +7,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
 
 // データベースに接続
 $pdo = connectDB();
