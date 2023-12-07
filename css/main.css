@@ -41,7 +41,7 @@ nav{
 }
 
 .container, .container-md, .container-sm {
-    max-width: 2000px;
+    max-width: 1500px;
 }
 
     
@@ -94,19 +94,23 @@ span, .navbar-toggler-icon{
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 10px 5%;
+    padding: 10px 8%;
 }
 
 .left-sidebar{
-    padding-right: 0%;
+    padding-right: 5%;
     flex-basis: 20%;
     position: sticky;
     top: 70px;
     align-self: flex-start;
 }
 
-.main-content{
-    flex-basis: 77%;
+.main-content {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap; /* 複数行になるように設定 */
+    gap: 20px; /* 要素間の余白を指定 */
+    justify-content: space-between; /* 要素を横方向に均等に配置 */
 }
 .main-content .write-post-container .d-grid .gap-2 .btn .btn-primary .btn-lg{
     padding: 10px 20px;
@@ -274,6 +278,7 @@ span, .navbar-toggler-icon{
     border-radius: 6px;
     padding: 20px;
     color: #626262;
+    box-sizing: border-box;
     margin: 20px 0;
 
 }
@@ -312,10 +317,11 @@ span, .navbar-toggler-icon{
     text-decoration: none;
 
 }
-.post-img{
-    width: 100%;
-    border-radius: 4px;
-    margin-bottom: 5px;
+.post-img {
+    object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
+    object-position: center; /* 画像の表示位置を中央に設定 */
+    height: 200px; /* 画像の高さを調整（適切な高さに調整してください） */
+    width: 100%; /* 幅は親要素に合わせて100%に設定 */
 }
 .post-row{
     display: flex;
@@ -570,4 +576,5 @@ span, .navbar-toggler-icon{
 .notification-btn {
     font-size: 20px; 
 }
+
 

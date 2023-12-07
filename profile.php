@@ -1,10 +1,11 @@
 <?php
+require_once './POST/functions.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once "./POST/functions.php";
+checkSessionTimeout();
 
 // パラメータからユーザーIDを取得
 $userId = isset($_GET['user_id']) ? $_GET['user_id'] : null;
@@ -64,6 +65,8 @@ $con->close();
                         <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
                         <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
                         <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>
+                        <a href="https://twitter.com/"><i class='bx bxl-pinterest'></i></a>
+                        
                     </ul>
                 </div>
             </div>

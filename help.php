@@ -1,3 +1,14 @@
+<?php
+require_once './POST/functions.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+checkSessionTimeout();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +57,7 @@
     <a>質問3: パスワードをリセットするには？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
     <div class="answer">
         <?php
-            echo "<p>パスワードをリセットする場合は、ログイン画面で「パスワードをお忘れですか？」リンクをクリックして、メールアドレスを入力してください。その後、指示に従って新しいパスワードを設定できます。</p>";
+            echo "<p>パスワードをリセットする場合は、ログイン画面で「パスワード忘れた方」リンクをクリックして、メールアドレスを入力してください。その後、指示に従って新しいパスワードを設定できます。</p>";
         ?>
     </div>
 </div>
@@ -63,7 +74,7 @@
     <a>質問5: サービスの利用規約はどこで確認できますか？</a><i class="fa-solid fa-caret-down" style="color: #4c4e52;"></i>
     <div class="answer">
         <?php
-            echo "<p>サービスの利用規約は、ホームページのフッターセクションにある「利用規約」リンクからアクセスできます。必ずご一読いただき、ご同意の上でサービスをご利用ください。</p>";
+            echo "<p>サービスの利用規約は、「利用規約」リンクからアクセスできます。必ずご一読いただき、ご同意の上でサービスをご利用ください。</p>";
         ?>
     </div>
 </div>
