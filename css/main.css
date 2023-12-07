@@ -94,7 +94,6 @@ span, .navbar-toggler-icon{
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 10px 8%;
 }
 
 .left-sidebar{
@@ -107,7 +106,6 @@ span, .navbar-toggler-icon{
 
 .main-content {
     flex-basis: 100%;
-    display: flex;
     flex-wrap: wrap; /* 複数行になるように設定 */
     gap: 20px; /* 要素間の余白を指定 */
     justify-content: space-between; /* 要素を横方向に均等に配置 */
@@ -266,7 +264,7 @@ span, .navbar-toggler-icon{
     width: 100%;
     background: #fff;
     border-radius: 6px;
-    padding: 20px;
+    padding: 10px;
     color: #626262;
     box-sizing: border-box;
     margin: 20px 0;

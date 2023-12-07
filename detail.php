@@ -1,12 +1,9 @@
-<!-- detail.php -->
-
 <?php
 require_once './POST/functions.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 
 // データベースに接続
 $pdo = connectDB();
@@ -21,7 +18,7 @@ if (!$imageId) {
 }
 
 // 画像データを取得
-$sql = 'SELECT i.*, u.name FROM rakugaki_images i
+$sql = 'SELECT i.*, u.name, u.user_icon FROM rakugaki_images i
         INNER JOIN users u ON i.user_id = u.user_id
         WHERE i.image_id = :imageId';
 $stmt = $pdo->prepare($sql);
@@ -56,6 +53,7 @@ if (!$image) {
             height: 400px;
             width: 100%;
         }
+
         .post-img-modal {
             display: none;
             position: fixed;
@@ -74,40 +72,39 @@ if (!$image) {
             border-radius: 8px;
         }
     </style>
-    
 </head>
 <body>
     <?php include("./components/nav.php"); ?>
-    <div class="main-content">
+
+        <!-- 画像表示 -->
+        <div class="main-content">
         <div class="post-container">
-            <!-- ユーザー情報 -->
-            <div class="left-post-contents">
-                <div class="user-profile">
-                    <img src="images/cat-01.jpg">
-                    <div>
-                        <p class="user-text"><?= $image["name"]; ?></p>
-                        <p class="user-text"><?= date('Y年 m月d日 H:i', strtotime($image["created_at"])); ?></p>
-                    </div>
-                </div>
-            </div>
-            <!-- 作品情報 -->
-            <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
-            <!-- 画像表示 -->
-        </div>
-    </div>
-    <div class="main-content">
-        <div class="post-container">
-            <!-- 画像表示（リンクを追加し、data 属性に画像の URL を指定） -->
             <a href="#" class="post-img-link" data-img-url="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>">
                 <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
             </a>
         </div>
+
+        <!-- ユーザー情報 -->
+        <div class="left-post-contents">
+            <div class="user-profile">
+                <!-- 投稿したユーザーのアイコン -->
+                <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon" class="user-icon">
+                <div>
+                    <p class="user-text"><?= $image["name"]; ?></p>
+                    <p class="user-text"><?= date('Y年 m月d日 H:i', strtotime($image["created_at"])); ?></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品情報 -->
+        <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
     </div>
 
     <!-- 拡大表示用のモーダル -->
     <div class="post-img-modal" id="postImgModal">
         <img id="modalImg" src="" alt="拡大表示画像">
     </div>
+
     <script>
         // 画像リンクをクリックしたときの処理
         document.querySelectorAll('.post-img-link').forEach(function(link) {
@@ -128,5 +125,8 @@ if (!$image) {
             }
         });
     </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

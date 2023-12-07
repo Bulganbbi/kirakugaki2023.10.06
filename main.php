@@ -24,32 +24,52 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="shortcut icon" href="./images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
 <?php include("./components/nav.php"); ?>
 <?php include("./components/aside.php"); ?>
+
 <!-- main content -->
 <style>
+    :root {
+    --gutter-x: 0.5rem;
+    --gutter-y: -1.5rem; /* グリッドの垂直方向の間隔を設定 */
+    }
     .post-img {
         object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
         object-position: center; /* 画像の表示位置を中央に設定 */
         height: 200px; /* 画像の高さを調整（適切な高さに調整してください） */
         width: 100%; /* 幅は親要素に合わせて100%に設定 */
     }
+
+    .write-post-container {
+        margin-bottom: var(--gutter-y); /* ボタンの下の余白を設定 */
+    }
+
+    .post-container {
+        margin-bottom: var(--gutter-y); /* 画像コンテナの下の余白を設定 */
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 </style>
 
-<!-- main content -->
 <div class="main-content">
     <div class="write-post-container d-grid gap-2">
         <a href="./POST/list.php" class="btn btn-primary btn-lg">らくがき投稿</a>
     </div>
 
     <?php
+    // ログインしている場合、セッションからユーザーIDを取得
+    $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
     // データベースに接続
     $pdo = connectDB();
 
     // 画像を取得
-    $sql = 'SELECT i.*, u.name FROM rakugaki_images i
+    $sql = 'SELECT i.*, u.name, u.user_icon FROM rakugaki_images i
             INNER JOIN users u ON i.user_id = u.user_id
             ORDER BY i.created_at DESC';
     $stmt = $pdo->prepare($sql);
@@ -69,23 +89,30 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="post-container">
                             <!-- ユーザー情報 -->
                             <div class="left-post-contents">
-                            <div class="user-profile">
-                                <img src="images/cat-01.jpg"><!-- ユーザーのアイコン -->
-                                <div>
-                                    <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
-                                    <!-- 削除ボタンなどのアクションがあれば追加 -->
+                                <div class="user-profile">
+                                    <!-- ユーザーのアイコン -->
+                                    <?php if ($loggedInUserId == $image['user_id']): ?>
+                                        <!-- ログイン中のユーザーのアイコン -->
+                                        <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon">
+                                    <?php else: ?>
+                                        <!-- 他のユーザーのアイコン -->
+                                        <img src="data:image/jpeg;base64,<?= base64_encode(getUserIcon($image['user_id'])); ?>" alt="User Icon">
+                                    <?php endif; ?>
+                                    <div>
+                                        <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
+                                        <!-- 削除ボタンなどのアクションがあれば追加 -->
+                                    </div>
                                 </div>
                             </div>
+                            <!-- 作品情報 -->
+                            <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
+                            <!-- 画像表示 -->
+                            <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
                         </div>
-                        <!-- 作品情報 -->
-                        <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
-                        <!-- 画像表示 -->
-                        <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
-                    </div>
-                </a>
-            </div>
-        <?php endforeach; ?>
-    </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     <?php endif; ?>
 </div>
 
