@@ -21,7 +21,7 @@
     }
     .label {
     float: center; 
-    margin: 5px; 
+    margin-bottom: 20px;
     width: 100px; /* ボックスの横幅を指定する */
     height: 28px; /* ボックスの高さを指定する */
     padding-left: 5px; /* ボックス内左側の余白を指定する */

@@ -108,6 +108,15 @@ span, .navbar-toggler-icon{
 .main-content{
     flex-basis: 77%;
 }
+.main-content .write-post-container .d-grid .gap-2 .btn .btn-primary .btn-lg{
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 1em;
+}
+
 .imp-links a, .shortcut-links a{
     text-decoration:none ;
     display: flex;
@@ -252,6 +261,7 @@ span, .navbar-toggler-icon{
     font-size: 13px;
 
 }
+
 
 .add-post-links a img{
     width: 20px;
@@ -506,7 +516,10 @@ span, .navbar-toggler-icon{
   .setting-post-container {
     margin-bottom: 20px;
   }
-  
+  .setting-post-container ul li{
+    list-style: none;
+
+  }
   .setting-post-container ul li a {
     color: #b75ef2;
     text-decoration: none;
@@ -542,7 +555,7 @@ span, .navbar-toggler-icon{
   
   .btn_type01 {
     padding: 10px 20px;
-    background-color: #851acdbd;
+    background-color: rgba(0, 0, 0, 0.253);
     color: #fff;
     border: none;
     cursor: pointer;
