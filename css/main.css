@@ -510,14 +510,21 @@ span, .navbar-toggler-icon{
     gap: 20px;
 }
 
-.setting-content {
+/* .setting-content {
     margin: 40px;
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 1em;
-  }
-  
+  } */
+  .setting-content {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
   /* help-post-containerクラス */
   .setting-post-container {
     margin-bottom: 20px;
@@ -539,11 +546,7 @@ span, .navbar-toggler-icon{
     width: 40vh;
     height: 40vh;
     border: 2px solid #e1e1e1;
-    border-radius: 180%;
-    justify-content: center;
-    align-items: center;
-    top: 50%;
-    left: 50%;
+    border-radius: 180%;    
 }
 
 .setting-post-container ul li a:hover {
