@@ -39,9 +39,27 @@ $con->close();
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px; /* 画像間の間隔 */
+            margin-top: 20px; /* 適切な余白を設定 */
+            justify-content: center; /* 中央寄せ */
+        }
+
+        .photos img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
+            object-position: center; /* 画像の表示位置を中央に設定 */
+            border: 2px solid #000; /* 黒い枠 */
+            border-radius: 8px; /* 丸い角 */
+        }
+    </style>
 </head>
 
-<body>
+<body class="text-center">
 <?php include("./components/nav.php"); ?>
     <div class="header_wrapper">
         <header></header>
@@ -63,9 +81,7 @@ $con->close();
                     <ul>
                         <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
                         <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
-                        <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>
-                        <a href="https://twitter.com/"><i class='bx bxl-pinterest'></i></a>
-                        
+                        <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>      
                     </ul>
                     </div>
             </div>

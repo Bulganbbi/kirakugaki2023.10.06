@@ -32,21 +32,21 @@ if (session_status() == PHP_SESSION_NONE) {
 <style>
     :root {
     --gutter-x: 0.5rem;
-    --gutter-y: -1.5rem; /* グリッドの垂直方向の間隔を設定 */
+    --gutter-y: -1.5rem; 
     }
     .post-img {
-        object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
-        object-position: center; /* 画像の表示位置を中央に設定 */
-        height: 200px; /* 画像の高さを調整（適切な高さに調整してください） */
-        width: 100%; /* 幅は親要素に合わせて100%に設定 */
+        object-fit: cover; 
+        object-position: center; 
+        height: 200px; 
+        width: 100%; 
     }
 
     .write-post-container {
-        margin-bottom: var(--gutter-y); /* ボタンの下の余白を設定 */
+        margin-bottom: var(--gutter-y); 
     }
 
     .post-container {
-        margin-bottom: var(--gutter-y); /* 画像コンテナの下の余白を設定 */
+        margin-bottom: var(--gutter-y); 
     }
 
     .user-profile {
@@ -54,12 +54,27 @@ if (session_status() == PHP_SESSION_NONE) {
         align-items: center;
         gap: 10px;
     }
+    .truncated-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .write-post-container a.btn-warning {
+        background-color: rgba(255, 193, 7, 0.5); 
+        border-color: #ffc107; 
+        color: #212529; 
+    }
+
 </style>
 
 <div class="main-content">
     <div class="write-post-container d-grid gap-2">
-        <a href="./POST/list.php" class="btn btn-primary btn-lg">らくがき投稿</a>
+        <a href="./POST/list.php" class="btn btn-warning btn-lg">らくがき投稿</a>
     </div>
+
 
     <?php
     // ログインしている場合、セッションからユーザーIDを取得
@@ -100,13 +115,12 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <?php endif; ?>
                                     <div>
                                         <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
-                                        <!-- 削除ボタンなどのアクションがあれば追加 -->
+                                        <!-- 削除ボタン(予定) -->
                                     </div>
                                 </div>
                             </div>
                             <!-- 作品情報 -->
-                            <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
-                            <!-- 画像表示 -->
+                            <p class="post-text truncated-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
                             <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
                         </div>
                     </a>
