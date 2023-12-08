@@ -83,7 +83,7 @@ $con->close();
                         <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
                         <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>      
                     </ul>
-                    </div>
+                </div>
             </div>
             <div class="photos">
                 <?php foreach ($images as $image): ?>
