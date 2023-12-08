@@ -18,30 +18,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="../css/main.css">
     <style>
-    input[type=radio] {
-    display: none;
-    }
-    input[type="radio"]:checked + label {
-    background: #851acd;
-    color: #ffffff; 
-    }
-    .label:hover {
-        background-color: #ddddff;
-    }
-    .label {
-    float: center; 
-    margin: 5px; 
-    width: 100px; 
-    height: 28px; 
-    padding-left: 5px; 
-    padding-right: 5px; 
-    color: black; 
-    text-align: center; 
-    line-height:25px; 
-    cursor: pointer; 
-    border: 1px solid black;
-    border-radius: 5px; 
-    }
     </style>
 </head>
 <body>
