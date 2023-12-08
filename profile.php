@@ -57,6 +57,7 @@ $con->close();
             border-radius: 8px; /* 丸い角 */
         }
     </style>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./main.css">
 </head>
 
 <body class="text-center">
