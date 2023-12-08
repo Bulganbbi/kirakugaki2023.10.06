@@ -454,11 +454,63 @@ span, .navbar-toggler-icon{
     color: black;
     line-height: 1.8em; 
 }
+.social-icon ul {
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+}
+.social-icon ul li {
+    position: relative;
+    list-style: none;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.social-icon ul li a {
+    text-decoration: none;
+}
+.social-icon ul li a .fa-brands {
+    font-size: 30px;
+    color: #222;
+}
+.social-icon ul li a::before {
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+.social-icon ul li:nth-child(1) a::before {
+    content: "\f16d";
+    background-image: linear-gradient(45deg, 
+      #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,
+      #bc1888 100%);
+    -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+    border-bottom: 3px solid #dc2743;
+}
+.social-icon ul li:nth-child(3) a::before {
+    content: "\f0d2";
+    color: #E60023;
+    border-bottom: 3px solid #E60023;
+}
+.social-icon ul li:nth-child(2) a::before {
+    content: "\f099";
+    color: #1DA1F2;
+    border-bottom: 3px solid #1DA1F2;
+}
+.social-icon ul li:hover a::before {
+    margin-top: -7px;
+    height: 110%;
+}
 .header_wrapper .cols_container .content ul{
     gap: 30px;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .header_wrapper .cols_container .content ul li{
