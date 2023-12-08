@@ -27,7 +27,7 @@
                             <a class="dropdown-item" href="../setting/user_setting.php"><img src="../images/setting.png" class="settings-icons">設定</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../login.php"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
+                            <a class="dropdown-item" href="../login/login.php"><img src="../images/logout.png" class="settings-icons">ログアウト</a>
                         </li>
                         </ul>
                       </li>
