@@ -81,9 +81,9 @@ $con->close();
                     <hr>
                     <div class="social-icon">
                         <ul>
-                            <li><a href="#"><i class="fa-brands fa-instagram instagram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-twitter twitter"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-pinterest pinterest"></i></a></li>
+                            <li><a href="www.instagram.com"><i class="fa-brands fa-instagram instagram"></i></a></li>
+                            <li><a href="www.twitter.com"><i class="fa-brands fa-twitter twitter"></i></a></li>
+                            <li><a href="www.pinterest.jp"><i class="fa-brands fa-pinterest pinterest"></i></a></li>
 
                         </ul>
                     </div>
