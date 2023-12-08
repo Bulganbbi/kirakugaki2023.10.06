@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
 
 ?>
 
@@ -19,46 +18,32 @@ checkSessionTimeout();
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="../css/main.css">
-
     <style>
-/* ラジオボタンの非表示 */
-input[type="radio"] {
-  display: none;
-}
-
-/* ラベルのスタイル */
-.label {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* ラベルの選択時のスタイル */
-#see:checked + .label {
-  background-color: lightgreen;
-  color: white;
-  border-color: lightgreen;
-}
-
-#nosee:checked + .label {
-  background-color: lightcoral;
-  color: white;
-  border-color: lightcoral;
-}
-
-/* ラベルのホバー時のスタイル */
-.label:hover {
-  background-color: #f0f0f0;
-}
-
-</style>
-
-
+    input[type=radio] {
+    display: none;
+    }
+    input[type="radio"]:checked + label {
+    background: #851acd;/* マウス選択時の背景色を指定する */
+    color: #ffffff; /* マウス選択時のフォント色を指定する */
+    }
+    .label:hover {
+        background-color: #ddddff; /* マウスオーバー時の背景色を指定する */
+    }
+    .label {
+    float: center; 
+    margin: 5px; 
+    width: 100px; /* ボックスの横幅を指定する */
+    height: 28px; /* ボックスの高さを指定する */
+    padding-left: 5px; /* ボックス内左側の余白を指定する */
+    padding-right: 5px; /* ボックス内御右側の余白を指定する */
+    color: black; /* フォントの色を指定 */
+    text-align: center; /* テキストのセンタリングを指定する */
+    line-height:25px; /* 行の高さを指定する */
+    cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
+    border: 1px solid black;/* ボックスの境界線を実線で指定する */
+    border-radius: 5px; /* 角丸を指定する */
+    }
+    </style>
 </head>
 <body>
 <?php include("../components/setting_nav.php"); ?>

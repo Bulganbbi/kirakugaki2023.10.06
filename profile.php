@@ -5,8 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
-
 // パラメータからユーザーIDを取得
 $userId = isset($_GET['user_id']) ? $_GET['user_id'] : null;
 
@@ -44,13 +42,14 @@ $con->close();
 </head>
 
 <body>
-    <?php include("./components/nav.php"); ?>
+<?php include("./components/nav.php"); ?>
     <div class="header_wrapper">
         <header></header>
         <div class="cols_container">
             <div class="left_col">
                 <div class="img_container">
-                    <img src="./images/profile..jpg" alt="<?php echo $userInfo['name'] ?? ''; ?>">
+                    <!-- 投稿したユーザーのアイコン -->
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($userInfo['user_icon']); ?>" alt="<?php echo htmlspecialchars($userInfo['name'] ?? ''); ?>">
                     <span></span>
                 </div>
                 <h2><?php echo $userInfo['name'] ?? ''; ?></h2>
@@ -61,20 +60,19 @@ $con->close();
                         プロフィール
                     </p>
                     <hr>
-                    <div class="social-icons">
-                        <ul>
-                            <li><a href="www.instagram.com"><i class="fa-brands fa-instagram instagram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-pinterest pinterest"></i></a></li>
-                         <li><a href="#"><i class="fa-brands fa-twitter twitter"></i></a></li>                       
-                        </ul>
-                    </div>
+                    <ul>
+                        <a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
+                        <a href="https://www.pinterest.com/"><i class='bx bxl-pinterest'></i></a>
+                        <a href="https://twitter.com/"><i class='bx bxl-pinterest'></i></a>
+                        
+                    </ul>
                 </div>
             </div>
-                <div class="photos">
-                    <?php foreach ($images as $image): ?>
-                        <img src="data:image/<?php echo $image['image_type']; ?>;base64,<?php echo base64_encode($image['image_content']); ?>" alt="<?php echo $image['image_name']; ?>">
-                    <?php endforeach; ?>
-                </div>
+            <div class="photos">
+                <?php foreach ($images as $image): ?>
+                    <img src="data:image/<?php echo $image['image_type']; ?>;base64,<?php echo base64_encode($image['image_content']); ?>" alt="<?php echo $image['image_name']; ?>">
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

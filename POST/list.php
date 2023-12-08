@@ -1,14 +1,17 @@
 <?php
+// functions.php ファイルを読み込み
 require_once 'functions.php';
 
+// セッションが開始されていない場合は開始する
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
-
-// functions.php ファイルを読み込み
-require_once('functions.php');
+// ユーザーがログインしていない場合はログインページにリダイレクト
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php'); // ログインページのパスを適切に修正
+    exit();
+}
 
 // データベースに接続
 $pdo = connectDB();

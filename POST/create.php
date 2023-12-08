@@ -15,4 +15,6 @@ $sql = "CREATE TABLE IF NOT EXISTS rakugaki_images (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 $pdo->exec($sql);
+//test
 ?>
+

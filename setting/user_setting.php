@@ -5,8 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-checkSessionTimeout();
-
 ?>
 
 <!DOCTYPE html>
@@ -19,44 +17,32 @@ checkSessionTimeout();
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="../css/main.css">
-    
     <style>
-/* ラジオボタンの非表示 */
-input[type="radio"] {
-  display: none;
-}
-
-/* ラベルのスタイル */
-.label {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* ラベルの選択時のスタイル */
-#see:checked + .label {
-  background-color: lightgreen;
-  color: white;
-  border-color: lightgreen;
-}
-
-#nosee:checked + .label {
-  background-color: lightcoral;
-  color: white;
-  border-color: lightcoral;
-}
-
-/* ラベルのホバー時のスタイル */
-.label:hover {
-  background-color: #f0f0f0;
-}
-
-</style>
-
+    input[type=radio] {
+    display: none;
+    }
+    input[type="radio"]:checked + label {
+    background: #851acd;
+    color: #ffffff; 
+    }
+    .label:hover {
+        background-color: #ddddff;
+    }
+    .label {
+    float: center; 
+    margin: 5px; 
+    width: 100px; 
+    height: 28px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    color: black; 
+    text-align: center; 
+    line-height:25px; 
+    cursor: pointer; 
+    border: 1px solid black;
+    border-radius: 5px; 
+    }
+    </style>
 </head>
 <body>
 <?php include("../components/setting_nav.php"); ?>

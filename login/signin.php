@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
 require_once '../POST/functions.php';
 
+
 $con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
 
 session_start();
