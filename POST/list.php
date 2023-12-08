@@ -41,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
 
         // 画像のサイズ・形式チェック
-        $maxFileSize = 1048576;
+        $maxFileSize = 20 * 1024 * 1024; // 20MBをバイト単位に変換
         $validFileTypes = ['image/png', 'image/jpeg'];
         if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
-            $err_msg = '* jpg, jpeg, png 形式で 1 MB までの画像を選択してください。';
+            $err_msg = '* jpg, jpeg, png 形式で 20 MB までの画像を選択してください。';
         }
 
         if ($err_msg == '') {
@@ -85,6 +85,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- 追加 -->
+    <style>
+            /* 新しく追加した CSS スタイル */
+            .preview-image {
+        max-width: 100%; /* 画像の幅が親要素に収まるように設定 */
+        height: auto; /* アスペクト比を保持しながら幅に合わせて高さを自動調整 */
+        border-radius: 10px; /* 画像の端を少しだけ丸く */
+        border: 2px solid #000; /* 黒い枠で画像を囲む */
+        margin: 10px auto; /* 画像を中央寄せにするための余白 */
+        display: block; /* 不要な余白を削除 */
+    }
+    </style>
     <script>
     $(document).ready(function () {
         // ファイルが選択されたときに呼び出されるイベント
@@ -153,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 <?php for ($i = 0; $i < count($images); $i++): ?>
                     <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
                       <!-- 修正 -->
-                      <img src="data:image/jpeg;base64,<?= base64_encode($images[$i]['image_content']); ?>" class="d-block w-100">
+                      <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
                     </div>
                 <?php endfor; ?>
             </div>
