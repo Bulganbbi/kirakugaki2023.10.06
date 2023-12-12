@@ -263,7 +263,7 @@ span, .navbar-toggler-icon{
 .post-container{
     width: 100%;
     background: #fff;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     padding: 10px;
     color: #626262;
     box-sizing: border-box;
