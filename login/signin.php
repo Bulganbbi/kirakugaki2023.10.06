@@ -112,9 +112,6 @@ $con->close();
             <div class="input-box">
                 <input type="file" name="icon" accept="image/*">
             </div>
-            <div class="remember-forget">
-                <label><input type="checkbox">覚えておく</label>
-            </div>
             <button type="submit" class="btn">登録</button>
             <div class="register-link">
                 <?php if (!empty($errors)) : ?>

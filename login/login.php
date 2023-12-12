@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" name="password" placeholder="パスワード" required>
             </div>
             <div class="remember-forget">
-                <label><input type="checkbox">覚えておく</label>
                 <a href="#">パスワード忘れた方</a>
             </div>
             <button type="submit" class="btn">ログイン</button>
