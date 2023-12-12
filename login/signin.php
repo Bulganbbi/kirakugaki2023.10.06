@@ -6,6 +6,8 @@ require_once '../POST/functions.php';
 
 $con = new mysqli("localhost", "kirakugaki", "", "kirakugaki");
 
+$croppedImage = null;
+
 session_start();
 session_regenerate_id(true);
 
@@ -62,18 +64,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
                 $file_extension = strtolower(pathinfo($_FILES['icon']['name'], PATHINFO_EXTENSION));
                 $outputFilePath = $_SERVER['DOCUMENT_ROOT'] . '/-main2222/kirakugaki2023.10.06/processed_image/user_icon_' . uniqid() . '.' . $file_extension;
-            
-                switch ($file_extension) {
-                    case 'jpeg':
-                    case 'jpg':
-                        $image = imagecreatefromjpeg($tempFilePath);
-                        break;
-                    case 'png':
-                        $image = imagecreatefrompng($tempFilePath);
-                        break;
-                    default:
-                        die("サポートされていない画像形式です");
+                
+                if ($croppedImage !== null) {
+                    // 画像形式によって保存処理を変更
+                    switch ($file_extension) {
+                        case 'jpeg':
+                        case 'jpg':
+                            if (imagejpeg($croppedImage, $outputFilePath)) {
+                                // 保存成功の場合の処理
+                            } else {
+                                die("画像の保存に失敗しました");
+                            }
+                            break;
+                        case 'png':
+                            if (imagepng($croppedImage, $outputFilePath)) {
+                                // 保存成功の場合の処理
+                            } else {
+                                die("画像の保存に失敗しました");
+                            }
+                            break;
+                        default:
+                            die("サポートされていない画像形式です");
+                    }
+                } else {
+                    die("クロップされた画像が存在しません");
                 }
+                
             
                 $croppedImage = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => 100, 'height' => 100]);
                 ob_start();
