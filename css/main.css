@@ -547,7 +547,7 @@ span, .navbar-toggler-icon{
 .header_wrapper .cols_container .photos{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
-    gap: 5px;
+    gap: 8px;
     margin-bottom: 10px;
 }
 
@@ -651,4 +651,25 @@ input[type="radio"]:checked + .label {
     color: #fff;
 }
 
+
+.col-md-12 .form-group .input-box input[type="file"]{
+    display: none;
+}
+
+.form-group .input-box label{
+    display: inline-flex;
+    text-transform:uppercase;
+    color: white;
+    background-color: #ffaf01;
+    text-align: center;
+    padding: 10px 40px 10px 30px;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+    margin-left: 25px;
+
+ }
 

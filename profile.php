@@ -53,8 +53,6 @@ $con->close();
             height: 100%;
             object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
             object-position: center; /* 画像の表示位置を中央に設定 */
-            border: 2px solid #000; /* 黒い枠 */
-            border-radius: 8px; /* 丸い角 */
         }
     </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./main.css">

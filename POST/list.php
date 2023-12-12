@@ -88,14 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <!-- 追加 -->
     <style>
             /* 新しく追加した CSS スタイル */
-            .preview-image {
-        max-width: 100%; /* 画像の幅が親要素に収まるように設定 */
-        height: auto; /* アスペクト比を保持しながら幅に合わせて高さを自動調整 */
-        border-radius: 10px; /* 画像の端を少しだけ丸く */
-        border: 2px solid #000; /* 黒い枠で画像を囲む */
-        margin: 10px auto; /* 画像を中央寄せにするための余白 */
-        display: block; /* 不要な余白を削除 */
-    }
+        .preview-image {
+            max-width: 100%; /* 画像の幅が親要素に収まるように設定 */
+            height: auto; /* アスペクト比を保持しながら幅に合わせて高さを自動調整 */
+            border: 2px solid whitesmoke;
+            margin: 10px auto; /* 画像を中央寄せにするための余白 */
+            display: block; /* 不要な余白を削除 */
+        }
     </style>
     <script>
     $(document).ready(function () {
@@ -131,7 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         <div class="col-md-12">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
+                    <input type="file" id="uploadBtn"> 
+                    <label for="uploadBtn" name="image" accept=".jpg,.jpeg,.png" required>きらくがきを選択</label>
                     <?php if ($err_msg != ''): ?>
                         <div class="invalid-feedback d-block"><?= $err_msg; ?></div>
                     <?php endif; ?>
