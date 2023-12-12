@@ -546,9 +546,9 @@ span, .navbar-toggler-icon{
 }
 .header_wrapper .cols_container .photos{
     display: grid;
-    border: none;
     grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
-    gap: 20px;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
   .setting-content {
