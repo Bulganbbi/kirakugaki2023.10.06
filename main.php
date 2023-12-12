@@ -90,15 +90,6 @@ if (session_status() == PHP_SESSION_NONE) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $images = $stmt->fetchAll();
-    
-    //画像を投稿するにログインが必要
-    $canPostImage = false;
-    if ($loggedInUserId) {
-        $canPostImage = true;
-    } else {
-        // ログインしていない場合のエラーメッセージ
-        echo "画像を投稿するにはログインが必要です。";
-    }
     ?>
 
     <?php if (empty($images)): ?>
