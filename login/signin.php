@@ -93,7 +93,36 @@ $con->close();
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="assets/imgs/title.PNG" type="image/x-icon">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./style.css">
+    <script>
+        function previewImage(input) {
+            var preview = document.getElementById('imagePreview');
+            var file = input.files[0];
+            var reader = new FileReader();
 
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+    <style>
+        .wrapper {
+            text-align: center;
+        }
+
+        #imagePreview {
+            border-radius: 50%;
+            max-width: 150px;
+            max-height: 150px;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -112,9 +141,10 @@ $con->close();
             </div>
             <!-- アイコン画像のアップロードフィールド -->
             <div class="input-box">
-                <input type="file" id="uploadBtn">
-                <label for="uploadBtn" name="icon" accept="image/*"><i class="fa-solid fa-upload"></i>プロフィール写真選択</label>
+                <input type="file" name="icon" id="uploadBtn" accept="image/*" onchange="previewImage(this);">
+                <label for="uploadBtn"><i class="fa-solid fa-upload"></i>プロフィール写真選択</label>
             </div>
+            <img id="imagePreview" alt="プレビュー">
             <button type="submit" class="btn">登録</button>
             <div class="register-link">
                 <?php if (!empty($errors)) : ?>
