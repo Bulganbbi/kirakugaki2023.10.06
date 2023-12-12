@@ -92,6 +92,8 @@ $con->close();
     <title>アカウント作成</title>
     <link rel="stylesheet" href="../css/signin.css">
     <link rel="shortcut icon" href="assets/imgs/title.PNG" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
     <div class="wrapper">
@@ -110,7 +112,8 @@ $con->close();
             </div>
             <!-- アイコン画像のアップロードフィールド -->
             <div class="input-box">
-                <input type="file" name="icon" accept="image/*">
+                <input type="file" id="uploadBtn">
+                <label for="uploadBtn" name="icon" accept="image/*"><i class="fa-solid fa-upload"></i>プロフィール写真選択</label>
             </div>
             <button type="submit" class="btn">登録</button>
             <div class="register-link">
