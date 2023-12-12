@@ -32,6 +32,7 @@ nav{
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: rgba(255, 224, 85, 0.822);
  
 }
 .container-fluid{
@@ -543,9 +544,10 @@ span, .navbar-toggler-icon{
 .header_wrapper .cols_container .right_col nav button:hover{
     opacity: 0.8;
 }
-.header_wrapper .cols_container .right_col nav .photos{
+.header_wrapper .cols_container .photos{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    border: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
     gap: 20px;
 }
 
