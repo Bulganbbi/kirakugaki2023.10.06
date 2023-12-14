@@ -688,6 +688,7 @@ input[type="radio"]:checked + .label {
 
  }
 
+
  .photos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -710,6 +711,7 @@ input[type="radio"]:checked + .label {
     border-radius: none; 
     margin: 10px auto; 
 }
+  
 footer{
     position: fixed;
     bottom: 0px;

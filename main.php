@@ -72,7 +72,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <div class="main-content">
     <div class="write-post-container d-grid gap-2">
-        <a href="./POST/list.php" class="btn btn-warning btn-lg">らくがき投稿</a>
+        <a href="./POST/list.php" class="btn btn-warning btn-lg">きらくに投稿</a>
     </div>
 
 
