@@ -39,22 +39,6 @@ $con->close();
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./style.css">
-    <style>
-        /* .photos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px; 
-            margin-top: 20px; 
-            justify-content: center;
-        }
-
-        .photos img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            object-position: center;
-        } */
-    </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./main.css">
 </head>
 

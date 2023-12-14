@@ -128,18 +128,18 @@ $con->close();
     <div class="wrapper">
         <form action="signin.php" method="post" enctype="multipart/form-data">
             <h1>アカウント作成</h1>
-            <!-- ユーザ名の入力追加 -->
+            <!-- ユーザ名の入力 -->
             <div class="input-box">
                 <input type="text" name="name" placeholder="ユーザ名" required>
             </div>
-            <!-- 既存のメールアドレスとパスワードの入力フィールド -->
+            <!-- メールアドレスとパスワード-->
             <div class="input-box">
                 <input type="email" name="email" placeholder="メールアドレス" required>
             </div>
             <div class="input-box">
                 <input type="password" name="password" placeholder="パスワード" required>
             </div>
-            <!-- アイコン画像のアップロードフィールド -->
+            <!-- アイコン画像のアップロード -->
             <div class="input-box">
                 <input type="file" name="icon" id="uploadBtn" accept="image/*" onchange="previewImage(this);">
                 <label for="uploadBtn"><i class="fa-solid fa-upload"></i>プロフィール写真選択</label>

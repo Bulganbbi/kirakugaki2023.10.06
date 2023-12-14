@@ -16,9 +16,8 @@ if (!isset($_SESSION['user_id'])) {
 // データベースに接続
 $pdo = connectDB();
 
-// $images が null の場合、空の配列で初期化
 $images = $images ?? [];
-$err_msg = $err_msg ?? ""; // $err_msg が null の場合、空の文字列で初期化
+$err_msg = $err_msg ?? ""; 
 
 // POST メソッドでない場合
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -85,17 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- 追加 -->
     <style>
-            /* 新しく追加した CSS スタイル */
-            .preview-image {
-        max-width: 100%; /* 画像の幅が親要素に収まるように設定 */
-        height: auto; /* アスペクト比を保持しながら幅に合わせて高さを自動調整 */
-        border-radius: 10px; /* 画像の端を少しだけ丸く */
-        border: 2px solid #000; /* 黒い枠で画像を囲む */
-        margin: 10px auto; /* 画像を中央寄せにするための余白 */
-        display: block; /* 不要な余白を削除 */
-    }
+    /* .preview-image {
+        max-width: 100%; 
+        height: auto; 
+        border-radius: 10px; 
+        border: 2px solid #000; 
+        margin: 10px auto;
+        display: block; 
+    } */
     </style>
     <script>
     $(document).ready(function () {
@@ -124,7 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <div class="row">
         <div class="col-md-12 text-center">
             <?php if (!empty($images)): ?>
-                <!-- 修正 -->
                 <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
             <?php endif; ?>
         </div>
