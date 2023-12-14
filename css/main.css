@@ -710,3 +710,11 @@ input[type="radio"]:checked + .label {
     margin: 10px auto;
     display: block; 
 }
+
+.navbar-collapse {
+    flex-grow: 0; 
+}
+
+.navbar {
+    padding: 0; /* または padding: 0 !important; */
+}

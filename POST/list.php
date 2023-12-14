@@ -16,60 +16,57 @@ if (!isset($_SESSION['user_id'])) {
 // データベースに接続
 $pdo = connectDB();
 
-$images = $images ?? [];
 $err_msg = $err_msg ?? ""; 
 
 // POST メソッドでない場合
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    // 画像を取得
-    $sql = 'SELECT * FROM rakugaki_images WHERE user_id = :user_id ORDER BY created_at DESC';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
-    $stmt->execute();
-    $images = $stmt->fetchAll();
-} else {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
     // 画像を保存
-    if (!empty($_FILES['image']['name'])) {
-        $userId = $_SESSION['user_id'];
+    $userId = $_SESSION['user_id'];
 
-        $name = $_FILES['image']['name'];
-        $type = $_FILES['image']['type'];
-        $content = file_get_contents($_FILES['image']['tmp_name']);
-        $size = $_FILES['image']['size'];
-        $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-        $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
+    $name = $_FILES['image']['name'];
+    $type = $_FILES['image']['type'];
+    $content = file_get_contents($_FILES['image']['tmp_name']);
+    $size = $_FILES['image']['size'];
+    $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
+    $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
 
-        // 画像のサイズ・形式チェック
-        $maxFileSize = 20 * 1024 * 1024; // 20MBをバイト単位に変換
-        $validFileTypes = ['image/png', 'image/jpeg'];
-        if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
-            $err_msg = '* jpg, jpeg, png 形式で 20 MB までの画像を選択してください。';
-        }
+    // 画像のサイズ・形式チェック
+    $maxFileSize = 20 * 1024 * 1024; // 20MBをバイト単位に変換
+    $validFileTypes = ['image/png', 'image/jpeg'];
+    if ($size > $maxFileSize || !in_array($type, $validFileTypes)) {
+        $err_msg = '* jpg, jpeg, png 形式で 20 MB までの画像を選択してください。';
+    }
 
-        if ($err_msg == '') {
-            // 画像情報をデータベースに挿入
-            $sql = 'INSERT INTO rakugaki_images(user_id, image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
-            VALUES (:user_id, :image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
-    
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
-            $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-            $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-            $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-            $stmt->bindValue(':image_comment', $comment, PDO::PARAM_STR);
-            $stmt->bindValue(':image_hashtag', $hashtag, PDO::PARAM_STR); // ハッシュタグのバインド
-            $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-            $stmt->execute();
+    if ($err_msg == '') {
+        // 画像情報をデータベースに挿入
+        $sql = 'INSERT INTO rakugaki_images(user_id, image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
+        VALUES (:user_id, :image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
 
-            // リダイレクト前にセッションをクリアする
-            session_write_close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
+        $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
+        $stmt->bindValue(':image_comment', $comment, PDO::PARAM_STR);
+        $stmt->bindValue(':image_hashtag', $hashtag, PDO::PARAM_STR); // ハッシュタグのバインド
+        $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
+        $stmt->execute();
 
-            // 画像リストページにリダイレクト
-            header('Location: ../main.php'); 
-            exit();
-        }
+        // リダイレクト前にセッションをクリアする
+        session_write_close();
+
+        // 画像リストページにリダイレクト
+        header('Location: ../main.php'); 
+        exit();
     }
 }
+
+// 画像を取得
+$sql = 'SELECT * FROM rakugaki_images WHERE user_id = :user_id ORDER BY created_at DESC';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+$stmt->execute();
+$images = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -148,12 +145,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                 <?php endfor; ?>
             </ol>
             <div class="carousel-inner">
-                <?php for ($i = 0; $i < count($images); $i++): ?>
-                    <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
-                      <!-- 修正 -->
-                      <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
+                <?php foreach ($images as $index => $image): ?>
+                    <div class="carousel-item <?= ($index === 0) ? 'active' : '' ?>">
+                        <!-- 修正 -->
+                        <img src="data:image/jpeg;base64,<?= base64_encode($image['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
             <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
