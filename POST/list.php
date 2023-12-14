@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             session_write_close();
 
             // 画像リストページにリダイレクト
-            header('Location: ../main.php'); // パスを修正
+            header('Location: ../main.php'); 
             exit();
         }
     }
@@ -83,17 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <style>
-    /* .preview-image {
-        max-width: 100%; 
-        height: auto; 
-        border-radius: 10px; 
-        border: 2px solid #000; 
-        margin: 10px auto;
-        display: block; 
-    } */
-    </style>
+    
     <script>
     $(document).ready(function () {
         // ファイルが選択されたときに呼び出されるイベント
