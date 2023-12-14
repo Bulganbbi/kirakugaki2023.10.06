@@ -115,7 +115,10 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <?php endif; ?>
                                     <div>
                                         <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
-                                        <!-- 削除ボタン(予定) -->
+                                        <!-- 削除ボタン -->
+                                        <?php if ($loggedInUserId == $image['user_id']): ?>
+                                            <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm">削除</a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
