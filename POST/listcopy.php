@@ -127,22 +127,20 @@ $images = $stmt->fetchAll();
         display: none;
     }
 </style>
-
 </head>
 <body>
     <?php include("../components/post_nav.php"); ?>
-    <div class="container mt-5">
+        <div class="container mt-5">
         <div class="row">
             <div class="col-md-12 text-center">
-                <div class="file-input-container">
-                    <?php if (!empty($images)): ?>
-                        <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
-                    <?php endif; ?>
-                </div>
+                <?php if (!empty($images)): ?>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($images[0]['image_content']); ?>" class="img-fluid preview-image mb-3" alt="Preview Image">
+                <?php endif; ?>
             </div>
             <div class="col-md-12">
                 <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
+                        <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
                         <?php if ($err_msg != ''): ?>
                             <div class="invalid-feedback d-block"><?= $err_msg; ?></div>
                         <?php endif; ?>
@@ -154,6 +152,7 @@ $images = $stmt->fetchAll();
                         <input type="text" name="hashtag" class="form-control mb-3" placeholder="タグ付け 例:#オリキャラ">
                     </div>
                     <div class="text-center">
+                        <!-- 修正 -->
                         <button type="submit" class="btn btn-primary">保存</button>
                     </div>
                 </form>

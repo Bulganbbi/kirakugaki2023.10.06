@@ -41,9 +41,9 @@ nav{
     margin-top: -5px;
 }
 
-.container, .container-md, .container-sm {
-    max-width: 1500px;
-}
+/* .container, .container-md, .container-sm {
+    /* max-width: 1500px; */
+
 
 #navbarCollapse a{
     font-size: 20px;
@@ -94,7 +94,7 @@ span, .navbar-toggler-icon{
 
 
 .container{
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
 }
 
@@ -709,7 +709,6 @@ input[type="radio"]:checked + .label {
     max-width: 100%; 
     height: auto; 
     border-radius: none; 
-    margin: 10px auto; 
 }
   
 footer{
@@ -762,3 +761,11 @@ footer, p{
   .setting-links a:hover {
     color: #f0e623; /* ホバー時のリンクの色を変更 */
   }
+
+  .navbar-collapse {
+    flex-grow: 0; 
+}
+
+.navbar {
+    padding: 0; /* または padding: 0 !important; */
+}
