@@ -22,6 +22,7 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="./main.php"><img src="./images/title.png" alt="Bootstrap 5 logo" class="d-inline-block align-top" width="90" height="56"></a>

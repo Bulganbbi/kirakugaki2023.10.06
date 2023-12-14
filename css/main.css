@@ -37,15 +37,14 @@ nav{
 }
 .container-fluid{
     display: flex;
-    /* background-color: rgba(255, 224, 85, 0.728); */
-    margin-top: 0;
+    background-color: rgba(255, 224, 85, 0.728);
+    margin-top: -5px;
 }
 
 .container, .container-md, .container-sm {
     max-width: 1500px;
 }
 
-    
 #navbarCollapse a{
     font-size: 20px;
     color: #000000;
@@ -74,6 +73,8 @@ span, .navbar-toggler-icon{
     display: flex;
     align-items: center;
     padding: 0 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .d-flex img{
     width: 25px;
