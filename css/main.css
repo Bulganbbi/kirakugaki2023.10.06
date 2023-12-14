@@ -721,9 +721,15 @@ footer, p{
     /* text-align: center; */
     font-size: 15px;
     margin-top: 3px;
-    margin-bottom: -3px;
+    margin-bottom: 0;
+} 
+  
+.help_link a {
+    color: rgb(135, 135, 135);
+    text-decoration: none;
+    margin: 0 10px;
 }
-.help_link{
-    font-size: 15px;
-     color: #000000;
+  
+.help_link a:hover {
+    color: black; 
 }
