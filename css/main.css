@@ -205,10 +205,12 @@ span, .navbar-toggler-icon{
     padding: 2px 0;
 }
 .write-post-container{
-    width: 100%;
+    width: 80%;
     border-radius: 6px;
     padding: 20px;
     color: #626262;
+    margin-left: 10%;
+    align-items: center;
 }
 
 .user-profile{
@@ -281,6 +283,7 @@ span, .navbar-toggler-icon{
 }
 .main-contents{
     flex-basis: 30%;
+    margin: 20px;
 
 }
 .right-post-contents{
@@ -309,13 +312,23 @@ span, .navbar-toggler-icon{
 .post-img {
     object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
     object-position: center; /* 画像の表示位置を中央に設定 */
-    height: 200px; /* 画像の高さを調整（適切な高さに調整してください） */
+    height: 400px; /* 画像の高さを調整（適切な高さに調整してください） */
     width: 100%; /* 幅は親要素に合わせて100%に設定 */
 }
 .post-row{
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.row {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) );
+    margin-left: calc(var(--bs-gutter-x) );
 }
 .activity-icons div img{
     width: 18px;
