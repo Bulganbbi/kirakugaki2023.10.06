@@ -40,20 +40,20 @@ $con->close();
     <link rel="stylesheet" href="css/main.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./style.css">
     <style>
-        .photos {
+        /* .photos {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px; /* 画像間の間隔 */
-            margin-top: 20px; /* 適切な余白を設定 */
-            justify-content: center; /* 中央寄せ */
+            gap: 10px; 
+            margin-top: 20px; 
+            justify-content: center;
         }
 
         .photos img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 画像を均等に拡大または縮小して表示 */
-            object-position: center; /* 画像の表示位置を中央に設定 */
-        }
+            object-fit: cover; 
+            object-position: center;
+        } */
     </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'><link rel="stylesheet" href="./main.css">
 </head>

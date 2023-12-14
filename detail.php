@@ -12,8 +12,7 @@ $pdo = connectDB();
 $imageId = isset($_GET['image_id']) ? $_GET['image_id'] : null;
 
 if (!$imageId) {
-    // エラー処理など、画像IDが指定されていない場合の処理を追加することがあります。
-    header("Location: ./POST/list.php"); // 例: 一覧ページにリダイレクト
+    header("Location: ./POST/list.php"); //  一覧ページにリダイレクト
     exit();
 }
 
@@ -27,8 +26,7 @@ $stmt->execute();
 $image = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$image) {
-    // エラー処理など、該当の画像が見つからない場合の処理を追加することがあります。
-    header("Location: ./POST/list.php"); // 例: 一覧ページにリダイレクト
+    header("Location: ./POST/list.php"); // 一覧ページにリダイレクト
     exit();
 }
 ?>
@@ -46,7 +44,6 @@ if (!$image) {
     <link rel="shortcut icon" href="./images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
     <style>
-        /* 追加したスタイル */
         .post-img {
             object-fit: contain;
             object-position: center;
@@ -100,7 +97,7 @@ if (!$image) {
         <p class="post-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
     </div>
 
-    <!-- 拡大表示用のモーダル -->
+    <!-- 拡大表示用 -->
     <div class="post-img-modal" id="postImgModal">
         <img id="modalImg" src="" alt="拡大表示画像">
     </div>
@@ -111,14 +108,13 @@ if (!$image) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
 
-                // モーダルに画像を表示
+                // 画像を表示
                 var imgUrl = link.getAttribute('data-img-url');
                 document.getElementById('modalImg').src = imgUrl;
                 document.getElementById('postImgModal').style.display = 'flex';
             });
         });
 
-        // モーダル外をクリックしたときの処理（モーダルを非表示にする）
         document.getElementById('postImgModal').addEventListener('click', function(e) {
             if (e.target.id === 'postImgModal') {
                 this.style.display = 'none';
