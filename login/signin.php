@@ -144,7 +144,7 @@ $con->close();
                 <input type="file" name="icon" id="uploadBtn" accept="image/*" onchange="previewImage(this);">
                 <label for="uploadBtn"><i class="fa-solid fa-upload"></i>プロフィール写真選択</label>
             </div>
-            <img id="imagePreview" alt="プレビュー">
+            <img id="imagePreview" alt="">
             <button type="submit" class="btn">登録</button>
             <div class="register-link">
                 <?php if (!empty($errors)) : ?>
