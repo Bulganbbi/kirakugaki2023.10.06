@@ -21,6 +21,7 @@ if (session_status() == PHP_SESSION_NONE) {
     </style>
 </head>
 <body>
+<?php include("../components/footer.php"); ?>
 <?php include("../components/setting_nav.php"); ?>
     <?php include("../components/setting.php"); ?>
         <!-- ユーザー設定項目 -->

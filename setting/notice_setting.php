@@ -21,6 +21,8 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
 <?php include("../components/setting_nav.php"); ?>
+<?php include("../components/footer.php"); ?>
+
     <?php include("../components/setting.php"); ?>
         <!-- 通知設定 -->
         <div class="setting-content">
