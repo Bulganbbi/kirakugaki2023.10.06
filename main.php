@@ -30,7 +30,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <!-- main content -->
 <style>
-    :root {
+    /* :root {
     --gutter-x: 0.5rem;
     --gutter-y: -1.5rem; 
     }
@@ -66,7 +66,7 @@ if (session_status() == PHP_SESSION_NONE) {
         background-color: rgba(255, 193, 7, 0.5); 
         border-color: #ffc107; 
         color: #212529; 
-    }
+    } */
 
 </style>
 

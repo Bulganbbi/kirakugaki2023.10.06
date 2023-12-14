@@ -1,4 +1,4 @@
-<?php
+<?phphttp://localhost/-main2222/kirakugaki2023.10.06/POST/list.php
 if (session_status() == PHP_SESSION_NONE) {
     // セッションがまだ開始されていない場合にのみ開始
     session_start();
