@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
 <?php include("./components/nav.php"); ?>
-<?php include("./components/aside.php"); ?>
+
 
 <!-- main content -->
 <style>
@@ -96,7 +96,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <p class="text-center mt-5">まだ投稿がありません。</p>
     <?php else: ?>
         <!-- 画像表示 -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             <?php foreach ($images as $image): ?>
                 <div class="col mb-4">
                     <!-- 画像をクリックしたら詳細ページに遷移 -->
@@ -128,8 +128,9 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
+    
 </div>
-
+<?php include("./components/footer.php"); ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
