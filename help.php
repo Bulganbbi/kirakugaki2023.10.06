@@ -25,7 +25,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <body>
 <?php include("./components/nav.php"); ?>
-    <?php include("./components/aside.php"); ?>
 
         <!--help content-->
         <div class="help-content">
