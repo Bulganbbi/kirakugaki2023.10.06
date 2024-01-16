@@ -31,14 +31,8 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- main content -->
 <style>
     :root {
-    --gutter-x: 0.5rem;
-    --gutter-y: -1.5rem; 
-    }
-    .post-img {
-        object-fit: cover; 
-        object-position: center; 
-        height: 200px; 
-        width: 100%; 
+        --gutter-x: 0.5rem;
+        --gutter-y: -1.5rem; 
     }
 
     .write-post-container {
@@ -54,6 +48,7 @@ if (session_status() == PHP_SESSION_NONE) {
         align-items: center;
         gap: 10px;
     }
+
     .truncated-text {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -67,7 +62,6 @@ if (session_status() == PHP_SESSION_NONE) {
         border-color: #ffc107; 
         color: #212529; 
     }
-
 </style>
 
 <div class="main-content">
