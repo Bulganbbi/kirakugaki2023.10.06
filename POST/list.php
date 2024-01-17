@@ -16,6 +16,10 @@ if (!isset($_SESSION['user_id'])) {
 // データベースに接続
 $pdo = connectDB();
 
+// 表示条件を取得
+$restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restriction_value'] : '';
+$condition = ($restrictionValue == '2') ? ' AND r18_flag = 0' : '';
+
 $err_msg = $err_msg ?? "";
 
 // POST メソッドでない場合
@@ -29,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
     $size = $_FILES['image']['size'];
     $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
     $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
+    $r18Flag = isset($_POST['r18_flag']) ? $_POST['r18_flag'] : 0; // R18 フラグの追加
+    $r18_flag = isset($_POST['r18']) ? 1 : 0; // R18チェックがある場合は1、ない場合は0
 
     // 画像のサイズ・形式チェック
     $maxFileSize = 20 * 1024 * 1024; // 20MBをバイト単位に変換
@@ -39,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
 
     if ($err_msg == '') {
         // 画像情報をデータベースに挿入
-        $sql = 'INSERT INTO rakugaki_images(user_id, image_name, image_type, image_content, image_size, image_comment, image_hashtag, created_at)
-        VALUES (:user_id, :image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, now())';
+        $sql = 'INSERT INTO rakugaki_images(user_id, image_name, image_type, image_content, image_size, image_comment, image_hashtag, r18_flag, created_at)
+        VALUES (:user_id, :image_name, :image_type, :image_content, :image_size, :image_comment, :image_hashtag, :r18_flag, now())';
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':user_id', $userId, PDO::PARAM_INT);
@@ -48,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
         $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
         $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
         $stmt->bindValue(':image_comment', $comment, PDO::PARAM_STR);
-        $stmt->bindValue(':image_hashtag', $hashtag, PDO::PARAM_STR); // ハッシュタグのバインド
+        $stmt->bindValue(':image_hashtag', $hashtag, PDO::PARAM_STR);
+        $stmt->bindValue(':r18_flag', $r18Flag, PDO::PARAM_INT);
         $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -64,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
 // 画像を取得（新しい画像がアップロードされたときだけ表示）
 $images = [];
 if (empty($err_msg)) {
-    $sql = 'SELECT * FROM rakugaki_images WHERE user_id = :user_id ORDER BY created_at DESC';
+    $sql = 'SELECT * FROM rakugaki_images WHERE user_id = :user_id' . $condition . ' ORDER BY created_at DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->execute();
@@ -167,6 +174,10 @@ if (empty($err_msg)) {
                     <div class="form-group">
                         <input type="text" name="hashtag" class="form-control mb-3" placeholder="タグ付け 例:#オリキャラ">
                     </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="r18_flag" name="r18_flag" value="1">
+                        <label class="form-check-label" for="r18_flag">R18</label>
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">保存</button>
                     </div>
@@ -177,38 +188,37 @@ if (empty($err_msg)) {
 
     <!-- 画像一覧を表示するためのカルーセル -->
     <?php if (!empty($images)): ?>
-        <div class="modal carousel slide" id="lightbox" tabindex="-1" role="dialog" data-ride="carousel">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <ol class="carousel-indicators">
-                            <?php for ($i = 0; $i < count($images); $i++): ?>
-                                <li data-target="#lightbox" data-slide-to="<?= $i; ?>" <?php if ($i == 0) echo 'class="active"'; ?>></li>
-                            <?php endfor; ?>
-                        </ol>
-                        <div class="carousel-inner">
-                            <?php foreach ($images as $index => $image): ?>
-                                <div class="carousel-item <?= ($index === 0) ? 'active' : '' ?>">
-                                    <!-- 修正 -->
-                                    <img src="data:image/jpeg;base64,<?= base64_encode($image['image_content']); ?>"
-                                        class="img-fluid preview-image mb-3" alt="Preview Image">
+                <div class="modal carousel slide" id="lightbox" tabindex="-1" role="dialog" data-ride="carousel">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <ol class="carousel-indicators">
+                                    <?php for ($i = 0; $i < count($images); $i++): ?>
+                                        <li data-target="#lightbox" data-slide-to="<?= $i; ?>" <?php if ($i == 0) echo 'class="active"'; ?>></li>
+                                    <?php endfor; ?>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <?php foreach ($images as $index => $image): ?>
+                                        <div class="carousel-item <?= ($index === 0) ? 'active' : '' ?>">
+                                            <img src="data:image/jpeg;base64,<?= base64_encode($image['image_content']); ?>"
+                                                class="img-fluid preview-image mb-3" alt="Preview Image">
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
+                                <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#lightbox" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
-                        <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#lightbox" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-
 </body>
 
 </html>
