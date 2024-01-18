@@ -42,4 +42,20 @@ function getUserIcon($userId) {
     return $result['user_icon'] ?? null;
 }
 
+function searchImagesByKeyword($keyword) {
+    $pdo = connectDB();
+
+    $sql = 'SELECT i.*, u.name FROM rakugaki_images i
+            INNER JOIN users u ON i.user_id = u.user_id
+            WHERE i.image_comment LIKE :keyword OR i.image_hashtag LIKE :keyword
+            ORDER BY i.created_at DESC';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
+
 ?>
