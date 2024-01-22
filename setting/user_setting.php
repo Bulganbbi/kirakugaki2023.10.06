@@ -149,9 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage']))
                         <label for="see" class="label">表示する</label>                            
                         <input type="radio" name="restriction" value="2" id="nosee" <?php echo ($restrictionValue == '2') ? 'checked' : ''; ?>>
                         <label for="nosee" class="label">表示しない</label>  
-                        <input type="submit" name="submit" class="btn_type01" value="適用">
+                        <input type="submit" name="changeRestriction" class="btn_type01" value="適用">
                     </form>
                 </li>
+
             </ul> 
                         <!-- 適用ボタン -->
             <div class="submit">
