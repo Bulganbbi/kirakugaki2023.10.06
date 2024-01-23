@@ -102,6 +102,7 @@ $images = $stmt->fetchAll();
     });
     </script>
 </head>
+
 <body>
 <?php include("../components/post_nav.php"); ?>
 <div class="container mt-5">
