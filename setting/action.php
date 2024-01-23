@@ -1,5 +1,3 @@
-<!-- action.php -->
-
 <?php
 session_start();
 
@@ -12,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // セッションに設定値を保存
     $_SESSION['restriction_value'] = $restrictionValue;
 
-    // 他の処理も追加できる場合はここに追加
+    // データベースに閲覧制限の値を保存する処理を追加
+    // ここで適切なデータベースへの接続と更新処理を実行する必要があります
+
 }
 
 // 設定が終わったらメイン画面にリダイレクト

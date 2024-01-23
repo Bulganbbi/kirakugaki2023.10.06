@@ -570,7 +570,7 @@ span, .navbar-toggler-icon{
     margin: 20px auto;
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 0px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
   /* help-post-containerクラス */

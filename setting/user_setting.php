@@ -11,20 +11,20 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
 $pdo = connectDB();
 
 // 表示条件を取得
-$condition = ($restrictionValue == '2') ? ' AND r18_flag = 0' : '';
+// $condition = ($restrictionValue == '2') ? ' AND r18_flag = 0' : '';
 
 // データベースからr18_flagを取得
-$sql = 'SELECT r18_flag FROM rakugaki_images WHERE user_id = :user_id';
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
-$stmt->execute();
-$databaseR18Flag = $stmt->fetchColumn();
+// $sql = 'SELECT r18_flag FROM rakugaki_images WHERE user_id = :user_id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+// $stmt->execute();
+// $databaseR18Flag = $stmt->fetchColumn();
 
-// r18_flagが取得できた場合はセッションの値を更新
-if ($databaseR18Flag !== false) {
-    $_SESSION['restriction_value'] = $databaseR18Flag;
-    $restrictionValue = $databaseR18Flag;
-}
+// // r18_flagが取得できた場合はセッションの値を更新
+// if ($databaseR18Flag !== false) {
+//     $_SESSION['restriction_value'] = $databaseR18Flag;
+//     $restrictionValue = $databaseR18Flag;
+// }
 
 // ユーザー情報を取得
 $sqlUserInfo = 'SELECT user_icon FROM users WHERE user_id = :user_id';
@@ -32,6 +32,30 @@ $stmtUserInfo = $pdo->prepare($sqlUserInfo);
 $stmtUserInfo->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
 $stmtUserInfo->execute();
 $userInfo = $stmtUserInfo->fetch(PDO::FETCH_ASSOC);
+
+// 閲覧制限変更処理
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeRestriction'])) {
+    $newRestrictionValue = isset($_POST['restriction']) ? $_POST['restriction'] : '';
+
+    // バリデーションが必要ならここで実装
+
+    // データベースなどに新しい閲覧制限の値を保存する処理を追加
+    // 例えば、rakugaki_images テーブルに新しい値を保存する場合：
+    // $updateRestrictionSql = 'UPDATE rakugaki_images SET r18_flag = :r18_flag WHERE user_id = :user_id';
+    // $updateRestrictionStmt = $pdo->prepare($updateRestrictionSql);
+    // $updateRestrictionStmt->bindValue(':r18_flag', $newRestrictionValue, PDO::PARAM_INT);
+    // $updateRestrictionStmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    // $updateRestrictionStmt->execute();
+
+    // セッションの閲覧制限の値も更新
+    $_SESSION['restriction_value'] = $newRestrictionValue;
+
+    // 必要に応じて他の処理を追加
+
+    // リダイレクト
+    header('Location: 設定変更後の画面のURL');
+    exit;
+}
 
 // ユーザーネーム変更処理
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeUsername'])) {
@@ -75,7 +99,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage']))
     <link rel="shortcut icon" href="../images/title.PNG" type="image/x-icon">
     <link rel="stylesheet" href="../css/main.css">
     <style>
-    </style>
+    .setting-post-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* 必要に応じてテキストの中央揃えも追加 */
+    }
+
+    .setting-post-container img {
+        max-width: 100%; /* 画像がコンテナをはみ出さないように */
+        border-radius: 50%; /* 画像を円形にする場合は必要 */
+    }
+
+    .submit {
+        margin-top: 20px; /* 適用ボタンの上部の余白 */
+    }
+</style>
+
 </head>
 <body>
     <?php include("../components/footer.php"); ?>
@@ -89,6 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage']))
             <img src="data:image/jpeg;base64,<?php echo base64_encode($userInfo['user_icon']); ?>" alt="プロフィール画像">
 
             <ul>
+                <h1> <?php echo htmlspecialchars($_SESSION['user_name'] ?? ''); ?></h1>
                 <!-- ユーザーネーム変更ポップアップ -->
                 <li>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeUsernameModal">
@@ -141,24 +183,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage']))
                             </div>
                         </div>
                     </div>
-                </li>
+                <!-- </li>
                 <li>
                     <p>閲覧制限(R18&R18G)</p>
-                    <form action="" method="post">
+                    <form action="action.php" method="post">
                         <input type="radio" name="restriction" value="1" id="see" <?php echo ($restrictionValue == '1') ? 'checked' : ''; ?>>
                         <label for="see" class="label">表示する</label>                            
                         <input type="radio" name="restriction" value="2" id="nosee" <?php echo ($restrictionValue == '2') ? 'checked' : ''; ?>>
                         <label for="nosee" class="label">表示しない</label>  
                         <input type="submit" name="changeRestriction" class="btn_type01" value="適用">
                     </form>
-                </li>
+                </li> -->
 
             </ul> 
-                        <!-- 適用ボタン -->
-            <div class="submit">
-                <hr>
-                <input type="submit" name="submit" class="btn_type01" value="適用"> 
-            </div>
         </div>
     </div>
 

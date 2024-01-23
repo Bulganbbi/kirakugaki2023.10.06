@@ -33,9 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES['image']['name'])) {
     $size = $_FILES['image']['size'];
     $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
     $hashtag = isset($_POST['hashtag']) ? $_POST['hashtag'] : ''; // ハッシュタグの追加
-    $r18Flag = isset($_POST['r18_flag']) ? $_POST['r18_flag'] : 0; // R18 フラグの追加
-    $r18_flag = isset($_POST['r18']) ? 1 : 0; // R18チェックがある場合は1、ない場合は0
+    $r18Flag = isset($_POST['r18_flag']) ? $_POST['r18_flag'] : 1; // R18 フラグの追加
+    $r18_flag = isset($_POST['r18_flag']) ? ($_POST['r18_flag'] == 1 ? 2 : 1) : 1; // チェックがあれば2、なければ1
 
+    
     // 画像のサイズ・形式チェック
     $maxFileSize = 20 * 1024 * 1024; // 20MBをバイト単位に変換
     $validFileTypes = ['image/png', 'image/jpeg'];
