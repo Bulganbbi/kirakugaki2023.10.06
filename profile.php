@@ -58,7 +58,10 @@ $con->close();
                 <hr>
                 <div class="content">
                     <p>
-                        プロフィール
+                        <form action="/submit_form" method="post">
+                            <input type="text">
+                            <input type="submit" value="決定">
+                        </form>
                     </p>
                     <hr>
                     <div class="social-icon">

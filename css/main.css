@@ -621,7 +621,7 @@ span, .navbar-toggler-icon{
   }
   
   .btn_type01:hover {
-    background-color: rgba(255, 224, 85, 0.986);
+    background-color: rgb(254, 221, 74);
   }
 
 
@@ -704,11 +704,11 @@ input[type="radio"]:checked + .label {
     object-position: center;
 }
 
-.preview-image {
+ .preview-image {
     max-width: 100%; 
     height: auto; 
     border-radius: none; 
-    margin:auto; 
+    margin: 10px auto; 
 }
   
 footer{
