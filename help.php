@@ -99,7 +99,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <hr>
                 <section>
                     <h2>お問い合わせ</h2>
-                    <p>ご質問やお困りのことがあれば、<a href="email.php">お問い合わせページ</a>でご連絡いただけます。</p>
+                    <p>ご質問やお困りのことがあれば、<a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqVxDftkDhrZSxFLczShMkHxrhpKXBcVNTNkjRSkMPPBdBjLvQfBMVJwwHhQCnCmvkJwCL">お問い合わせページ</a>でご連絡いただけます。</p>
                 </section>                
             </div>
         </div>

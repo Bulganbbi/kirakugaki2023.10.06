@@ -704,7 +704,7 @@ input[type="radio"]:checked + .label {
     object-position: center;
 }
 
-/* .preview-image {
+ .preview-image {
     max-width: 100%; 
     height: auto; 
     border-radius: none; 
