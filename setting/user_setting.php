@@ -5,8 +5,65 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-?>
+$restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restriction_value'] : '';
 
+// データベースに接続
+$pdo = connectDB();
+
+// 表示条件を取得
+$condition = ($restrictionValue == '2') ? ' AND r18_flag = 0' : '';
+
+// データベースからr18_flagを取得
+$sql = 'SELECT r18_flag FROM rakugaki_images WHERE user_id = :user_id';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+$stmt->execute();
+$databaseR18Flag = $stmt->fetchColumn();
+
+// r18_flagが取得できた場合はセッションの値を更新
+if ($databaseR18Flag !== false) {
+    $_SESSION['restriction_value'] = $databaseR18Flag;
+    $restrictionValue = $databaseR18Flag;
+}
+
+// ユーザー情報を取得
+$sqlUserInfo = 'SELECT user_icon FROM users WHERE user_id = :user_id';
+$stmtUserInfo = $pdo->prepare($sqlUserInfo);
+$stmtUserInfo->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+$stmtUserInfo->execute();
+$userInfo = $stmtUserInfo->fetch(PDO::FETCH_ASSOC);
+
+// ユーザーネーム変更処理
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeUsername'])) {
+    $newUsername = isset($_POST['newUsername']) ? $_POST['newUsername'] : '';
+
+    // バリデーションが必要ならここで実装
+
+    // データベースにユーザーネームを更新
+    $updateSql = 'UPDATE users SET name = :newUsername WHERE user_id = :user_id';
+    $updateStmt = $pdo->prepare($updateSql);
+    $updateStmt->bindValue(':newUsername', $newUsername, PDO::PARAM_STR);
+    $updateStmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $updateStmt->execute();
+
+    // セッションのユーザーネームも更新
+    $_SESSION['user_name'] = $newUsername;
+}
+
+// プロフィール画像変更処理
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage'])) {
+    $profileImage = $_FILES['profileImage'];
+
+    // バリデーションが必要ならここで実装
+
+    // 画像をDBに保存
+    $updateSql = 'UPDATE users SET user_icon = :user_icon WHERE user_id = :user_id';
+    $updateStmt = $pdo->prepare($updateSql);
+    $updateStmt->bindValue(':user_icon', file_get_contents($profileImage['tmp_name']), PDO::PARAM_LOB);
+    $updateStmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $updateStmt->execute();
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,36 +78,90 @@ if (session_status() == PHP_SESSION_NONE) {
     </style>
 </head>
 <body>
-<?php include("../components/footer.php"); ?>
-<?php include("../components/setting_nav.php"); ?>
+    <?php include("../components/footer.php"); ?>
+    <?php include("../components/setting_nav.php"); ?>
     <?php include("../components/setting.php"); ?>
-        <!-- ユーザー設定項目 -->
-        <div class="setting-content">
-                <div class="setting-post-container" >
-                    <img src="../images/profile..jpg" >
-                    <ul>
-                    <li>
-                        <a href="">ユーザーネーム変更</a>   <!-- プロフィールに飛ばす -->
-                    </li>
-                    <li>
-                        <a href="">プロフィール画像変更</a>  <!-- プロフィールに飛ばす -->
-                    </li>
-                    <li>
-                        <p>閲覧制限(R18&R18G)</p>
-                        <form action="action.php">
-                            <input type="radio" name="q1" value="1" id="see">
-                            <label for="see" class="label">表示する</label>                            
-                            <input type="radio" name="q1" value="2" id="nosee">
-                            <label for="nosee" class="label">表示しない</label>  
-                        </form>
-                    </li>
-                    </ul> 
-            <!-- 適用ボタン -->
+
+    <!-- ユーザー設定項目 -->
+    <div class="setting-content">
+        <div class="setting-post-container">
+            <!-- プロフィール画像の表示 -->
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($userInfo['user_icon']); ?>" alt="プロフィール画像">
+
+            <ul>
+                <!-- ユーザーネーム変更ポップアップ -->
+                <li>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeUsernameModal">
+                        ユーザーネーム変更
+                    </button>
+
+                    <div class="modal fade" id="changeUsernameModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">ユーザーネーム変更</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>現在のユーザーネーム: <?php echo htmlspecialchars($_SESSION['user_name'] ?? ''); ?></p>
+                                    <form method="post" action="">
+                                        <div class="mb-3">
+                                            <label for="newUsername" class="form-label">新しいユーザーネーム</label>
+                                            <input type="text" class="form-control" id="newUsername" name="newUsername" required>
+                                        </div>
+                                        <button type="submit" name="changeUsername" class="btn btn-primary">変更</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- プロフィール画像変更ポップアップ -->
+                <li>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeProfileImageModal">
+                        プロフィール画像変更
+                    </button>
+
+                    <div class="modal fade" id="changeProfileImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">プロフィール画像変更</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="profileImage" class="form-label">新しいプロフィール画像を選択</label>
+                                            <input type="file" class="form-control" id="profileImage" name="profileImage" accept="image/*" required>
+                                        </div>
+                                        <button type="submit" name="changeProfileImage" class="btn btn-primary">変更</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p>閲覧制限(R18&R18G)</p>
+                    <form action="" method="post">
+                        <input type="radio" name="restriction" value="1" id="see" <?php echo ($restrictionValue == '1') ? 'checked' : ''; ?>>
+                        <label for="see" class="label">表示する</label>                            
+                        <input type="radio" name="restriction" value="2" id="nosee" <?php echo ($restrictionValue == '2') ? 'checked' : ''; ?>>
+                        <label for="nosee" class="label">表示しない</label>  
+                        <input type="submit" name="changeRestriction" class="btn_type01" value="適用">
+                    </form>
+                </li>
+
+            </ul> 
+                        <!-- 適用ボタン -->
             <div class="submit">
                 <hr>
                 <input type="submit" name="submit" class="btn_type01" value="適用"> 
             </div>
         </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>    
-    
+</body>
+</html>

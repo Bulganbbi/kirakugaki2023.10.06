@@ -94,7 +94,6 @@ span, .navbar-toggler-icon{
 
 
 .container{
-    display: flex;
     justify-content: space-between;
 }
 
@@ -710,7 +709,7 @@ input[type="radio"]:checked + .label {
     height: auto; 
     border-radius: none; 
     margin: 10px auto; 
-} */
+}
   
 footer{
     position: fixed;

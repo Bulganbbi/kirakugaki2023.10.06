@@ -1,4 +1,5 @@
 <?php
+// main.php
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -9,6 +10,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// 閲覧制限の値を取得
+$restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restriction_value'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -31,14 +34,8 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- main content -->
 <style>
     :root {
-    --gutter-x: 0.5rem;
-    --gutter-y: -1.5rem; 
-    }
-    .post-img {
-        object-fit: cover; 
-        object-position: center; 
-        height: 200px; 
-        width: 100%; 
+        --gutter-x: 0.5rem;
+        --gutter-y: -1.5rem; 
     }
 
     .write-post-container {
@@ -54,6 +51,7 @@ if (session_status() == PHP_SESSION_NONE) {
         align-items: center;
         gap: 10px;
     }
+
     .truncated-text {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -67,7 +65,6 @@ if (session_status() == PHP_SESSION_NONE) {
         border-color: #ffc107; 
         color: #212529; 
     }
-
 </style>
 
 <div class="main-content">
@@ -97,38 +94,45 @@ if (session_status() == PHP_SESSION_NONE) {
     <?php else: ?>
         <!-- 画像表示 -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-            <?php foreach ($images as $image): ?>
-                <div class="col mb-4">
-                    <!-- 画像をクリックしたら詳細ページに遷移 -->
-                    <a href="detail.php?image_id=<?= $image['image_id']; ?>" class="text-decoration-none text-reset">
-                        <div class="post-container">
-                            <!-- ユーザー情報 -->
-                            <div class="left-post-contents">
-                                <div class="user-profile">
-                                    <!-- ユーザーのアイコン -->
-                                    <?php if ($loggedInUserId == $image['user_id']): ?>
-                                        <!-- ログイン中のユーザーのアイコン -->
-                                        <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon">
-                                    <?php else: ?>
-                                        <!-- 他のユーザーのアイコン -->
-                                        <img src="data:image/jpeg;base64,<?= base64_encode(getUserIcon($image['user_id'])); ?>" alt="User Icon">
-                                    <?php endif; ?>
-                                    <div>
-                                        <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
-                                        <!-- 削除ボタン -->
-                                        <?php if ($loggedInUserId == $image['user_id']): ?>
-                                            <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm">削除</a>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 作品情報 -->
-                            <p class="post-text truncated-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
-                            <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
+        <?php foreach ($images as $image): ?>
+    <div class="col mb-4">
+        <!-- 画像をクリックしたら詳細ページに遷移 -->
+        <a href="detail.php?image_id=<?= $image['image_id']; ?>" class="text-decoration-none text-reset">
+            <div class="post-container">
+                <!-- ユーザー情報 -->
+                <div class="left-post-contents">
+                    <div class="user-profile">
+                        <!-- ユーザーのアイコン -->
+                        <?php if ($loggedInUserId == $image['user_id']): ?>
+                            <!-- ログイン中のユーザーのアイコン -->
+                            <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon">
+                        <?php else: ?>
+                            <!-- 他のユーザーのアイコン -->
+                            <img src="data:image/jpeg;base64,<?= base64_encode(getUserIcon($image['user_id'])); ?>" alt="User Icon">
+                        <?php endif; ?>
+                        <div>
+                            <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
+                            <!-- 削除ボタン -->
+                            <?php if ($loggedInUserId == $image['user_id']): ?>
+                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm">削除</a>
+                            <?php endif; ?>
                         </div>
-                    </a>
+                    </div>
                 </div>
-            <?php endforeach; ?>
+                <!-- 作品情報 -->
+                <p class="post-text truncated-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
+                <!-- ここで閲覧制限に基づいて表示を変更 -->
+                <?php if ($restrictionValue == '1' || $loggedInUserId == $image['user_id']): ?>
+                    <!-- 表示する場合の表示設定 -->
+                    <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
+                <?php elseif ($restrictionValue == '2'): ?>
+                    <!-- 表示しない場合の表示設定 -->
+                    <p>この作品は非表示に設定されています。</p>
+                <?php endif; ?>
+            </div>
+        </a>
+    </div>
+<?php endforeach; ?>
         </div>
     <?php endif; ?>
     
