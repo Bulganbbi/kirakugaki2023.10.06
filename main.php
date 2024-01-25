@@ -65,6 +65,37 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
         border-color: #ffc107; 
         color: #212529; 
     }
+
+/* 例：styles.css */
+
+
+/* 削除ボタンのスタイル */
+.btn-danger{
+  font-size: 13px;
+  color: #fff;
+  background-color: rgba(246, 170, 30, 0.742);
+  border-color: rgba(246, 170, 30, 0.742);
+  margin-left: 10px;
+}
+
+/* ホバー時のスタイル */
+/* .btn:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: rgba(246, 170, 30, 0.555);
+  border-color: rgba(246, 170, 30, 0.555);
+
+} */
+
+/* ホバー時のスタイル（危険なアクションボタン） */
+.btn-danger:hover {
+  background-color: rgba(246, 170, 30, 0.555);
+  border-color: rgba(246, 170, 30, 0.555);
+  box-shadow: none;
+}
+
+
+    
 </style>
 
 <div class="main-content">
@@ -114,7 +145,7 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
                             <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
                             <!-- 削除ボタン -->
                             <?php if ($loggedInUserId == $image['user_id']): ?>
-                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm">削除</a>
+                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm" name="deletebutton">削除</a>
                             <?php endif; ?>
                         </div>
                     </div>

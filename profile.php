@@ -57,12 +57,7 @@ $con->close();
                 <p><?php echo $userInfo['email'] ?? ''; ?></p>
                 <hr>
                 <div class="content">
-                    <p>
-                        <form action="/submit_form" method="post">
-                            <input type="text">
-                            <input type="submit" value="決定">
-                        </form>
-                    </p>
+                    <p>プロフィール</p>
                     <hr>
                     <div class="social-icon">
                         <ul>

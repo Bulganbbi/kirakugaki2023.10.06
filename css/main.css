@@ -600,7 +600,7 @@ span, .navbar-toggler-icon{
 
     .setting-post-container ul li a:hover {
     text-decoration: none;
-    color: #ffcd04;
+    color: rgba(246, 170, 30);
   }
   
   .label {
@@ -613,15 +613,17 @@ span, .navbar-toggler-icon{
   
   .btn_type01 {
     padding: 10px 20px;
-    background-color:rgba(255, 224, 85, 0.612);
+    background-color: rgba(246, 170, 30, 0.742);
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 1em;
+    margin-bottom: 15px;
   }
   
   .btn_type01:hover {
-    background-color: rgb(254, 221, 74);
+    background-color: rgba(246, 170, 30, 0.555);
+    border-color:rgba(246, 170, 30, 0.555);
   }
 
 
@@ -661,7 +663,7 @@ span, .navbar-toggler-icon{
 }
 
 input[type="radio"]:checked + .label {
-    background-color: rgba(235, 197, 29, 0.561);
+    background-color: rgba(246, 170, 30, 0.742);
     color: #fff;
 }
 
@@ -674,7 +676,7 @@ input[type="radio"]:checked + .label {
     display: inline-flex;
     text-transform:uppercase;
     color: white;
-    background-color: #ffaf01;
+    background-color: rgba(246, 170, 30, 0.742);
     text-align: center;
     padding: 10px 40px 10px 30px;
     font-size: 16px;
@@ -761,3 +763,76 @@ footer, p{
   .setting-links a:hover {
     color: #f0e623; /* ホバー時のリンクの色を変更 */
   }
+
+
+/* 一般的なスタイル */
+  
+  /* ボタンのスタイル */
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* background-color: rgba(248, 116, 22, 0.628); */
+    
+  }
+  
+  /* プライマリボタンのスタイル */
+  .btn-primary {
+    color: #fff;
+    /* background-color: rgba(246, 170, 30, 0.742);
+    border-color:rgba(246, 170, 30, 0.742); */
+    
+  }
+  
+  /* ホバー時のスタイル */
+  .btn:hover {
+    color: white;
+    text-decoration: none;
+    /* background-color: rgba(246, 170, 30, 0.742);
+    border-color:rgba(246, 170, 30, 0.742); */
+
+
+  }
+  /* a .btn .btn-danger .btn-sm{
+    font-size: 22px;
+    color: black;
+    background-color: pink;
+  } */
+
+ 
+  /* モーダルのスタイル */
+  .modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - (20px * 2));
+  }
+  
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-header {
+    background-color: rgb(254, 221, 74);
+    color: #fff;
+    border-bottom: none;
+  }
+  
+  .modal-title {
+    color: #fff;
+  }
+  
+  /* モーダルボディのスタイル */
+  .modal-body {
+    padding: 20px;
+  }
+  

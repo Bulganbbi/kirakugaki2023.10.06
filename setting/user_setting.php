@@ -115,7 +115,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changeProfileImage']))
     .submit {
         margin-top: 20px; /* 適用ボタンの上部の余白 */
     }
-</style>
+    .btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: rgba(248, 116, 22, 0.628);
+    
+  }
+
+    .btn-primary {
+    color: #fff;
+    background-color: rgba(246, 170, 30, 0.742);
+    border-color:rgba(246, 170, 30, 0.555);
+    
+    }
+  
+  /* ホバー時のスタイル */
+    .btn:hover {
+    color: white;
+    text-decoration: none;
+    background-color: rgba(246, 170, 30, 0.555);
+    border-color:rgba(246, 170, 30, 0.555);
+
+    }
+     .btn-primary:focus{
+        color: white;
+        background-color: rgba(246, 170, 30, 0.742);
+        border-color:rgba(246, 170, 30, 0.555);
+        box-shadow: none;
+     }
+    </style>
 
 </head>
 <body>
