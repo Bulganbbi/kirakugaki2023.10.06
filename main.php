@@ -75,17 +75,18 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
   color: #fff;
   background-color: rgba(246, 170, 30, 0.742);
   border-color: rgba(246, 170, 30, 0.742);
-  margin-left: 10px;
+  margin-top: 5px;
+  padding: 1px;
 }
 
 /* ホバー時のスタイル */
-/* .btn:hover {
+.btn:hover {
   color: #fff;
   text-decoration: none;
   background-color: rgba(246, 170, 30, 0.555);
   border-color: rgba(246, 170, 30, 0.555);
 
-} */
+}
 
 /* ホバー時のスタイル（危険なアクションボタン） */
 .btn-danger:hover {
@@ -145,7 +146,12 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
                             <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
                             <!-- 削除ボタン -->
                             <?php if ($loggedInUserId == $image['user_id']): ?>
-                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm" name="deletebutton">削除</a>
+                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm" name="deletebutton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256">
+                                    <g fill-opacity="0.85098" fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M10,2l-1,1h-5v2h1v15c0,0.52222 0.19133,1.05461 0.56836,1.43164c0.37703,0.37703 0.90942,0.56836 1.43164,0.56836h10c0.52222,0 1.05461,-0.19133 1.43164,-0.56836c0.37703,-0.37703 0.56836,-0.90942 0.56836,-1.43164v-15h1v-2h-5l-1,-1zM7,5h10v15h-10zM9,7v11h2v-11zM13,7v11h2v-11z"></path></g></g>
+                                    </svg>
+                                </a>
+
                             <?php endif; ?>
                         </div>
                     </div>
