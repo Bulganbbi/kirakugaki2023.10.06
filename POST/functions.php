@@ -57,5 +57,19 @@ function searchImagesByKeyword($keyword) {
     return $stmt->fetchAll();
 }
 
+// functions.php
+
+function getOwnerId($imageId, $pdo) {
+    // 画像の所有者の ID を取得するロジック
+    $stmt = $pdo->prepare("SELECT user_id FROM rakugaki_images WHERE image_id = ?");
+    $stmt->bindParam(1, $imageId, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    return $result['user_id'] ?? null;
+}
+
 
 ?>

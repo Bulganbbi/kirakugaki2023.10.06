@@ -69,6 +69,7 @@ if (!$image) {
             border-radius: 8px;
         }
     </style>
+    
 </head>
 <body>
     <?php include("./components/nav.php"); ?>

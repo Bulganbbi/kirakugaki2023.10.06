@@ -10,8 +10,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// 閲覧制限の値を取得
-$restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restriction_value'] : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +65,14 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
         color: #212529; 
     }
 </style>
+<script>
+    function confirmDelete(imageId) {
+        if (confirm('本当に削除しますか？')) {
+            window.location.href = 'delete.php?id=' + imageId;
+        }
+        return false;
+    }
+</script>
 
 <div class="main-content">
     <div class="write-post-container d-grid gap-2">
@@ -92,10 +99,10 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
     <?php if (empty($images)): ?>
         <p class="text-center mt-5">まだ投稿がありません。</p>
     <?php else: ?>
-        <!-- 画像表示 -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-        <?php foreach ($images as $image): ?>
-    <div class="col mb-4">
+<!-- 画像表示 -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <?php foreach ($images as $image): ?>
+        <div class="col mb-4">
         <!-- 画像をクリックしたら詳細ページに遷移 -->
         <a href="detail.php?image_id=<?= $image['image_id']; ?>" class="text-decoration-none text-reset">
             <div class="post-container">
@@ -114,21 +121,15 @@ $restrictionValue = isset($_SESSION['restriction_value']) ? $_SESSION['restricti
                             <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
                             <!-- 削除ボタン -->
                             <?php if ($loggedInUserId == $image['user_id']): ?>
-                                <a href="delete.php?id=<?= $image['image_id']; ?>" class="btn btn-danger btn-sm">削除</a>
+                                <button class="btn btn-danger btn-sm" onclick="confirmDelete(<?= $image['image_id']; ?>)">削除</button>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
                 <!-- 作品情報 -->
-                <p class="post-text truncated-text"><?= $image['image_comment']; ?><a href="#"><?= $image['image_hashtag']; ?></a></p>
-                <!-- ここで閲覧制限に基づいて表示を変更 -->
-                <?php if ($restrictionValue == '1' || $loggedInUserId == $image['user_id']): ?>
-                    <!-- 表示する場合の表示設定 -->
-                    <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
-                <?php elseif ($restrictionValue == '2'): ?>
-                    <!-- 表示しない場合の表示設定 -->
-                    <p>この作品は非表示に設定されています。</p>
-                <?php endif; ?>
+                <a href="" class="post-img-link" data-img-url="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>">
+                <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
+            </a>
             </div>
         </a>
     </div>
