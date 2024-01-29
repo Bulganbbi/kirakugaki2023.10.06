@@ -40,7 +40,7 @@ $stmt->bindParam(':image_id', $imageId, PDO::PARAM_INT);
 
 if ($stmt->execute()) {
     // 削除が成功したら一覧ページにリダイレクト
-    header('Location: list.php');
+    header('Location: main.php');
     exit;
 } else {
     // 削除に失敗した場合のエラー処理

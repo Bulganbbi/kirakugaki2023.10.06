@@ -761,3 +761,31 @@ footer, p{
   .setting-links a:hover {
     color: #f0e623; /* ホバー時のリンクの色を変更 */
   }
+
+  .post-container .post-img-link {
+    position: relative;
+}
+
+.post-container .post-img-link::after {
+    content: attr(data-img-comment); /* コメントの内容を表示 */
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.post-container .post-img-link::before {
+    content: attr(data-img-hashtag); /* ハッシュタグの内容を表示 */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
