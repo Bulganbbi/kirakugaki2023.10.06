@@ -9,9 +9,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">通知</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >ユーザー</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,10 +29,11 @@
                         </ul>
                       </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form" type="search" placeholder="検索" aria-label="Search">
-                    <button><img src="../images/検索アイコン.png" height="20" width="20"></button>
-                </form>
+            <!-- nav.php の検索フォーム -->
+            <form class="d-flex" method="get" action="../search.php">
+                <input class="form-control" type="search" name="keyword" placeholder="検索" aria-label="Search">
+                <button type="submit"><img src="./images/検索アイコン.png" height="20" width="20"></button>
+            </form>
             </div>
         </div>
     </nav>

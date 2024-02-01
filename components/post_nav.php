@@ -63,9 +63,10 @@ if (isset($_SESSION['user_id'])) {
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form" type="search" placeholder="検索" aria-label="Search">
-                <button><img src="../images/検索アイコン.png" height="20" width="20"></button>
+            <!-- nav.php の検索フォーム -->
+            <form class="d-flex" method="get" action="search.php">
+                <input class="form-control" type="search" name="keyword" placeholder="検索" aria-label="Search">
+                <button type="submit"><img src="./images/検索アイコン.png" height="20" width="20"></button>
             </form>
         </div>
     </div>
