@@ -88,50 +88,58 @@ if (session_status() == PHP_SESSION_NONE) {
     $pdo = connectDB();
 
     // 画像を取得
-    $sql = 'SELECT i.*, u.name, u.user_icon FROM rakugaki_images i
-            INNER JOIN users u ON i.user_id = u.user_id
-            ORDER BY i.created_at DESC';
+    $sql = 'SELECT i.*, u.name, u.user_icon
+    FROM rakugaki_images i
+    INNER JOIN users u ON i.user_id = u.user_id
+    ORDER BY i.created_at DESC';
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $images = $stmt->fetchAll();
     ?>
 
     <?php if (empty($images)): ?>
-        <p class="text-center mt-5">まだ投稿がありません。</p>
-    <?php else: ?>
-<!-- 画像表示 -->
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-    <?php foreach ($images as $image): ?>
-        <div class="col mb-4">
-        <!-- 画像をクリックしたら詳細ページに遷移 -->
+                <p class="text-center mt-5">まだ投稿がありません。</p>
+            <?php else: ?>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+                    <?php foreach ($images as $image): ?>
+                        <div class="col mb-4">
+                            <a href="detail.php?image_id=<?= $image['image_id']; ?>" class="text-decoration-none text-reset">
+                                <div class="post-container">
+    <!-- ユーザー情報 -->
+    <div class="left-post-contents">
+        <div class="user-profile">
+            <!-- ユーザーのアイコン -->
+            <?php if ($loggedInUserId == $image['user_id']): ?>
+                <!-- ログイン中のユーザーのアイコン -->
+                <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon">
+            <?php else: ?>
+                <!-- 他のユーザーのアイコン -->
+                <img src="data:image/jpeg;base64,<?= base64_encode(getUserIcon($image['user_id'])); ?>" alt="User Icon">
+            <?php endif; ?>
+            <div>
+                <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
+                <!-- 削除ボタン -->
+                <?php if ($loggedInUserId == $image['user_id']): ?>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete(<?= $image['image_id']; ?>)">削除</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- 画像をクリックしたら詳細ページに遷移 -->
         <a href="detail.php?image_id=<?= $image['image_id']; ?>" class="text-decoration-none text-reset">
-            <div class="post-container">
-                <!-- ユーザー情報 -->
-                <div class="left-post-contents">
-                    <div class="user-profile">
-                        <!-- ユーザーのアイコン -->
-                        <?php if ($loggedInUserId == $image['user_id']): ?>
-                            <!-- ログイン中のユーザーのアイコン -->
-                            <img src="data:image/jpeg;base64,<?= base64_encode($image['user_icon']); ?>" alt="User Icon">
-                        <?php else: ?>
-                            <!-- 他のユーザーのアイコン -->
-                            <img src="data:image/jpeg;base64,<?= base64_encode(getUserIcon($image['user_id'])); ?>" alt="User Icon">
-                        <?php endif; ?>
-                        <div>
-                            <p class="user-text"><?= $image["name"]; ?></p><!-- ユーザーネーム -->
-                            <!-- 削除ボタン -->
-                            <?php if ($loggedInUserId == $image['user_id']): ?>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete(<?= $image['image_id']; ?>)">削除</button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- 作品情報 -->
-                <a href="" class="post-img-link" data-img-url="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>">
+            <div class="post-img-link" data-img-url="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>"
+                data-img-comment="<?= $image['image_comment']; ?>"
+                data-img-hashtag="<?= $image['image_hashtag']; ?>">
                 <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
-            </a>
             </div>
         </a>
+    </div>
+    <a href="" class="post-img-link" data-img-url="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>">
+        <img src="data:image/<?= $image['image_type']; ?>;base64,<?= base64_encode($image['image_content']); ?>" class="post-img">
+    </a>
+        </div>
     </div>
 <?php endforeach; ?>
         </div>
